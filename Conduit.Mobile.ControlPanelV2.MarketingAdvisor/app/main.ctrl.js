@@ -23,10 +23,10 @@
         };
 
         vm.loadMore = function () {
+            vm.loadInProgress = true;
+
             //alert('load more');
-            console.log("load more");
-            var items = angular.copy(cachedData);
-            vm.dataRows = vm.dataRows.concat(items);
+            loadMoreFn();
         };
 
         init();
@@ -35,11 +35,53 @@
             vm.pageLoaded = false;
             vm.search = { event: 'All Events' };
             HolidaysDataService.getData().then(getDataSuccess);
+
+            vm.scrollCount = 20;
+            vm.scrollPageIndex = 1;
         }
 
         function getDataSuccess(data) {
             cachedData = data;
-            vm.dataRows = data;
+
+            var count2take = vm.scrollCount * vm.scrollPageIndex;
+
+            vm.dataRows = angular.copy(_.take(data, count2take));
+        }
+
+        var loadMoreFn = _.debounce(function () {
+            console.log("load more");
+
+            var count2take = vm.scrollCount * (vm.scrollPageIndex + 1);
+
+            if (count2take < cachedData.length) {
+                var nextItems = _.chain(cachedData).rest(vm.scrollCount * vm.scrollPageIndex).first(vm.scrollCount).value();
+
+                loadMoreSuccess(nextItems);
+            } else {
+                HolidaysDataService.gedDataCalculetedNext().then(loadMoreCalculetedNextSuccess);
+            }
+
+            vm.scrollPageIndex++;
+        }, 1000);
+
+        function loadMoreCalculetedNextSuccess(data) {
+            var cachedData = cachedData.concat(data);
+
+            var nextItems = _.chain(cachedData).rest(vm.scrollCount * vm.scrollPageIndex).first(vm.scrollCount).value();
+
+            loadMoreSuccess(nextItems);
+        }
+
+        function loadMoreSuccess(data) {
+            for (var i = 0; i < data.length; i++) {
+                vm.dataRows.push(data[i]);
+            }
+
+            vm.loadInProgress = false;
+
+            if (!$scope.$$phase) {
+                $scope.$apply();
+            }
         }
     }
 })();

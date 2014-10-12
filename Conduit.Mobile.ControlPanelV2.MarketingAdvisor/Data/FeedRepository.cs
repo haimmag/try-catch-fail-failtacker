@@ -63,6 +63,12 @@ namespace Conduit.Mobile.ControlPanelV2.External.Data
 
         var eventDate = DateTime.TryParse(startTime, out date);
 
+
+        while (date < DateTime.Now)
+        {
+            date = date.AddYears(1);
+        }
+
         return date;
     }
 

@@ -65,7 +65,7 @@
             </div>
         </div>
 
-        <div class="mid_fixed_pane background-custom-3">
+        <div class="mid_fixed_pane background-custom-3" infinite-scroll load-more='vm.loadMore()' scroll-threshold="100">
             <div class="my-repeat-animation" ng-repeat="row in vm.dataRows | filter:search.text" repeat-done="vm.elementsLayoutDone()" ng-cloak>
                 <div class="row">
                     <div class="large-2 columns">
@@ -124,7 +124,7 @@
                                 <!--app install-->
                                 <div class="row detials_func_content show-animation" ng-if="btn.install.funcvisible">
                                     @*<div class="small-12 columns" ng-controller="timelineapps.AppInstallCtrl as installVM" data-timelineapps.appinstall="">
-                                        </div>*@
+                                    </div>*@
                                     <div class="small-12 columns onlineAdsWrapper" ng-controller="timelineapps.AppInstallIfrmCtrl as installVM">
                                         <iframe id="onlineAdsFrame" ng-src="http://smb.zibaba.com/cndconnect?parameters=VDAhsTLIznou8F5gPtOTLGRLBFBThDesGwdtHQCmkNvbdnXXMi5Au7kcIkebBab8IphDvQJHeGwI6/7m5Y7k+2nsz2RYQ3uGjlInpie1x7kLonehc5WCcW5WSTkpCUs7t9Pq2eJLSvjGA5hLjWdlh2MsvK8fBjly3LosEmJhGWVJEiwKNMZAG5RIWzVFa/PRm5wdwoHJVf9QnxagNWZU07HKSyJbPLjmLL3KJ8X0gXzSAoVC+tBkLrT5+KMzWO5fgu/w7LI5v/BKq0Bst3Q30Fo41xafkpNKfJa9smuCXQaxG/zQMaMWLHJHdl+1i97R3RDRTd4j8Y8AW8rut2KoS37U5fxRsdHyxDi8J/V50aeKNpQaUAGCm0Oigmehgb6Dd2q5UDVnVU1h1P/f3tfTeB/WPmtyOaT2Iz3Lo/hzj/Cm/M6R/pa3VVNS6T3kXzMAkT6uZHVglM/lWiz7OxMUTXWU1ckqYdesXe68bkGjePO3Tbpb7VIfASFJ43SdtV5ujYEfo0MSYc+sUjzQvewa8WbOjmwWNHeFrTFO/b+7qco//ZZH9+mhlSMi5Q9KINMH5zqspHiMROwvdcyPcW1wHlxQSMSP4FbA7q/4yRLy3J5Z1tgFFKIZKHVETJ0v6KHF2aYHgP+mytjVfDiL3adWclZWmmtA/l7Qbp/nDmeKV/sSEemTFZv42Jo2J1R3/ssOrTjU/XRxOAXc/z1u040orbOTFqICKuXGOsn8wtiDavpJ7uop5rqvvhP30kEczueGeYEOQo4VoGojcL+Z2z9jJOGTSgUKdRUxC/fOjwDJoeTsuAG/krXiMSw8+9uT4U2x7oGWfSz1VAYNAp19g/r1LR9tYhW1j99uNEULp9mLizOQqQxE/4HwQofjYxp1hnaF87MJ/F/v/u3gEQOZoPO7U10mp7uDiccYKmRIgew+WpsUN49f56QjKQLc0RPZg5AprPS02Ivi/MBa65K9NOXjeaFgQfZAP9qoxS5dZy+qMj8Swc0ZyB2BRJ38u6KC9Pjm" src="http://smb.zibaba.com/cndconnect?parameters=VDAhsTLIznou8F5gPtOTLGRLBFBThDesGwdtHQCmkNvbdnXXMi5Au7kcIkebBab8IphDvQJHeGwI6/7m5Y7k+2nsz2RYQ3uGjlInpie1x7kLonehc5WCcW5WSTkpCUs7t9Pq2eJLSvjGA5hLjWdlh2MsvK8fBjly3LosEmJhGWVJEiwKNMZAG5RIWzVFa/PRm5wdwoHJVf9QnxagNWZU07HKSyJbPLjmLL3KJ8X0gXzSAoVC+tBkLrT5+KMzWO5fgu/w7LI5v/BKq0Bst3Q30Fo41xafkpNKfJa9smuCXQaxG/zQMaMWLHJHdl+1i97R3RDRTd4j8Y8AW8rut2KoS37U5fxRsdHyxDi8J/V50aeKNpQaUAGCm0Oigmehgb6Dd2q5UDVnVU1h1P/f3tfTeB/WPmtyOaT2Iz3Lo/hzj/Cm/M6R/pa3VVNS6T3kXzMAkT6uZHVglM/lWiz7OxMUTXWU1ckqYdesXe68bkGjePO3Tbpb7VIfASFJ43SdtV5ujYEfo0MSYc+sUjzQvewa8WbOjmwWNHeFrTFO/b+7qco//ZZH9+mhlSMi5Q9KINMH5zqspHiMROwvdcyPcW1wHlxQSMSP4FbA7q/4yRLy3J5Z1tgFFKIZKHVETJ0v6KHF2aYHgP+mytjVfDiL3adWclZWmmtA/l7Qbp/nDmeKV/sSEemTFZv42Jo2J1R3/ssOrTjU/XRxOAXc/z1u040orbOTFqICKuXGOsn8wtiDavpJ7uop5rqvvhP30kEczueGeYEOQo4VoGojcL+Z2z9jJOGTSgUKdRUxC/fOjwDJoeTsuAG/krXiMSw8+9uT4U2x7oGWfSz1VAYNAp19g/r1LR9tYhW1j99uNEULp9mLizOQqQxE/4HwQofjYxp1hnaF87MJ/F/v/u3gEQOZoPO7U10mp7uDiccYKmRIgew+WpsUN49f56QjKQLc0RPZg5AprPS02Ivi/MBa65K9NOXjeaFgQfZAP9qoxS5dZy+qMj8Swc0ZyB2BRJ38u6KC9Pjm"></iframe>
                                     </div>
@@ -211,7 +211,13 @@
                 </div>
             </div>
         </div>
+        <div class="row ng-hide" data-ng-show="vm.loadInProgress">
+            <div class="small-push-4 small-8 columns text-center">
+                <span class="more loader small center"></span>
+            </div>
+        </div>        
     </div>
-
+    <br />
+    <br />
 </body>
 </html>

@@ -20,7 +20,7 @@ namespace Conduit.Mobile.ControlPanelV2.External
             bundles.Add(new ScriptBundle("~/bundles/angularjslibs.js").Include(
                                     "~/Scripts/libs/angular-equalizer.js",
                                     "~/Scripts/libs/angular-animate.min.js",
-                                    "~/Scripts/libs/ng-infinite-scroll.js",                                    
+                                    "~/Scripts/libs/infiniteScroll.js",                                    
                                     "~/Scripts/libs/angular-sticky.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angularjs.js")                

@@ -410,3 +410,6 @@ iframe {
   opacity: 0.5; }
   .my-repeat-animation.ng-move.ng-move-active {
     opacity: 1; }
+
+.more.loader {
+  display: block; }

@@ -12,10 +12,13 @@
 
         var cachedData: Timeline.IEvent[] = [];
         var defaultData: Timeline.IEvent[] = [];
+        var yearsCounter = 0;
 
         var service = {
             getData: getData,
-            getDataByEventType: getDataByEventType
+            getDataByEventType: getDataByEventType,
+            gedDataCalculetedNextYear: gedDataCalculetedNext,
+            getItemsThreshold: getItemsThreshold
         };
         
         return service;               
@@ -25,7 +28,10 @@
 
             // get data from google service or fallback to default static list
             getDataFromAnySource().then(function (eventsData: Timeline.IEvent[]) {
-                cachedData = angular.copy(eventsData);
+
+                var eventsData = prepareDataAddYears(eventsData);
+
+                cachedData = angular.copy(eventsData);                
 
                 prepareData(eventsData);
 
@@ -55,15 +61,32 @@
             return deferred.promise;
         }
 
+        function gedDataCalculetedNext() {
+            var data = angular.copy(cachedData);
+            yearsCounter++;
+
+            for (var i = 0; i < data.length; i++) {
+                var currItemDate = data[i].date;
+                currItemDate.setFullYear(currItemDate.getFullYear() + yearsCounter);
+            }
+
+            prepareData(data);
+
+            var deferred = $q.defer();
+            deferred.resolve(data);
+
+            return deferred.promise;
+        }
+
         function prepareData(data: Timeline.IEvent[]) {
             var groupData = _.groupBy(data, function (event) {
-                return event.date.getMonth();
+                return event.date.getFullYear() + '-' + event.date.getMonth();
             });
 
             _.each(groupData, function (grpEvents) {
                 _.each(grpEvents, function (grpEventItem) {
                     grpEventItem.monthOccurrence = 0;
-                    grpEventItem.cssMarker = grpEventItem.monthText;
+                    grpEventItem.cssMarker = grpEventItem.monthText + '-' + grpEventItem.date.getFullYear() + '-' + grpEventItem.date.getMonth();
                 });
 
                 grpEvents[0].monthOccurrence = grpEvents.length;                
@@ -72,6 +95,41 @@
             });
 
             return data;
+        }
+
+        function prepareDataAddYears(events: Timeline.IEvent[]) {            
+            var resultEvents = angular.copy(events);
+
+            var itemsThreshold = getItemsThreshold();
+            //100 exemption about the elements that should be
+            if (events.length < itemsThreshold) {
+                var itemsCounter = (itemsThreshold - events.length) / events.length;
+                yearsCounter = 0;                
+
+                for (var i = 0; i < itemsCounter; i++) {
+                    yearsCounter++;
+                    var newEvents = angular.copy(events);
+
+                    //loop new events and add them to main events
+                    for (var j = 0; j < newEvents.length; j++) {
+                        var currItemDate = newEvents[j].date;
+                        currItemDate.setFullYear(currItemDate.getFullYear() + yearsCounter);
+
+                        resultEvents.push(newEvents[j]);
+                    }
+                }
+            }      
+
+            // sort elements by date after adding them
+            resultEvents = _.sortBy(resultEvents, function (event) {
+                return event.date;
+            });
+
+            return resultEvents;      
+        }
+
+        function getItemsThreshold() {
+            return 100;
         }
 
         function getDataFromAnySource() {            

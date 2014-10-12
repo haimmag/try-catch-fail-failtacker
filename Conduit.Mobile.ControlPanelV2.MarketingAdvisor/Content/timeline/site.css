@@ -414,6 +414,9 @@ iframe {
   .my-repeat-animation.ng-move.ng-move-active {
     opacity: 1; }
 
+.more.loader {
+  display: block; }
+
 .app-warrper {
   background: #FCFCFC; }
   .app-warrper .ad-warrper {

@@ -460,12 +460,15 @@
     <Content Include="Scripts\libs\angular-equalizer.js" />
     <Content Include="Scripts\libs\angular.min.js" />
     <Content Include="Scripts\libs\foundation.min.js" />
+    <Content Include="Scripts\libs\infiniteScroll.js" />
     <Content Include="Scripts\libs\isInViewport.min.js" />
     <Content Include="Scripts\libs\jquery.min.js" />
     <Content Include="Scripts\libs\mm-foundation-0.3.1.js" />
     <Content Include="Scripts\libs\mm-foundation-0.3.1.min.js" />
     <Content Include="Scripts\libs\moment.min.js" />
     <Content Include="Scripts\libs\angular-sticky.js" />
+    <Content Include="Scripts\libs\ng-infinite-scroll.js" />
+    <Content Include="Scripts\libs\ng-infinite-scroll.min.js" />
     <Content Include="Scripts\libs\string.js" />
     <Content Include="Scripts\libs\underscore-min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
