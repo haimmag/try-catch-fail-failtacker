@@ -1,0 +1,119 @@
+﻿.app-warrper {
+    background: #FCFCFC;
+
+    .ad-warrper {
+        background-color: #fff;
+        border: 1px solid #a7a7a7;
+        border-radius: 3px;
+        margin: 10px 5px 10px 5px;
+
+        .top-head {
+            border-bottom: 1px solid #a7a7a7;
+            font-weight: bold;
+
+            h6 {
+                font-weight: bold;
+                margin: 10px;
+            }
+        }
+
+        .top-middle {
+            margin: 10px 5px 10px 5px;
+
+            h5 {
+                font-weight: bold;
+            }
+        }
+
+        .bottom-middle {
+            background-color: #fff;
+            border: 1px solid #a7a7a7;
+            border-radius: 3px;
+            margin: 10px;
+
+            .imgcontent {
+                height: 190px;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            .installcontent {
+                margin: 10px;
+            }
+
+            h5 {
+                font-weight: bold;
+            }
+        }
+
+        .bottom {
+            background-color: #ebebeb;
+            border-top: 1px solid #a7a7a7;
+            margin: 0;
+
+            h6 {
+                font-weight: bold;
+            }
+
+            img {
+                vertical-align: text-bottom;
+            }
+
+            .fbox-center {
+                border-left: 1px solid #a7a7a7;
+                border-right: 1px solid #a7a7a7;
+            }
+        }
+    }
+}
+
+.ad-edit-link {
+    color: #1481C8;
+
+    h6 {
+        font-weight: bold;
+        color: #1481C8;
+    }
+
+    img {
+        vertical-align: text-bottom;
+    }
+}
+
+.add-publish-warrper {
+    padding: 10px;
+    border-top: 1px solid #a7a7a7;
+
+    content {
+    }
+}
+
+.form-warrper {
+    border-bottom: 1px solid #a7a7a7;
+
+    h4.title {
+        font-weight: bold;
+        color: #1481C8;
+        font-size: 1.2rem !important;
+    }
+
+    .top-contnet {
+        margin: 15px 0 10px 0;
+    }
+
+    label {
+        font-size: 1rem;
+    }
+
+    &.no-border {
+        border-bottom: 0 !important;
+    }
+}
+
+.form-warrper-border {
+    border-left: 1px solid #a7a7a7;
+    padding: 0;
+}

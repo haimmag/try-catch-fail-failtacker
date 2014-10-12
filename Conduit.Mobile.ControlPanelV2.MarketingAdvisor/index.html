@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Storefront Goodies</title>
+
+    <link rel="stylesheet" href="styles/normalize.css" />
+    <link rel="stylesheet" href="styles/main.css">
+
+    <!-- Google Analytics Universal Code for como main site -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-50067171-1', 'como.com');
+        ga('require', 'displayfeatures');
+        ga('send', 'pageview');
+    </script>
+</head>
+<body ng-app="app">
+    <!-- Google Tag Manager -->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-NCRKWJ"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+            '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-NCRKWJ');</script>
+    <!-- End Google Tag Manager -->
+    <div ng-controller="MainCtrl">
+        <div id="main_wrapper" ng-class="{first_time: !isNotFirstTime}" ng-main-wrapper>
+            <h3>
+                <strong>Want more customers to take your business wherever they go?</strong> - The Marketing Genie grants you three printable wishes!
+            </h3>
+            <div class="box main" ng-class="{edit_mode: isEditMode}">
+                <div class="header clearfix">
+                    <div class="icon ribbon"></div>
+                    <div class="content">
+                        <h4 class="clearfix">
+                            <span>Storefront Sticker</span>
+                            <span class="tooltip">
+                                <span class="mark"></span>
+                                <span class="text">Create a custom sticker to display on your storefront! In addition to a QR code, you can show customers what makes your app unique and highlight its key features.</span>
+                            </span>
+                        </h4>
+                        <p>Put some magic in your storefront with a custom QR-enhanced sticker for all to see.</p>
+                    </div>
+                    <div class="actions clearfix">
+                        <div class="overlay" ng-show="isEditMode"></div>
+                        <span class="edit" ng-click="updateEditModeState(true)"><span>Edit sticker</span></span>
+                        <a href="{{printableDisplayImageUrl + '?f=' + 'printableDisplayImage'}}" target="_self">
+                            <span class="download" ng-class="{disabled: isSavingProgress}">
+                                <span>Download</span>
+                            </span>
+                        </a>
+                        <!-- <span class="email" send-email><span>Send to Email</span></span> -->
+                        <span class="mail" ng-class="{disabled: isMailHaveBeenSent}" data-send-mail><span>Order sticker</span></span>
+                    </div>
+                </div>
+                <div class="main_image_wrapper">
+                    <h3 ng-if="isEditMode">Banner Editor</h3>
+                    <div class="main_image">
+                        <div class="image" ng-style="{backgroundImage: 'url(' + preDefinedImages[segmentId][currentActiveImage] + ')'}" />
+                    </div>
+                    <h2>{{appData.name}}</h2>
+                    <div class="qr_code_wrapper" ng-style="{'background-image':'url(' + qrCodeUrl +')'}">
+                        <!-- <div class="qr_code"></div>
+                        <p>Available on </p>
+                        <div class="stores">
+                          <span class="appstore"></span>
+                          <span class="googleplay"></span>
+                          <span class="amazon"></span>
+                        </div> -->
+                    </div>
+                    <!-- <div class="main_features">
+                      <h4>Main Features:</h4>
+                      <ul>
+                        <li ng-repeat="feature in features">{{feature.name}}</li>
+                      </ul>
+                    </div> -->
+                    <!--
+                    <div class="change_image_nav" ng-if="preDefinedImages[segmentId].length > 1">
+                        <span ng-repeat="bullet in preDefinedImages[segmentId]" ng-class="{active: $index === currentActiveImage}" ng-click="changeImage('bullet', $index)"></span>
+                    </div>
+                    -->
+                    <!-- <div class="como_banner"></div> -->
+                    <div class="preview_ribbon"></div>
+                </div>
+                <!--
+                <div class="change_image" ng-if="isEditMode && preDefinedImages[segmentId].length > 1">
+                    <p>
+                        <span class="prev" ng-click="changeImage('prev')">&lt;</span>
+                        Select banner style
+                        <span class="next" ng-click="changeImage('next')">&gt;</span>
+                    </p>
+                </div>
+                -->
+            </div>
+        </div>
+        <div class="app_details_editor" ng-if="isEditMode">
+            <div class="form">
+                <div class="form_row clearfix">
+                    <label>App Name</label>
+                    <input type="text" ng-model="appData.name" value="{{appData.name}}" />
+                </div>
+                <!-- <div class="form_row clearfix">
+                  <label>Main Features</label>
+                  <div ng-repeat="feature in features">
+                    <input type="text" class="small" ng-model="feature.name" value="{{feature.name}}" />
+                  </div>
+                </div> -->
+                <div class="buttons_wrapper">
+                    <a class="button" ng-click="updateEditModeState(false);">Update</a>
+                </div>
+            </div>
+        </div>
+        <div class="box clearfix">
+            <div class="icon certificate"></div>
+            <div class="content">
+                <h4 class="clearfix">
+                    <span preview-certificate>Certificate of Mobile APPtitude</span>
+                    <span class="tooltip">
+                        <span class="mark"></span>
+                        <span class="text">Now that you've gone mobile, show your customers you've entered the mobile age with an official certificate from Como.</span>
+                    </span>
+                </h4>
+                <p>Mesmerize your audience by showing them your tech-savvy business can fit in their pockets.</p>
+            </div>
+            <div class="actions clearfix">
+                <span class="preview" preview-certificate><span>Preview</span></span>
+                <a href="{{digitalCertificateImageUrl + '?f=' + 'printableDisplayImage'}}" target="_self">
+                    <span class="download" ng-class="{disabled: isSavingProgress}">
+                        <span>Download</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="box clearfix">
+            <div class="icon qr"></div>
+            <div class="content">
+                <h4 class="clearfix">
+                    <span preview-sticker>Giveaway Stickers</span>
+                    <span class="tooltip">
+                        <span class="mark"></span>
+                        <span class="text">Put these QR-enhanced stickers anywhere—from a menu to a receipt to your store's mascot—to encourage customers to download your app.</span>
+                    </span>
+                </h4>
+                <p>Make your app stick by letting customers know where they can download it.</p>
+            </div>
+            <div class="actions clearfix">
+                <span class="preview" preview-sticker><span>Preview</span></span>
+                <a href="{{appStickerImageUrl + '?f=' + 'printableDisplayImage'}}" target="_self">
+                    <span class="download" ng-class="{disabled: isSavingProgress}">
+                        <span>Download</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="first_time_overlay" ng-if="!isNotFirstTime" overlay>
+            <div class="overlay_content clearfix">
+                <h2>Get your free app sticker</h2>
+                <img src="images/arrow.png" />
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/libs/jquery.min.js"></script>
+    <script src="scripts/libs/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/services/popup.js"></script>
+    <script src="scripts/services/common.js"></script>
+    <script src="scripts/services/ams.js"></script>
+    <script src="scripts/services/localstorage.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/directives/main.js"></script>
+    <script src="scripts/directives/send_mail.js"></script>
+    <script src="scripts/directives/common/popup.js"></script>
+</body>
+</html>
