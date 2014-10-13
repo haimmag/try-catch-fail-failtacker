@@ -17,5 +17,12 @@
         ActionType[ActionType["shop"] = 2] = "shop";
     })(Timeline.ActionType || (Timeline.ActionType = {}));
     var ActionType = Timeline.ActionType;
+
+    (function (ICustomEventAd) {
+        ICustomEventAd[ICustomEventAd["none"] = -1] = "none";
+        ICustomEventAd[ICustomEventAd["facebook"] = 1] = "facebook";
+        ICustomEventAd[ICustomEventAd["google"] = 2] = "google";
+    })(Timeline.ICustomEventAd || (Timeline.ICustomEventAd = {}));
+    var ICustomEventAd = Timeline.ICustomEventAd;
 })(Timeline || (Timeline = {}));
 //# sourceMappingURL=interfaces.js.map

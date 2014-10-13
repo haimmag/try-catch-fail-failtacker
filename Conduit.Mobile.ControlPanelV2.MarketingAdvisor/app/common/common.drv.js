@@ -31,6 +31,19 @@
         };
     });
 
+    common.directive('stickyClickScrollElement', [
+        '$rootScope', function ($rootScope) {
+            return {
+                restrict: 'A',
+                link: function (scope, elm, attrs) {
+                    elm.on('click', function () {
+                        var el = angular.element($rootScope.stickyActiveElementSelector);
+                        $("body").animate({ scrollTop: el.offset().top - 125 }, "slow");
+                    });
+                }
+            };
+        }]);
+
     common.directive('elSize', [
         '$window', '$parse', '$timeout', function ($window, $parse, $timeout) {
             return {

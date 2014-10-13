@@ -35,4 +35,10 @@
         imageName: string;
         taxonomys: string[];
     }
+
+    export enum ICustomEventAd {
+        none=-1,
+        facebook= 1,
+        google=2
+    }
 } 

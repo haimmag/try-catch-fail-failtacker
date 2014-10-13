@@ -331,6 +331,7 @@
     <Content Include="Content\timeline\holidays\default\cinco_de_mayo.jpg" />
     <Content Include="Content\timeline\holidays\default\civic_day.jpg" />
     <Content Include="Content\timeline\holidays\default\colombus_day.jpg" />
+    <Content Include="Content\timeline\holidays\default\custom_event.jpg" />
     <Content Include="Content\timeline\holidays\default\cyber_monday.jpg" />
     <Content Include="Content\timeline\holidays\default\daylight_saving.jpg" />
     <Content Include="Content\timeline\holidays\default\earth_day.jpg" />

@@ -1,6 +1,7 @@
 (function (namespace) {
     // set sticky module and directive
-    angular.module(namespace, []).directive(namespace, function () {
+
+    function stickyFn ($rootScope) {
         return {
             link: function ($scope, element, attrs) {
                 var
@@ -13,6 +14,7 @@
                 selector = attrs[namespace + 'Selector'],
                 selectorCss = attrs[namespace + 'SelectorCss'],
                 initOnload = $.parseJSON(attrs[namespace + 'Onload'] || true),
+                activeElementInScope = $.parseJSON(attrs[namespace + 'ActiveElement'] || false),
                 
                 // get elements
                 nativeElement = element[0],
@@ -52,6 +54,10 @@
                     element.addClass(cssClass);
                     element.removeClass(cssRemoveClass);
 
+                    if (activeElementInScope) {
+                        $rootScope.stickyActiveElementSelector = selector;
+                    }
+
                     $(selector).addClass(selectorCss);
                 }
 
@@ -69,6 +75,10 @@
                     element.removeClass(cssClass);
                     element.addClass(cssRemoveClass);
                     $(selector).removeClass(selectorCss);
+
+                    if (activeElementInScope) {
+                        $rootScope.stickyActiveElementSelector = selector;
+                    }
 
                     // replace wrapper with element
                     wrapper.replaceWith(element);
@@ -125,5 +135,9 @@
                 if(initOnload) onscroll();
             }
         };
-    });
+    }
+
+    stickyFn.$inject = ['$rootScope']
+
+    angular.module(namespace, []).directive(namespace, stickyFn);
 })('sticky');

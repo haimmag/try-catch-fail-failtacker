@@ -12,13 +12,13 @@
 
 </head>
 <body ng-controller="MainCtrl as vm" class="cp-advisor-body">
-    <div class="panel">
+    <div class="panel main-bg">
         <div class="fixed">
             <div class="top_pane_bg">
                 <div class="space-bottom"></div>
                 <div class="row">
-                    <div class="large-4 columns">
-                        <h6 class="info_title subheader">Account Budget Status: <span class="medium-normal-font info_text">$</span> 99<sup>36</sup> <span class="medium-normal-font info_text"> USD </span></h6>                                                                        
+                    <div class="large-4 columns space-left">
+                        <h6 class="info_title subheader">Account Budget Status: <span class="medium-normal-font info_text">$</span> 99<sup>36</sup> <span class="medium-normal-font info_text"> USD </span></h6>
                     </div>
                     <div class="large-2 columns">
                         <a href="#" class="button expand radius">Increase Budget</a>
@@ -51,7 +51,7 @@
                             <div class="large-5 columns"></div>
                         </div>
                     </div>
-                    <div class="large-3 columns">
+                    <div class="large-3 columns hand-cursor" ng-click="btne.customEvents=!btne.customEvents;" sticky-click-scroll-element="">
                         <div class="row">
                             <div class="large-2 columns">
                                 <img src="Content/timeline/images/calendar.png">
@@ -65,6 +65,59 @@
             </div>
         </div>
 
+        @*start custom events*@
+        <div class="cp-custom-events background-custom-3" ng-show="btne.customEvents" ng-cloak>
+            <div class="show-animation">
+                <div class="row events-warrper">
+                    <div class="large-2 columns main-bg" style="z-index:1" equalizer="ce"></div>
+                    <div class="large-10 columns data-content-warrper">
+                        <div class="CP_div_seperator" style="z-index:1"></div>
+                        <span class="CP_mid_left_seperator"></span>
+                        <div class="row content-bg">
+                            <div class="small-3 columns no-padding-left image-left-border" equalizer="ce">
+                                <img src="Content/timeline/holidays/default/custom_event.jpg" " />
+                            </div>
+                            <div class="small-9 columns no-padding-left center display-table center" equalizer="ce">
+                                <form name="form" novalidate class="custom-events-form">
+                                    <div class="row">
+                                        <div class="large-8 large-push-2 columns">
+                                            <div class="row space-top-double">
+                                                <div class="large-8 columns">
+                                                    <select>
+                                                        <option value="1">Facebook Ad</option>
+                                                        <option value="2">Google Ad</option>
+                                                    </select>
+                                                </div>
+                                                <div class="large-4 columns">
+                                                    <select>
+                                                        <option value="1">28/09/2014</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row space-top-half field_container" ng-class="{field_error: form.ceName.$dirty && form.ceName.$invalid, field_success: form.ceName.$dirty && form.ceName.$valid}">
+                                                <div class="large-12 columns inputWrapper">
+                                                    <input type="text" placeholder="Event Name" class="" ng-model="ce.name" name="ceName" required />
+                                                </div>
+                                            </div>
+                                            <div class="row space-top space-bottom-half">
+                                                <div class="large-4 large-push-3 columns">
+                                                    <a href="" class="button expand radius secondary large" ng-click="btne.customEvents=false;">Cancel</a>
+                                                </div>
+                                                <div class="large-5 columns">
+                                                    <a href="" class="button expand radius success large">Create Event</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*end custom event*@
+
         <div class="mid_fixed_pane background-custom-3" infinite-scroll load-more='vm.loadMore()' scroll-threshold="100">
             <div class="my-repeat-animation" ng-repeat="row in vm.dataRows | filter:search.text" repeat-done="vm.elementsLayoutDone()" ng-cloak>
                 <div class="row">
@@ -74,7 +127,7 @@
                                 <div class="CP_month_marker box">
                                     <a href="#" class="button expand radius secondary medium-font"
                                        sticky sticky-top="170" sticky-remove-css="info" sticky-media="(min-width:640px)"
-                                       sticky-selector=".{{row.cssMarker}}" sticky-selector-css="active"
+                                       sticky-selector=".{{row.cssMarker}}" sticky-selector-css="active" sticky-active-element="true"
                                        ng-class="{info: $index>0}" ng-if="row.monthOccurrence">{{row.monthText}}</a>
                                     <input type="hidden" value="{{row.cssMarker}}" />
                                 </div>
@@ -124,7 +177,7 @@
                                 <!--app install-->
                                 <div class="row detials_func_content show-animation" ng-if="btn.install.funcvisible">
                                     @*<div class="small-12 columns" ng-controller="timelineapps.AppInstallCtrl as installVM" data-timelineapps.appinstall="">
-                                    </div>*@
+                                        </div>*@
                                     <div class="small-12 columns onlineAdsWrapper" ng-controller="timelineapps.AppInstallIfrmCtrl as installVM">
                                         <iframe id="onlineAdsFrame" ng-src="http://smb.zibaba.com/cndconnect?parameters=VDAhsTLIznou8F5gPtOTLGRLBFBThDesGwdtHQCmkNvbdnXXMi5Au7kcIkebBab8IphDvQJHeGwI6/7m5Y7k+2nsz2RYQ3uGjlInpie1x7kLonehc5WCcW5WSTkpCUs7t9Pq2eJLSvjGA5hLjWdlh2MsvK8fBjly3LosEmJhGWVJEiwKNMZAG5RIWzVFa/PRm5wdwoHJVf9QnxagNWZU07HKSyJbPLjmLL3KJ8X0gXzSAoVC+tBkLrT5+KMzWO5fgu/w7LI5v/BKq0Bst3Q30Fo41xafkpNKfJa9smuCXQaxG/zQMaMWLHJHdl+1i97R3RDRTd4j8Y8AW8rut2KoS37U5fxRsdHyxDi8J/V50aeKNpQaUAGCm0Oigmehgb6Dd2q5UDVnVU1h1P/f3tfTeB/WPmtyOaT2Iz3Lo/hzj/Cm/M6R/pa3VVNS6T3kXzMAkT6uZHVglM/lWiz7OxMUTXWU1ckqYdesXe68bkGjePO3Tbpb7VIfASFJ43SdtV5ujYEfo0MSYc+sUjzQvewa8WbOjmwWNHeFrTFO/b+7qco//ZZH9+mhlSMi5Q9KINMH5zqspHiMROwvdcyPcW1wHlxQSMSP4FbA7q/4yRLy3J5Z1tgFFKIZKHVETJ0v6KHF2aYHgP+mytjVfDiL3adWclZWmmtA/l7Qbp/nDmeKV/sSEemTFZv42Jo2J1R3/ssOrTjU/XRxOAXc/z1u040orbOTFqICKuXGOsn8wtiDavpJ7uop5rqvvhP30kEczueGeYEOQo4VoGojcL+Z2z9jJOGTSgUKdRUxC/fOjwDJoeTsuAG/krXiMSw8+9uT4U2x7oGWfSz1VAYNAp19g/r1LR9tYhW1j99uNEULp9mLizOQqQxE/4HwQofjYxp1hnaF87MJ/F/v/u3gEQOZoPO7U10mp7uDiccYKmRIgew+WpsUN49f56QjKQLc0RPZg5AprPS02Ivi/MBa65K9NOXjeaFgQfZAP9qoxS5dZy+qMj8Swc0ZyB2BRJ38u6KC9Pjm" src="http://smb.zibaba.com/cndconnect?parameters=VDAhsTLIznou8F5gPtOTLGRLBFBThDesGwdtHQCmkNvbdnXXMi5Au7kcIkebBab8IphDvQJHeGwI6/7m5Y7k+2nsz2RYQ3uGjlInpie1x7kLonehc5WCcW5WSTkpCUs7t9Pq2eJLSvjGA5hLjWdlh2MsvK8fBjly3LosEmJhGWVJEiwKNMZAG5RIWzVFa/PRm5wdwoHJVf9QnxagNWZU07HKSyJbPLjmLL3KJ8X0gXzSAoVC+tBkLrT5+KMzWO5fgu/w7LI5v/BKq0Bst3Q30Fo41xafkpNKfJa9smuCXQaxG/zQMaMWLHJHdl+1i97R3RDRTd4j8Y8AW8rut2KoS37U5fxRsdHyxDi8J/V50aeKNpQaUAGCm0Oigmehgb6Dd2q5UDVnVU1h1P/f3tfTeB/WPmtyOaT2Iz3Lo/hzj/Cm/M6R/pa3VVNS6T3kXzMAkT6uZHVglM/lWiz7OxMUTXWU1ckqYdesXe68bkGjePO3Tbpb7VIfASFJ43SdtV5ujYEfo0MSYc+sUjzQvewa8WbOjmwWNHeFrTFO/b+7qco//ZZH9+mhlSMi5Q9KINMH5zqspHiMROwvdcyPcW1wHlxQSMSP4FbA7q/4yRLy3J5Z1tgFFKIZKHVETJ0v6KHF2aYHgP+mytjVfDiL3adWclZWmmtA/l7Qbp/nDmeKV/sSEemTFZv42Jo2J1R3/ssOrTjU/XRxOAXc/z1u040orbOTFqICKuXGOsn8wtiDavpJ7uop5rqvvhP30kEczueGeYEOQo4VoGojcL+Z2z9jJOGTSgUKdRUxC/fOjwDJoeTsuAG/krXiMSw8+9uT4U2x7oGWfSz1VAYNAp19g/r1LR9tYhW1j99uNEULp9mLizOQqQxE/4HwQofjYxp1hnaF87MJ/F/v/u3gEQOZoPO7U10mp7uDiccYKmRIgew+WpsUN49f56QjKQLc0RPZg5AprPS02Ivi/MBa65K9NOXjeaFgQfZAP9qoxS5dZy+qMj8Swc0ZyB2BRJ38u6KC9Pjm"></iframe>
                                     </div>
@@ -215,7 +268,7 @@
             <div class="small-push-4 small-8 columns text-center">
                 <span class="more loader small center"></span>
             </div>
-        </div>        
+        </div>
     </div>
     <br />
     <br />

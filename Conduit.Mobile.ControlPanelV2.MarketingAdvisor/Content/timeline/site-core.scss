@@ -18,6 +18,15 @@
     color: #f7f7f7 !important;
 }
 
+.main-bg {
+    background-color: #f7f7f7 !important;
+}
+
+.content-bg {
+    background-color: #fff;
+    border: 1px solid #a7a7a7;
+}
+
 .body-font-color {
     color: #4e4e4e;
 }
@@ -34,21 +43,25 @@ iframe {
     border: none;
 }
 
+.hand-cursor {
+    cursor: pointer;
+}
+
 .no-padding-left {
     padding-left: 0;
 }
 
 .transparent-button {
-    background-color: #fcfcfc;
+    background-color: #f7f7f7;
     color: #000;
 
     &:hover {
-        background-color: #fcfcfc;
+        background-color: #f7f7f7;
         color: #000;
     }
 
     &:focus {
-        background-color: #fcfcfc;
+        background-color: #f7f7f7;
         color: #000;
     }
 }
@@ -85,7 +98,7 @@ iframe {
 }
 
 .top_middle_pane_bg {
-    background: #FCFCFC;
+    background: #f7f7f7;
 }
 
 .middle_pane {
@@ -234,7 +247,7 @@ iframe {
 
 .info_text {
     font-family: inherit;
-    font-weight: normal;    
+    font-weight: normal;
     line-height: 1.2;
     margin-bottom: 1.25rem;
     text-rendering: optimizeLegibility;
@@ -242,6 +255,7 @@ iframe {
 
 .CP_image_contnet {
     border: 1px solid #a7a7a7;
+    background-color: #fff;
 
     &:hover {
         border: 1px solid #00add5;
@@ -559,3 +573,33 @@ iframe {
 .more.loader {
     display: block;
 }
+
+.cp-custom-events {
+    display: block;
+    position: fixed;
+    top: 124px;
+    left: 0;
+    width: 100%;
+    z-index: 80;
+
+    .events-warrper {
+        .data-content-warrper:before {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 10px;
+            /* border: 35px; */
+            /* border-color: transparent transparent #4afff1 transparent; */
+            /* border-bottom-style: solid; */
+            background-image: url('images/custom_events_marker.png');
+            position: absolute;
+            top: -8px;
+            right: 172px;
+            z-index: 88;
+        }
+    }
+}
+.invalid1{
+    background-color:red !important;
+}
+
