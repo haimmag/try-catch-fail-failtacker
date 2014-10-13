@@ -3,3 +3,8 @@
 obj/
 [Dd]ebug*/
 .cache
+*.dll
+*.pdb
+obj/
+[Dd]ebug*/
+.cache

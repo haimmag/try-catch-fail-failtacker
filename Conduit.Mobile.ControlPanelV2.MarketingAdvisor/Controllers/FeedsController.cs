@@ -11,21 +11,26 @@ using System.Web.Http.Description;
 using Conduit.Mobile.ControlPanelV2.External.Domain;
 using Conduit.Mobile.ControlPanelV2.External.Models;
 using Conduit.Mobile.ControlPanelV2.External.Data;
+using Conduit.Mobile.ControlPanelV2.External.Infrastructure.Bus;
 
 namespace Conduit.Mobile.ControlPanelV2.External.Controllers
 {
     public class FeedsController : ApiController
     {
         private IFeedRepository feedRepository;
+        private IBus _bus;
 
-        public FeedsController(IFeedRepository feedRepository)
+        public FeedsController(IFeedRepository feedRepository, IBus bus)
         {
             this.feedRepository = feedRepository;
+            this._bus = bus;
+
+            bus.Send<string>("feeds ctor call");
         }
 
         // GET: api/Feeds
         public IQueryable<Feed> GetFeeds(string culture = "en.usa")
-        {
+        {            
             return feedRepository.GetAllByCulture(culture).AsQueryable();
         }
 

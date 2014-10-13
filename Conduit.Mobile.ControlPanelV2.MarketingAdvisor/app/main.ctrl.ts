@@ -69,7 +69,7 @@
             
             vm.scrollPageIndex++;
 
-        }, 1000);
+        }, 500);
 
         function loadMoreCalculetedNextSuccess(data) {
             var cachedData = cachedData.concat(data);

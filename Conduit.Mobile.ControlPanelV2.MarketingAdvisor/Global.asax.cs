@@ -11,6 +11,9 @@ using StructureMap.TypeRules;
 using Conduit.Mobile.ControlPanelV2.External.Infrastructure;
 using Conduit.Mobile.ControlPanelV2.External.Infrastructure.Tasks;
 using Conduit.Mobile.ControlPanelV2.External.Infrastructure.ModelMetadata;
+using System.Data.Entity;
+using Conduit.Mobile.ControlPanelV2.External.Data;
+using Conduit.Mobile.ControlPanelV2.External.Migrations;
 
 namespace Conduit.Mobile.ControlPanelV2.External
 {
@@ -36,6 +39,8 @@ namespace Conduit.Mobile.ControlPanelV2.External
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+
             DependencyResolver.SetResolver(
                 new StructureMapDependencyResolver(() => Container ?? ObjectFactory.Container));
 
@@ -47,6 +52,7 @@ namespace Conduit.Mobile.ControlPanelV2.External
                     () => Container ?? ObjectFactory.Container));
                 cfg.AddRegistry(new MvcRegistry());
                 cfg.AddRegistry(new TaskRegistry());
+                cfg.AddRegistry(new MessagingRegistry());                
                 cfg.AddRegistry(new ModelMetadataRegistry());
             });
 

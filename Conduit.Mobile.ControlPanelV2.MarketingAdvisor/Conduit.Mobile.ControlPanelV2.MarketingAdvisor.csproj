@@ -200,6 +200,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Code\CultureHelper.cs" />
     <Compile Include="Code\GlobalizationHelper.cs" />
+    <Compile Include="Code\MessageBus\LogoutHandler.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FeedsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -224,6 +225,12 @@
     <Compile Include="Infrastructure\Alerts\Alert.cs" />
     <Compile Include="Infrastructure\Alerts\AlertDecoratorResult.cs" />
     <Compile Include="Infrastructure\Alerts\AlertExtensions.cs" />
+    <Compile Include="Infrastructure\Bus\HandlerNotFoundException.cs" />
+    <Compile Include="Infrastructure\Bus\IBus.cs" />
+    <Compile Include="Infrastructure\Bus\IHandle.cs" />
+    <Compile Include="Infrastructure\Bus\IMessageHandlerRegistry.cs" />
+    <Compile Include="Infrastructure\Bus\MessageBus.cs" />
+    <Compile Include="Infrastructure\Bus\MessageHandlerRegistry.cs" />
     <Compile Include="Infrastructure\ContainerPerRequestExtensions.cs" />
     <Compile Include="Infrastructure\ControllerConvention.cs" />
     <Compile Include="Infrastructure\ControllerRegistry.cs" />
@@ -232,6 +239,7 @@
     <Compile Include="Infrastructure\ICurrentUser.cs" />
     <Compile Include="Infrastructure\Mapping\IHaveCustomMappings.cs" />
     <Compile Include="Infrastructure\Mapping\IMapFrom.cs" />
+    <Compile Include="Infrastructure\MessagingRegistry.cs" />
     <Compile Include="Infrastructure\ModelMetadata\ExtensibleModelMetadataProvider.cs" />
     <Compile Include="Infrastructure\ModelMetadata\Filters\LabelConventionFilter.cs" />
     <Compile Include="Infrastructure\ModelMetadata\Filters\ReadOnlyTemplateSelectorFilter.cs" />
@@ -252,7 +260,8 @@
     <Compile Include="Infrastructure\Tasks\IRunOnEachRequest.cs" />
     <Compile Include="Infrastructure\Tasks\IRunOnError.cs" />
     <Compile Include="Infrastructure\Tasks\TaskRegistry.cs" />
-    <Compile Include="Infrastructure\TransactionPerRequest.cs" />
+    <None Include="Infrastructure\TransactionPerRequest.cs.bk" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
