@@ -14,7 +14,8 @@
             getData: getData,
             getDataByEventType: getDataByEventType,
             gedDataCalculetedNextYear: gedDataCalculetedNext,
-            getItemsThreshold: getItemsThreshold
+            getItemsThreshold: getItemsThreshold,
+            createCustomEvent: createCustomEvent
         };
 
         return service;
@@ -124,6 +125,30 @@
 
         function getItemsThreshold() {
             return 100;
+        }
+
+        function createCustomEvent(item) {
+            var baseUrl = Config.virtualDir + "/Content/timeline/holidays/default/";
+            var date = new Date();
+
+            var newEvent = {
+                id: 1,
+                monthOccurrence: 1,
+                monthText: moment(date).format('MMMM'),
+                date: date,
+                contentInfoMainText: moment(date).format('dddd Do'),
+                contentInfoSubText: item.name,
+                actionType: 1 /* install */,
+                actionTypeText: 'install',
+                eventType: 1 /* running */,
+                eventTypeText: "running",
+                mainImage: baseUrl + 'custom_event.jpg',
+                subImage: ""
+            };
+
+            var prepData = prepareData([newEvent]);
+
+            return prepData[0];
         }
 
         function getDataFromAnySource() {

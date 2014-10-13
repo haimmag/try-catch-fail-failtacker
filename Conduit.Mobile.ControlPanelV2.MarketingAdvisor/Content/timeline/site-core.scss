@@ -67,6 +67,8 @@ iframe {
 }
 
 .onlineAdsWrapper {
+    padding:0;
+
     iframe {
         width: 100%;
         height: 54.375rem;
@@ -408,66 +410,6 @@ iframe {
     margin: 0 !important;
 }
 
-.cp-search-marker {
-    -webkit-transition: all linear 0.5s;
-    transition: all linear 0.5s;
-    opacity: 1;
-}
-
-.cp-search-marker.ng-hide {
-    opacity: 0;
-}
-
-.cp-search-marker.ng-hide-remove {
-    -webkit-animation: fade-from-right 0.5s;
-    animation: fade-from-right 0.5s;
-    display: block !important;
-}
-
-.cp-allevents-dropdown {
-    -webkit-transition: all linear 0.5s;
-    transition: all linear 0.5s;
-    opacity: 1;
-
-    &.ng-hide {
-        opacity: 0;
-    }
-
-    &.ng-hide-remove {
-        -webkit-animation: fade-from-right 0.5s;
-        animation: fade-from-right 0.5s;
-        display: block !important;
-    }
-}
-
-.repeat-animation {
-    &.ng-enter {
-        -webkit-animation: fade-in 0.5s;
-        animation: fade-in 0.5s;
-    }
-
-    &.ng-leave {
-        -webkit-animation: fadeOut 0.5s;
-        animation: fadeOut 0.5s;
-    }
-}
-
-.show-animation {
-    -webkit-transition: fade-in 0.5s;
-    transition: fade-in 0.5s;
-    opacity: 1;
-
-    &.ng-hide {
-        opacity: 0;
-    }
-
-    &.ng-hide-remove {
-        -webkit-animation: fade-in 0.5s;
-        animation: fade-in 0.5s;
-        display: block !important;
-    }
-}
-
 .cp-div-pointer {
     cursor: pointer;
 }
@@ -531,45 +473,6 @@ iframe {
     }
 }
 
-.base-repeat-amimation {
-    -webkit-transition: 0.5s linear all;
-    transition: 0.5s linear all;
-    position: relative;
-}
-
-.my-repeat-animation {
-    &.ng-enter {
-        @extend .base-repeat-amimation;
-        left: -10px;
-        opacity: 0;
-
-        &.ng-enter-active {
-            left: 0;
-            opacity: 1;
-        }
-    }
-
-    &.ng-leave {
-        @extend .base-repeat-amimation;
-        left: 0;
-        opacity: 1;
-
-        &.ng-leave-active {
-            left: -10px;
-            opacity: 0;
-        }
-    }
-
-    &.ng-move {
-        @extend .base-repeat-amimation;
-        opacity: 0.5;
-
-        &.ng-move-active {
-            opacity: 1;
-        }
-    }
-}
-
 .more.loader {
     display: block;
 }
@@ -581,6 +484,8 @@ iframe {
     left: 0;
     width: 100%;
     z-index: 80;
+    padding-left:0.625rem;
+    padding-right:0.625rem;
 
     .events-warrper {
         .data-content-warrper:before {

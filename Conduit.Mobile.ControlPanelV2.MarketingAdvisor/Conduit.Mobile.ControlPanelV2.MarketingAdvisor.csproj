@@ -260,6 +260,13 @@
     <Compile Include="Infrastructure\Tasks\IRunOnEachRequest.cs" />
     <Compile Include="Infrastructure\Tasks\IRunOnError.cs" />
     <Compile Include="Infrastructure\Tasks\TaskRegistry.cs" />
+    <Content Include="Content\timeline\site-core-animation.css">
+      <DependentUpon>site-core-animation.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\timeline\site-core-animation.min.css">
+      <DependentUpon>site-core-animation.css</DependentUpon>
+    </Content>
+    <Content Include="Content\timeline\site-core-animation.scss" />
     <None Include="Infrastructure\TransactionPerRequest.cs.bk" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />

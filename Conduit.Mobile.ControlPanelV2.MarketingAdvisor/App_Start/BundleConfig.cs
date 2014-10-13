@@ -8,6 +8,9 @@ namespace Conduit.Mobile.ControlPanelV2.External
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
+            "~/Scripts/modernizr-*"));
+
             bundles.Add(new ScriptBundle("~/bundles/libs.js").Include(
                                     "~/Scripts/libs/jquery.min.js",
                                     "~/Scripts/libs/foundation.min.js",
@@ -23,7 +26,7 @@ namespace Conduit.Mobile.ControlPanelV2.External
                                     "~/Scripts/libs/infiniteScroll.js",                                    
                                     "~/Scripts/libs/angular-sticky.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/angularjs.js")                
+            bundles.Add(new ScriptBundle("~/bundles/angularjstimeline.js")                
                 .IncludeDirectory("~/app", "*.mdl.js", true)
                 .IncludeDirectory("~/app", "*.drv.js", true)
                 .IncludeDirectory("~/app", "*.anim.js", true)

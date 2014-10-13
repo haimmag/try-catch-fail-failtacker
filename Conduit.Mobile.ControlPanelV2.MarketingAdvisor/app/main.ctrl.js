@@ -3,7 +3,7 @@
 
     angular.module('app').controller('MainCtrl', main);
 
-    main.$inject = ['$scope', '$rootScope', 'Holidays.DataService'];
+    main.$inject = ['$scope', '$rootScope', 'Holidays.DataService', '$timeout'];
 
     function main($scope, $rootScope, HolidaysDataService, $timeout) {
         /* jshint validthis: true */
@@ -20,6 +20,36 @@
             if (vm.pageLoaded == false) {
                 vm.pageLoaded = true;
             }
+        };
+
+        vm.createCustomEvent = function (ce, ceform, btne) {
+            if (ceform.$invalid) {
+                ceform.ceName.$setViewValue(ceform.ceName.$viewValue);
+                return;
+            }
+
+            var newEvent = HolidaysDataService.createCustomEvent(ce);
+
+            //clean form
+            ceform.$setPristine();
+            ce.name = '';
+            btne.customEvents = false;
+
+            //search index date and splice it
+            vm.dataRows.splice(2, 0, newEvent);
+
+            $timeout(function () {
+                var el = angular.element('.' + newEvent.cssMarker);
+                $("body").animate({ scrollTop: el.offset().top - 125 }, "slow");
+            });
+        };
+
+        vm.cancelCustomEvent = function (ce, ceform, btne) {
+            //clean form
+            ceform.$setPristine();
+            if (ce)
+                ce.name = '';
+            btne.customEvents = false;
         };
 
         vm.loadMore = function () {

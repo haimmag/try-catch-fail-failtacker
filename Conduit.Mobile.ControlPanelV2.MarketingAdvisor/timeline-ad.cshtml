@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title></title>
-    @System.Web.Optimization.Styles.Render("~/Content/css.css")
+    @System.Web.Optimization.Styles.Render("~/Content/css.css")    
+    @*@System.Web.Optimization.Scripts.Render("~/bundles/modernizr")*@
     @System.Web.Optimization.Scripts.Render("~/bundles/libs.js")
     @System.Web.Optimization.Scripts.Render("~/bundles/angularjslibs.js")
-    @System.Web.Optimization.Scripts.Render("~/bundles/angularjs.js")
+    @System.Web.Optimization.Scripts.Render("~/bundles/angularjstimeline.js")
 
 </head>
 <body ng-controller="MainCtrl as vm" class="cp-advisor-body">
@@ -66,7 +67,7 @@
         </div>
 
         @*start custom events*@
-        <div class="cp-custom-events background-custom-3" ng-show="btne.customEvents" ng-cloak>
+        <div class="cp-custom-events background-custom-3 show-animation" ng-show="btne.customEvents" ng-cloak>
             <div class="show-animation">
                 <div class="row events-warrper">
                     <div class="large-2 columns main-bg" style="z-index:1" equalizer="ce"></div>
@@ -78,10 +79,10 @@
                                 <img src="Content/timeline/holidays/default/custom_event.jpg" " />
                             </div>
                             <div class="small-9 columns no-padding-left center display-table center" equalizer="ce">
-                                <form name="form" novalidate class="custom-events-form">
+                                <form name="ceform" novalidate class="custom-events-form">
                                     <div class="row">
                                         <div class="large-8 large-push-2 columns">
-                                            <div class="row space-top-double">
+                                            <div class="row space-top">
                                                 <div class="large-8 columns">
                                                     <select>
                                                         <option value="1">Facebook Ad</option>
@@ -94,17 +95,17 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="row space-top-half field_container" ng-class="{field_error: form.ceName.$dirty && form.ceName.$invalid, field_success: form.ceName.$dirty && form.ceName.$valid}">
+                                            <div class="row space-top-half field_container" ng-class="{field_error: ceform.ceName.$dirty && ceform.ceName.$invalid, field_success: ceform.ceName.$dirty && ceform.ceName.$valid}">
                                                 <div class="large-12 columns inputWrapper">
                                                     <input type="text" placeholder="Event Name" class="" ng-model="ce.name" name="ceName" required />
                                                 </div>
                                             </div>
                                             <div class="row space-top space-bottom-half">
                                                 <div class="large-4 large-push-3 columns">
-                                                    <a href="" class="button expand radius secondary large" ng-click="btne.customEvents=false;">Cancel</a>
+                                                    <a href="" class="button expand radius secondary large" ng-click="vm.cancelCustomEvent(ce,ceform,btne)">Cancel</a>
                                                 </div>
                                                 <div class="large-5 columns">
-                                                    <a href="" class="button expand radius success large">Create Event</a>
+                                                    <a href="" class="button expand radius success large" ng-click="vm.createCustomEvent(ce,ceform,btne);">Create Event</a>
                                                 </div>
                                             </div>
                                         </div>

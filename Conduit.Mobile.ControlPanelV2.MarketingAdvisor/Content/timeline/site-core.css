@@ -48,10 +48,12 @@ iframe {
     background-color: #f7f7f7;
     color: #000; }
 
-.onlineAdsWrapper iframe {
-  width: 100%;
-  height: 54.375rem;
+.onlineAdsWrapper {
   padding: 0; }
+  .onlineAdsWrapper iframe {
+    width: 100%;
+    height: 54.375rem;
+    padding: 0; }
 
 .main_pane {
   background: #FCFCFC; }
@@ -311,48 +313,6 @@ iframe {
   background-color: #FFFFFF;
   margin: 0 !important; }
 
-.cp-search-marker {
-  -webkit-transition: all linear 0.5s;
-  transition: all linear 0.5s;
-  opacity: 1; }
-
-.cp-search-marker.ng-hide {
-  opacity: 0; }
-
-.cp-search-marker.ng-hide-remove {
-  -webkit-animation: fade-from-right 0.5s;
-  animation: fade-from-right 0.5s;
-  display: block !important; }
-
-.cp-allevents-dropdown {
-  -webkit-transition: all linear 0.5s;
-  transition: all linear 0.5s;
-  opacity: 1; }
-  .cp-allevents-dropdown.ng-hide {
-    opacity: 0; }
-  .cp-allevents-dropdown.ng-hide-remove {
-    -webkit-animation: fade-from-right 0.5s;
-    animation: fade-from-right 0.5s;
-    display: block !important; }
-
-.repeat-animation.ng-enter {
-  -webkit-animation: fade-in 0.5s;
-  animation: fade-in 0.5s; }
-.repeat-animation.ng-leave {
-  -webkit-animation: fadeOut 0.5s;
-  animation: fadeOut 0.5s; }
-
-.show-animation {
-  -webkit-transition: fade-in 0.5s;
-  transition: fade-in 0.5s;
-  opacity: 1; }
-  .show-animation.ng-hide {
-    opacity: 0; }
-  .show-animation.ng-hide-remove {
-    -webkit-animation: fade-in 0.5s;
-    animation: fade-in 0.5s;
-    display: block !important; }
-
 .cp-div-pointer {
   cursor: pointer; }
 
@@ -400,28 +360,6 @@ iframe {
 .image-left-border.active::after {
   border-color: transparent #7f7f80 transparent transparent; }
 
-.base-repeat-amimation, .my-repeat-animation.ng-enter, .my-repeat-animation.ng-leave, .my-repeat-animation.ng-move {
-  -webkit-transition: 0.5s linear all;
-  transition: 0.5s linear all;
-  position: relative; }
-
-.my-repeat-animation.ng-enter {
-  left: -10px;
-  opacity: 0; }
-  .my-repeat-animation.ng-enter.ng-enter-active {
-    left: 0;
-    opacity: 1; }
-.my-repeat-animation.ng-leave {
-  left: 0;
-  opacity: 1; }
-  .my-repeat-animation.ng-leave.ng-leave-active {
-    left: -10px;
-    opacity: 0; }
-.my-repeat-animation.ng-move {
-  opacity: 0.5; }
-  .my-repeat-animation.ng-move.ng-move-active {
-    opacity: 1; }
-
 .more.loader {
   display: block; }
 
@@ -431,7 +369,9 @@ iframe {
   top: 124px;
   left: 0;
   width: 100%;
-  z-index: 80; }
+  z-index: 80;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem; }
   .cp-custom-events .events-warrper .data-content-warrper:before {
     content: '';
     display: block;

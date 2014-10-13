@@ -1,0 +1,108 @@
+﻿.base-repeat-amimation {
+    -webkit-transition: 0.5s linear all;
+    transition: 0.5s linear all;
+    position: relative;
+}
+
+.my-repeat-animation {
+    &.ng-enter {
+        @extend .base-repeat-amimation;
+        left: -10px;
+        opacity: 0;
+
+        &.ng-enter-active {
+            left: 0;
+            opacity: 1;
+        }
+    }
+
+    &.ng-leave {
+        @extend .base-repeat-amimation;
+        left: 0;
+        opacity: 1;
+
+        &.ng-leave-active {
+            left: -10px;
+            opacity: 0;
+        }
+    }
+
+    &.ng-move {
+        @extend .base-repeat-amimation;
+        opacity: 0.5;
+
+        &.ng-move-active {
+            opacity: 1;
+        }
+    }
+}
+
+.cp-search-marker {
+    -webkit-transition: all linear 0.5s;
+    transition: all linear 0.5s;
+    opacity: 1;
+
+    &.ng-hide {
+        opacity: 0;
+    }
+
+    &.ng-hide-remove {
+        -webkit-animation: fade-from-right 0.5s;
+        animation: fade-from-right 0.5s;
+        display: block !important;
+    }
+}
+
+.cp-allevents-dropdown {
+    -webkit-transition: all linear 0.5s;
+    transition: all linear 0.5s;
+    opacity: 1;
+
+    &.ng-hide {
+        opacity: 0;
+    }
+
+    &.ng-hide-remove {
+        -webkit-animation: fade-from-right 0.5s;
+        animation: fade-from-right 0.5s;
+        display: block !important;
+    }
+}
+
+.repeat-animation {
+    &.ng-enter {
+        -webkit-animation: fade-in 0.5s;
+        animation: fade-in 0.5s;
+    }
+
+    &.ng-leave {
+        -webkit-animation: fadeOut 0.5s;
+        animation: fadeOut 0.5s;
+    }
+}
+
+.show-animation {
+
+    &.ng-hide-remove {
+        -webkit-transition: fade-in 0.5s;
+        transition: fade-in 0.5s;
+        opacity: 1;
+
+        &.ng-hide-remove-active {
+            -webkit-animation: fade-in 0.5s;
+            animation: fade-in 0.5s;
+            display: block !important;
+        }
+    }
+
+    &.ng-hide-add {
+        opacity: 1.0;
+        display: block !important;
+        -webkit-transition: all 0.5s;
+        transition: all 0.3s;
+    }
+
+    &.ng-hide-add-active {
+        opacity: 0;
+    }
+}

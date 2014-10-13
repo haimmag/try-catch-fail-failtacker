@@ -51,10 +51,12 @@ iframe {
     background-color: #f7f7f7;
     color: #000; }
 
-.onlineAdsWrapper iframe {
-  width: 100%;
-  height: 54.375rem;
+.onlineAdsWrapper {
   padding: 0; }
+  .onlineAdsWrapper iframe {
+    width: 100%;
+    height: 54.375rem;
+    padding: 0; }
 
 .main_pane {
   background: #FCFCFC; }
@@ -314,48 +316,6 @@ iframe {
   background-color: #FFFFFF;
   margin: 0 !important; }
 
-.cp-search-marker {
-  -webkit-transition: all linear 0.5s;
-  transition: all linear 0.5s;
-  opacity: 1; }
-
-.cp-search-marker.ng-hide {
-  opacity: 0; }
-
-.cp-search-marker.ng-hide-remove {
-  -webkit-animation: fade-from-right 0.5s;
-  animation: fade-from-right 0.5s;
-  display: block !important; }
-
-.cp-allevents-dropdown {
-  -webkit-transition: all linear 0.5s;
-  transition: all linear 0.5s;
-  opacity: 1; }
-  .cp-allevents-dropdown.ng-hide {
-    opacity: 0; }
-  .cp-allevents-dropdown.ng-hide-remove {
-    -webkit-animation: fade-from-right 0.5s;
-    animation: fade-from-right 0.5s;
-    display: block !important; }
-
-.repeat-animation.ng-enter {
-  -webkit-animation: fade-in 0.5s;
-  animation: fade-in 0.5s; }
-.repeat-animation.ng-leave {
-  -webkit-animation: fadeOut 0.5s;
-  animation: fadeOut 0.5s; }
-
-.show-animation {
-  -webkit-transition: fade-in 0.5s;
-  transition: fade-in 0.5s;
-  opacity: 1; }
-  .show-animation.ng-hide {
-    opacity: 0; }
-  .show-animation.ng-hide-remove {
-    -webkit-animation: fade-in 0.5s;
-    animation: fade-in 0.5s;
-    display: block !important; }
-
 .cp-div-pointer {
   cursor: pointer; }
 
@@ -403,6 +363,35 @@ iframe {
 .image-left-border.active::after {
   border-color: transparent #7f7f80 transparent transparent; }
 
+.more.loader {
+  display: block; }
+
+.cp-custom-events {
+  display: block;
+  position: fixed;
+  top: 124px;
+  left: 0;
+  width: 100%;
+  z-index: 80;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem; }
+  .cp-custom-events .events-warrper .data-content-warrper:before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 10px;
+    /* border: 35px; */
+    /* border-color: transparent transparent #4afff1 transparent; */
+    /* border-bottom-style: solid; */
+    background-image: url('images/custom_events_marker.png');
+    position: absolute;
+    top: -8px;
+    right: 172px;
+    z-index: 88; }
+
+.invalid1 {
+  background-color: red !important; }
+
 .base-repeat-amimation, .my-repeat-animation.ng-enter, .my-repeat-animation.ng-leave, .my-repeat-animation.ng-move {
   -webkit-transition: 0.5s linear all;
   transition: 0.5s linear all;
@@ -425,32 +414,50 @@ iframe {
   .my-repeat-animation.ng-move.ng-move-active {
     opacity: 1; }
 
-.more.loader {
-  display: block; }
+.cp-search-marker {
+  -webkit-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+  opacity: 1; }
+  .cp-search-marker.ng-hide {
+    opacity: 0; }
+  .cp-search-marker.ng-hide-remove {
+    -webkit-animation: fade-from-right 0.5s;
+    animation: fade-from-right 0.5s;
+    display: block !important; }
 
-.cp-custom-events {
-  display: block;
-  position: fixed;
-  top: 124px;
-  left: 0;
-  width: 100%;
-  z-index: 80; }
-  .cp-custom-events .events-warrper .data-content-warrper:before {
-    content: '';
-    display: block;
-    width: 20px;
-    height: 10px;
-    /* border: 35px; */
-    /* border-color: transparent transparent #4afff1 transparent; */
-    /* border-bottom-style: solid; */
-    background-image: url('images/custom_events_marker.png');
-    position: absolute;
-    top: -8px;
-    right: 172px;
-    z-index: 88; }
+.cp-allevents-dropdown {
+  -webkit-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+  opacity: 1; }
+  .cp-allevents-dropdown.ng-hide {
+    opacity: 0; }
+  .cp-allevents-dropdown.ng-hide-remove {
+    -webkit-animation: fade-from-right 0.5s;
+    animation: fade-from-right 0.5s;
+    display: block !important; }
 
-.invalid1 {
-  background-color: red !important; }
+.repeat-animation.ng-enter {
+  -webkit-animation: fade-in 0.5s;
+  animation: fade-in 0.5s; }
+.repeat-animation.ng-leave {
+  -webkit-animation: fadeOut 0.5s;
+  animation: fadeOut 0.5s; }
+
+.show-animation.ng-hide-remove {
+  -webkit-transition: fade-in 0.5s;
+  transition: fade-in 0.5s;
+  opacity: 1; }
+  .show-animation.ng-hide-remove.ng-hide-remove-active {
+    -webkit-animation: fade-in 0.5s;
+    animation: fade-in 0.5s;
+    display: block !important; }
+.show-animation.ng-hide-add {
+  opacity: 1;
+  display: block !important;
+  -webkit-transition: all 0.5s;
+  transition: all 0.3s; }
+.show-animation.ng-hide-add-active {
+  opacity: 0; }
 
 .app-warrper {
   background: #FCFCFC; }
