@@ -475,7 +475,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\libs\angular-animate.min.js" />
     <Content Include="Scripts\libs\angular-equalizer.js" />
+    <Content Include="Scripts\libs\angular-validation.js" />
     <Content Include="Scripts\libs\angular.min.js" />
+    <Content Include="Scripts\libs\common\helpers.js" />
     <Content Include="Scripts\libs\foundation.min.js" />
     <Content Include="Scripts\libs\infiniteScroll.js" />
     <Content Include="Scripts\libs\isInViewport.min.js" />
