@@ -13,6 +13,9 @@
 .info-color {
   color: #f7f7f7 !important; }
 
+.margin-botton-smaller {
+  margin-bottom: 0.2rem; }
+
 .main-bg {
   background-color: #f7f7f7 !important; }
 
@@ -22,9 +25,6 @@
 
 .body-font-color {
   color: #4e4e4e; }
-
-.text-center {
-  text-align: center !important; }
 
 .progress {
   height: 1rem !important; }
@@ -201,11 +201,16 @@ iframe {
 .CP_image_contnet {
   border: 1px solid #a7a7a7;
   background-color: #fff; }
+  .CP_image_contnet img {
+    height: 100% !important; }
   .CP_image_contnet:hover {
     border: 1px solid #00add5;
     -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 173, 213, 0.2);
     -moz-box-shadow: 0px 0px 10px 0px rgba(0, 173, 213, 0.2);
     box-shadow: 0px 0px 10px 0px rgba(0, 173, 213, 0.2); }
+
+.CP-image-contnet img {
+  height: 100% !important; }
 
 .CP_image_contnet_main {
   position: absolute; }
@@ -234,6 +239,13 @@ iframe {
   .button.radius-half:hover {
     background-color: #00add5; }
 .button.radius-half-highlight {
+  background-color: #00add5; }
+.button.radius-full {
+  border-radius: 25px;
+  background-color: #ccc; }
+  .button.radius-full:hover {
+    background-color: #00add5; }
+.button.radius-full-highlight {
   background-color: #00add5; }
 
 .button.info {
@@ -326,6 +338,9 @@ iframe {
   background-position: 0 0;
   background-repeat: repeat; }
 
+.foundicon-icon-plus {
+  background-image: url('../images/genie_ic_event_plus.png'); }
+
 .foundicon-shevron {
   background-image: url('../images/genie_ic_event_expand_normal.png'); }
 
@@ -388,3 +403,20 @@ iframe {
 
 .invalid1 {
   background-color: red !important; }
+
+.stats-border h4 {
+  color: #00add5 !important; }
+.stats-border::before {
+  content: "";
+  border-left: 1px solid #a7a7a7;
+  position: absolute;
+  top: 8px;
+  left: 0;
+  /* height: 100%; */
+  bottom: 6px; }
+
+.margin-top-minus {
+  margin-top: -8px; }
+
+.z-index-1 {
+  z-index: 1 !important; }

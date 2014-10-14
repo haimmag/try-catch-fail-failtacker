@@ -624,7 +624,7 @@
             var data = [];
             var now = new Date();
 
-            var dateEvent = new Date(now.getFullYear(), 0, 23);
+            var dateEvent = new Date(now.getFullYear(), 11, 23);
             data.push({
                 id: 1,
                 monthOccurrence: 1,
@@ -635,12 +635,12 @@
                 mainImage: "Content/timeline/images/image_content1.png",
                 subImage: "Content/timeline/images/image_round_content1.png",
                 eventTypeText: 'running',
-                eventType: 1,
-                actionType: 1,
-                actionTypeText: 'Install'
+                eventType: 2 /* suggested */,
+                actionType: 2 /* shop */,
+                actionTypeText: 'shop'
             });
 
-            dateEvent = new Date(now.getFullYear(), 1, 14);
+            dateEvent = new Date(now.getFullYear(), 11, 14);
             data.push({
                 id: 2,
                 monthOccurrence: 1,
@@ -651,73 +651,9 @@
                 mainImage: "Content/timeline/images/image_content2.png",
                 subImage: "Content/timeline/images/image_round_content2.png",
                 eventTypeText: 'suggested',
-                eventType: 2,
-                actionType: 2,
-                actionTypeText: 'Shop'
-            });
-
-            dateEvent = new Date(now.getFullYear(), 1, 14);
-            data.push({
-                id: 3,
-                monthOccurrence: 1,
-                monthText: moment(dateEvent).format('MMMM'),
-                date: dateEvent,
-                contentInfoMainText: moment(dateEvent).format('dddd Do'),
-                contentInfoSubText: "Valentines Day2",
-                mainImage: "Content/timeline/images/image_content2.png",
-                subImage: "Content/timeline/images/image_round_content2.png",
-                eventTypeText: 'completed',
-                eventType: 3,
-                actionType: 2,
-                actionTypeText: 'Shop'
-            });
-
-            dateEvent = new Date(now.getFullYear(), 0, 23);
-            data.push({
-                id: 4,
-                monthOccurrence: 1,
-                monthText: moment(dateEvent).format('MMMM'),
-                date: dateEvent,
-                contentInfoMainText: moment(dateEvent).format('dddd Do'),
-                contentInfoSubText: "New Year's Day 2015",
-                mainImage: "Content/timeline/images/image_content1.png",
-                subImage: "Content/timeline/images/image_round_content1.png",
-                eventTypeText: 'archived',
-                eventType: 4,
-                actionType: 1,
-                actionTypeText: 'Install'
-            });
-
-            dateEvent = new Date(now.getFullYear(), 1, 14);
-            data.push({
-                id: 5,
-                monthOccurrence: 1,
-                monthText: moment(dateEvent).format('MMMM'),
-                date: dateEvent,
-                contentInfoMainText: moment(dateEvent).format('dddd Do'),
-                contentInfoSubText: "Valentines Day",
-                mainImage: "Content/timeline/images/image_content2.png",
-                subImage: "Content/timeline/images/image_round_content2.png",
-                eventTypeText: 'completed',
-                eventType: 3,
-                actionType: 1,
-                actionTypeText: 'Install'
-            });
-
-            dateEvent = new Date(now.getFullYear(), 0, 23);
-            data.push({
-                id: 6,
-                monthOccurrence: 1,
-                monthText: moment(dateEvent).format('MMMM'),
-                date: dateEvent,
-                contentInfoMainText: moment(dateEvent).format('dddd Do'),
-                contentInfoSubText: "New Year's Day 2015",
-                mainImage: "Content/timeline/images/image_content1.png",
-                subImage: "Content/timeline/images/image_round_content1.png",
-                eventTypeText: 'running',
-                eventType: 1,
-                actionType: 2,
-                actionTypeText: 'Shop'
+                eventType: 2 /* suggested */,
+                actionType: 2 /* shop */,
+                actionTypeText: 'shop'
             });
 
             return data;

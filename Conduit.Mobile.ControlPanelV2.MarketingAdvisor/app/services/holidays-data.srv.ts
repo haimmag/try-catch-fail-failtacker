@@ -5,10 +5,10 @@
         .module('app')
         .factory('Holidays.DataService', stubdata);
 
-    stubdata.$inject = ['$http', '$q', 'Config', 'Holidays.GoogleCalendarDataService', 'Holidays.DefaultDataService', 'Holidays.ImageTaxonomyService'];
+    stubdata.$inject = ['$http', '$q', 'Config', 'Holidays.GoogleCalendarDataService', 'Holidays.DefaultDataService', 'Holidays.ImageTaxonomyService', 'Holidays.ZibabaDataService'];
     
     function stubdata($http,
-        $q: ng.IQService, Config, GoogleCalendarDataService, DefaultDataService, ImageTaxonomyService) {
+        $q: ng.IQService, Config, GoogleCalendarDataService, DefaultDataService, ImageTaxonomyService, ZibabaDataService) {
 
         var cachedData: Timeline.IEvent[] = [];
         var defaultData: Timeline.IEvent[] = [];
@@ -28,15 +28,21 @@
             var deferred = $q.defer();            
 
             // get data from google service or fallback to default static list
-            getDataFromAnySource().then(function (eventsData: Timeline.IEvent[]) {
+            $q.all([getDataFromGoogleOrDefault(), ZibabaDataService.getData()])            
+            .then(function (results) {
+                var eventsGoogle: Timeline.IEvent[] = results[0];
+                var eventsZibaba: Timeline.IEvent[] = results[1];
 
-                var eventsData = prepareDataAddYears(eventsData);
+                var eventsGoogle = prepareDataAddYears(eventsGoogle);
+                cachedData = angular.copy(eventsGoogle);                
 
-                cachedData = angular.copy(eventsData);                
+                _.each(eventsZibaba, function (item) {
+                    eventsGoogle.push(item);
+                });
 
-                prepareData(eventsData);
+                eventsGoogle = prepareData(eventsGoogle);
 
-                deferred.resolve(eventsData);
+                deferred.resolve(eventsGoogle);
             });            
 
             return deferred.promise;
@@ -54,7 +60,8 @@
                     return event.eventType === eventType;
                 });
             }
-            prepareData(filteredData);
+
+            filteredData = prepareData(filteredData);
 
             var deferred = $q.defer();            
             deferred.resolve(filteredData);
@@ -71,7 +78,7 @@
                 currItemDate.setFullYear(currItemDate.getFullYear() + yearsCounter);
             }
 
-            prepareData(data);
+            data = prepareData(data);
 
             var deferred = $q.defer();
             deferred.resolve(data);
@@ -80,6 +87,11 @@
         }
 
         function prepareData(data: Timeline.IEvent[]) {
+            // sort elements by date after adding them
+            data = _.sortBy(data, function (event) {
+                return event.date;
+            });
+
             var groupData = _.groupBy(data, function (event) {
                 return event.date.getFullYear() + '-' + event.date.getMonth();
             });
@@ -121,11 +133,6 @@
                 }
             }      
 
-            // sort elements by date after adding them
-            resultEvents = _.sortBy(resultEvents, function (event) {
-                return event.date;
-            });
-
             return resultEvents;      
         }
 
@@ -157,7 +164,7 @@
             return prepData[0];
         }
 
-        function getDataFromAnySource() {            
+        function getDataFromGoogleOrDefault() {            
             var eventsData: Timeline.IEvent[] = [];
 
             return GoogleCalendarDataService.getCalendarFeeds().then(getDataSuccess, getDataError);

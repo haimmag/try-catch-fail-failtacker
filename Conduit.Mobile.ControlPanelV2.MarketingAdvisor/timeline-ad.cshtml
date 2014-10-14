@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title></title>
-    @System.Web.Optimization.Styles.Render("~/Content/css.css")    
+    @System.Web.Optimization.Styles.Render("~/Content/css.css")
     @*@System.Web.Optimization.Scripts.Render("~/bundles/modernizr")*@
     @System.Web.Optimization.Scripts.Render("~/bundles/libs.js")
     @System.Web.Optimization.Scripts.Render("~/bundles/angularjslibs.js")
@@ -70,11 +70,11 @@
         <div class="cp-custom-events background-custom-3 show-animation" ng-show="btne.customEvents" ng-cloak>
             <div class="show-animation">
                 <div class="row events-warrper">
-                    <div class="large-2 columns main-bg" style="z-index:1" equalizer="ce"></div>
+                    <div class="large-2 columns main-bg z-index-1" equalizer="ce"></div>
                     <div class="large-10 columns data-content-warrper">
-                        <div class="CP_div_seperator" style="z-index:1"></div>
+                        <div class="CP_div_seperator z-index-1"></div>
                         <span class="CP_mid_left_seperator"></span>
-                        <div class="row content-bg">
+                        <div class="row content-bg CP-image-contnet">
                             <div class="small-3 columns no-padding-left image-left-border" equalizer="ce">
                                 <img src="Content/timeline/holidays/default/custom_event.jpg" " />
                             </div>
@@ -95,9 +95,11 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="row space-top-half field_container" ng-class="{field_error: ceform.ceName.$dirty && ceform.ceName.$invalid, field_success: ceform.ceName.$dirty && ceform.ceName.$valid}">
-                                                <div class="large-12 columns inputWrapper">
-                                                    <input type="text" placeholder="Event Name" class="" ng-model="ce.name" name="ceName" required />
+                                            <div class="row space-top-half" >
+                                                <div class="large-12 columns field_container" ng-class="{field_error: ceform.ceName.$dirty && ceform.ceName.$invalid, field_success: ceform.ceName.$dirty && ceform.ceName.$valid}">
+                                                    <div class="inputWrapper">
+                                                        <input type="text" placeholder="Event Name" class="" ng-model="ce.name" name="ceName" required />
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="row space-top space-bottom-half">
@@ -144,16 +146,77 @@
                             <div class="small-3 columns no-padding-left image-left-border {{row.cssMarker}}" ng-class="{active: $index==0}" equalizer="group">
                                 <img ng-src="{{row.mainImage}}" src="Content/timeline/holidays/default/no_image.jpg" " />
                             </div>
-                            <div class="small-9 columns no-padding-left center display-table" equalizer="group">
-                                <div class="CP_image_content_main_more_text" ng-hide="!btn.detailsmore || row.detailsVisible">
-                                    <b>Check It Out!</b>
+                            <div class="small-9 columns" equalizer="group" ng-switch on="row.actionType">
+                                @*show default*@
+                                <div class="no-padding-left center display-table" equalizer="group" ng-switch-default>
+                                    <div class="CP_image_content_main_more_text" ng-hide="!btn.detailsmore || row.detailsVisible">
+                                        <b>Check It Out!</b>
+                                    </div>
+                                    <div class="CP_image_content_main_more_btn" ng-click="row.detailsVisible = !row.detailsVisible;" ng-hide="row.detailsVisible" data-scroll-on-click="#mainContent{{$index}}">
+                                        <a href="" class="button expand radius-half" ng-class="{'radius-half-highlight': btn.detailsmore}"><i class="general foundicon-shevron"></i></a>
+                                    </div>
+                                    <div class="table-cell-middle space-bottom-half" ng-click="row.detailsVisible = !row.detailsVisible;">
+                                        <h5 class="subheader anchor-font-color">{{row.contentInfoMainText}}</h5>
+                                        <h3 class="body-font-color">{{row.contentInfoSubText}}</h3>
+                                    </div>
                                 </div>
-                                <div class="CP_image_content_main_more_btn" ng-click="row.detailsVisible = !row.detailsVisible;" ng-hide="row.detailsVisible" data-scroll-on-click="#mainContent{{$index}}">
-                                    <a href="" class="button expand radius-half" ng-class="{'radius-half-highlight': btn.detailsmore}"><i class="general foundicon-shevron"></i></a>
-                                </div>
-                                <div class="table-cell-middle space-bottom-half" ng-click="row.detailsVisible = !row.detailsVisible;">
-                                    <h5 class="subheader anchor-font-color">{{row.contentInfoMainText}}</h5>
-                                    <h3 class="body-font-color">{{row.contentInfoSubText}}</h3>
+                                @*show stats*@
+                                <div class="no-padding-left center" equalizer="group" ng-switch-when="2">
+                                    <div class="space-bottom-quarter space-top-quarter">
+                                        <h5 class="subheader anchor-font-color">{{row.contentInfoMainText}}</h5>
+                                        <h4 class="body-font-color margin-top-minus">{{row.contentInfoSubText}}</h4>
+                                        <div class="row">
+                                            <div class="large-push-2 large-8 columns end">
+                                                <div class="text-left bold medium-font"><b>Active Ads: {{row.eventTypeData.activeAds}}</b></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="large-push-2 large-8 columns end">
+                                                <div class="row">
+                                                    <div class="large-4 columns">
+                                                        <div class="row content-bg">
+                                                            <div class="large-6 columns">
+                                                                <img src="Content/images/genie_ic_active_clicks.png" />
+                                                                <p class="medium-normal-font anchor-font-color margin-botton-smaller">Clicks</p>
+                                                            </div>
+                                                            <div class="large-6 columns stats-border space-top-half ">
+                                                                <h4>{{row.eventTypeData.clicks}}</h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="large-4 columns space-right space-left">
+                                                        <div class="row content-bg">
+                                                            <div class="large-6 columns">
+                                                                <img src="Content/images/genie_ic_active_views.png" />
+                                                                <p class="medium-normal-font anchor-font-color margin-botton-smaller">Views</p>
+                                                            </div>
+                                                            <div class="large-6 columns stats-border space-top-half">
+                                                                <h4>{{row.eventTypeData.views}}</h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="large-4 columns">
+                                                        <div class="row content-bg">
+                                                            <div class="large-6 columns">
+                                                                <img src="Content/images/genie_ic_active_installs.png" />
+                                                                <p class="medium-normal-font anchor-font-color margin-botton-smaller">Installs</p>
+                                                            </div>
+                                                            <div class="large-6 columns stats-border space-top-half">
+                                                                <h4>{{row.eventTypeData.installs}}</h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="large-push-5 large-2 columns end space-top-quarter space-left-double space-right-double">
+                                                <a href="" class="button expand radius-full" ng-class="{'radius-full-highlight': btn.detailsmore}">
+                                                    <i class="general foundicon-icon-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

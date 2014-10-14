@@ -18,6 +18,10 @@
     color: #f7f7f7 !important;
 }
 
+.margin-botton-smaller{
+    margin-bottom:0.2rem;
+}
+
 .main-bg {
     background-color: #f7f7f7 !important;
 }
@@ -29,10 +33,6 @@
 
 .body-font-color {
     color: #4e4e4e;
-}
-
-.text-center {
-    text-align: center !important;
 }
 
 .progress {
@@ -67,7 +67,7 @@ iframe {
 }
 
 .onlineAdsWrapper {
-    padding:0;
+    padding: 0;
 
     iframe {
         width: 100%;
@@ -257,13 +257,23 @@ iframe {
 
 .CP_image_contnet {
     border: 1px solid #a7a7a7;
-    background-color: #fff;
+    background-color: #fff;    
+
+    img{
+        height:100% !important;
+    }
 
     &:hover {
         border: 1px solid #00add5;
         -webkit-box-shadow: 0px 0px 10px 0px rgba(0,173,213,0.2);
         -moz-box-shadow: 0px 0px 10px 0px rgba(0,173,213,0.2);
         box-shadow: 0px 0px 10px 0px rgba(0,173,213,0.2);
+    }
+}
+
+.CP-image-contnet{
+    img{
+        height:100% !important;
     }
 }
 
@@ -302,6 +312,19 @@ iframe {
     }
 
     &.radius-half-highlight {
+        background-color: #00add5;
+    }
+
+    &.radius-full {
+        border-radius: 25px;
+        background-color: #ccc;
+
+        &:hover {
+            background-color: #00add5;
+        }
+    }
+
+    &.radius-full-highlight {
         background-color: #00add5;
     }
 }
@@ -425,6 +448,11 @@ iframe {
     background-repeat: repeat;
 }
 
+.foundicon-icon-plus {
+    background-image: url('../images/genie_ic_event_plus.png');
+}
+
+
 .foundicon-shevron {
     background-image: url('../images/genie_ic_event_expand_normal.png');
 }
@@ -484,8 +512,8 @@ iframe {
     left: 0;
     width: 100%;
     z-index: 80;
-    padding-left:0.625rem;
-    padding-right:0.625rem;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
 
     .events-warrper {
         .data-content-warrper:before {
@@ -504,7 +532,32 @@ iframe {
         }
     }
 }
-.invalid1{
-    background-color:red !important;
+
+.invalid1 {
+    background-color: red !important;
 }
 
+.stats-border {
+    h4 {
+        color: #00add5 !important;
+    }
+
+    &::before {
+        content: "";
+        border-left: 1px solid #a7a7a7;
+        position: absolute;
+        top: 8px;
+        left: 0;
+        /* height: 100%; */
+        bottom: 6px;
+    }
+}
+
+.margin-top-minus
+{
+    margin-top:-8px;
+}
+
+.z-index-1{
+    z-index: 1 !important;
+}

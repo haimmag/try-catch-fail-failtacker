@@ -12,9 +12,18 @@
         subImage: string;
         eventTypeText: string;
         eventType: EventType;
+        eventTypeData?: IEventTypeData;
         actionType: ActionType;
         actionTypeText: string;
         cssMarker?: string;
+    }
+
+    export interface IEventTypeData {
+        eventId: number;
+        clicks: number;
+        views: number;
+        installs: number;
+        activeAds: number;
     }
 
     export enum EventType {

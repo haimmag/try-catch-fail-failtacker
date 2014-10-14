@@ -14,8 +14,7 @@ namespace Conduit.Mobile.ControlPanelV2.External
             bundles.Add(new ScriptBundle("~/bundles/libs.js").Include(
                                     "~/Scripts/libs/jquery.min.js",
                                     "~/Scripts/libs/foundation.min.js",
-                                    "~/Scripts/libs/moment.min.js",                                    
-                                    "~/Scripts/libs/isInViewport.min.js",                                    
+                                    "~/Scripts/libs/moment.min.js",                                                                        
                                     "~/Scripts/libs/angular.min.js",                                                                                                           
                                     "~/Scripts/libs/underscore-min.js",
                                     "~/Scripts/libs/string.js"));

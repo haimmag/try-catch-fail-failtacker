@@ -577,6 +577,8 @@
     <TypeScriptCompile Include="app\services\config.srv.ts" />
     <TypeScriptCompile Include="app\services\holidays-data.srv.ts" />
     <TypeScriptCompile Include="app\services\holidays-default-data.srv.ts" />
+    <TypeScriptCompile Include="app\services\holidays-zibaba-data.srv.ts" />
+    <TypeScriptCompile Include="app\services\holidays-zibaba-data.ts" />
     <TypeScriptCompile Include="app\services\holidays-google-calendar-data.srv.ts" />
     <TypeScriptCompile Include="app\services\holidays-image-taxnomy.srv.ts" />
     <TypeScriptCompile Include="app\timeline-apps\appinstall-ifrm.ctrl.ts" />
