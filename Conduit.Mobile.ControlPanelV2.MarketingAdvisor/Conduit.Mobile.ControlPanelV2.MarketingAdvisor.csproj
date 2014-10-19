@@ -476,7 +476,12 @@
     <Content Include="Scripts\libs\angular-animate.min.js" />
     <Content Include="Scripts\libs\angular-equalizer.js" />
     <Content Include="Scripts\libs\angular-validation.js" />
+    <Content Include="Scripts\libs\angular-get-watchers.js" />
     <Content Include="Scripts\libs\angular.min.js" />
+    <Content Include="Scripts\libs\angularjs_1_3\angular-animate.js" />
+    <Content Include="Scripts\libs\angularjs_1_3\angular-animate.min.js" />
+    <Content Include="Scripts\libs\angularjs_1_3\angular.js" />
+    <Content Include="Scripts\libs\angularjs_1_3\angular.min.js" />
     <Content Include="Scripts\libs\common\helpers.js" />
     <Content Include="Scripts\libs\foundation.min.js" />
     <Content Include="Scripts\libs\infiniteScroll.js" />

@@ -14,15 +14,16 @@ namespace Conduit.Mobile.ControlPanelV2.External
             bundles.Add(new ScriptBundle("~/bundles/libs.js").Include(
                                     "~/Scripts/libs/jquery.min.js",
                                     "~/Scripts/libs/foundation.min.js",
-                                    "~/Scripts/libs/moment.min.js",                                                                        
-                                    "~/Scripts/libs/angular.min.js",                                                                                                           
+                                    "~/Scripts/libs/moment.min.js",
+                                    "~/Scripts/libs/angularjs_1_3/angular.min.js",
+                                    "~/Scripts/libs/angular-get-watchers.js",
                                     "~/Scripts/libs/underscore-min.js",
                                     "~/Scripts/libs/string.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angularjslibs.js").Include(
                                     "~/Scripts/libs/angular-equalizer.js",
                                     "~/Scripts/libs/angular-validation.js",
-                                    "~/Scripts/libs/angular-animate.min.js",
+                                    "~/Scripts/libs/angularjs_1_3/angular-animate.min.js",
                                     "~/Scripts/libs/infiniteScroll.js",                                    
                                     "~/Scripts/libs/angular-sticky.js"));
 

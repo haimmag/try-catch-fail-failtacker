@@ -130,23 +130,23 @@
                                 <div class="CP_month_marker box">
                                     <a href="#" class="button expand radius secondary medium-font"
                                        sticky sticky-top="170" sticky-remove-css="info" sticky-media="(min-width:640px)"
-                                       sticky-selector=".{{row.cssMarker}}" sticky-selector-css="active" sticky-active-element="true"
-                                       ng-class="{info: $index>0}" ng-if="row.monthOccurrence">{{row.monthText}}</a>
-                                    <input type="hidden" value="{{row.cssMarker}}" />
+                                       sticky-selector=".{{::row.cssMarker}}" sticky-selector-css="active" sticky-active-element="true"
+                                       ng-class="{info: $index>0}" ng-if="::row.monthOccurrence">{{::row.monthText}}</a>
+                                    <input type="hidden" value="{{::row.cssMarker}}" />
                                 </div>
                             </div>
                             <div class="large-2 columns">
                             </div>
                         </div>
                     </div>
-                    <div class="large-10 columns cp-main-data-content-warrper" id="mainContent{{$index}}" ng-mouseenter="btn.detailsmore=true" ng-mouseleave="btn.detailsmore=false">
+                    <div class="large-10 columns cp-main-data-content-warrper" id="mainContent{{::$index}}" ng-mouseenter="btn.detailsmore=true" ng-mouseleave="btn.detailsmore=false">
                         <div class="CP_div_seperator"></div>
                         <span class="CP_mid_left_seperator"></span>
                         <div class="row CP_image_contnet">
-                            <div class="small-3 columns no-padding-left image-left-border {{row.cssMarker}}" ng-class="{active: $index==0}" equalizer="group">
-                                <img ng-src="{{row.mainImage}}" src="Content/timeline/holidays/default/no_image.jpg" " />
+                            <div class="small-3 columns no-padding-left image-left-border {{::row.cssMarker}}" ng-class="{active: $index==0}" equalizer="group">
+                                <img ng-src="{{::row.mainImage}}" src="Content/timeline/holidays/default/no_image.jpg" " />
                             </div>
-                            <div class="small-9 columns" equalizer="group" ng-switch on="row.actionType">
+                            <div class="small-9 columns" equalizer="group" ng-switch on="::row.actionType">
                                 @*show default*@
                                 <div class="no-padding-left center display-table" equalizer="group" ng-switch-default>
                                     <div class="CP_image_content_main_more_text" ng-hide="!btn.detailsmore || row.detailsVisible">
@@ -156,18 +156,18 @@
                                         <a href="" class="button expand radius-half" ng-class="{'radius-half-highlight': btn.detailsmore}"><i class="general foundicon-shevron"></i></a>
                                     </div>
                                     <div class="table-cell-middle space-bottom-half" ng-click="row.detailsVisible = !row.detailsVisible;">
-                                        <h5 class="subheader anchor-font-color">{{row.contentInfoMainText}}</h5>
-                                        <h3 class="body-font-color">{{row.contentInfoSubText}}</h3>
+                                        <h5 class="subheader anchor-font-color">{{::row.contentInfoMainText}}</h5>
+                                        <h3 class="body-font-color">{{::row.contentInfoSubText}}</h3>
                                     </div>
                                 </div>
                                 @*show stats*@
                                 <div class="no-padding-left center" equalizer="group" ng-switch-when="2">
                                     <div class="space-bottom-quarter space-top-quarter">
-                                        <h5 class="subheader anchor-font-color">{{row.contentInfoMainText}}</h5>
-                                        <h4 class="body-font-color margin-top-minus">{{row.contentInfoSubText}}</h4>
+                                        <h5 class="subheader anchor-font-color">{{::row.contentInfoMainText}}</h5>
+                                        <h4 class="body-font-color margin-top-minus">{{::row.contentInfoSubText}}</h4>
                                         <div class="row">
                                             <div class="large-push-2 large-8 columns end">
-                                                <div class="text-left bold medium-font"><b>Active Ads: {{row.eventTypeData.activeAds}}</b></div>
+                                                <div class="text-left bold medium-font"><b>Active Ads: {{::row.eventTypeData.activeAds}}</b></div>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -180,7 +180,7 @@
                                                                 <p class="medium-normal-font anchor-font-color margin-botton-smaller">Clicks</p>
                                                             </div>
                                                             <div class="large-6 columns stats-border space-top-half ">
-                                                                <h4>{{row.eventTypeData.clicks}}</h4>
+                                                                <h4>{{::row.eventTypeData.clicks}}</h4>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -191,7 +191,7 @@
                                                                 <p class="medium-normal-font anchor-font-color margin-botton-smaller">Views</p>
                                                             </div>
                                                             <div class="large-6 columns stats-border space-top-half">
-                                                                <h4>{{row.eventTypeData.views}}</h4>
+                                                                <h4>{{::row.eventTypeData.views}}</h4>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -202,7 +202,7 @@
                                                                 <p class="medium-normal-font anchor-font-color margin-botton-smaller">Installs</p>
                                                             </div>
                                                             <div class="large-6 columns stats-border space-top-half">
-                                                                <h4>{{row.eventTypeData.installs}}</h4>
+                                                                <h4>{{::row.eventTypeData.installs}}</h4>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -222,7 +222,7 @@
                         </div>
 
                         <!--start details-->
-                        <div class="row cp-details-marker hide slide-animation" ng-show="row.detailsVisible" id="mainContentDetails{{$index}}">
+                        <div class="row cp-details-marker hide slide-animation" ng-show="row.detailsVisible" id="mainContentDetails{{::$index}}">
                             <div class="detials-content-warrper">
                                 <div class="row detials_content" ng-mouseenter="btn.install.startvisible=true" ng-mouseleave="btn.install.startvisible=false">
                                     <div class="small-1 columns">
@@ -230,7 +230,7 @@
                                     </div>
                                     <div class="small-9 columns space-top-half">
                                         <h5 class="subheader primary-color">App Installs</h5>
-                                        <p class="medium-normal-font anchor-font-color">Get new app installs for {{row.contentInfoSubText}}</p>
+                                        <p class="medium-normal-font anchor-font-color">Get new app installs for {{::row.contentInfoSubText}}</p>
                                     </div>
                                     <div class="small-2 columns">
                                         <div class="space-bottom"><div class="space-bottom-quarter"></div></div>
