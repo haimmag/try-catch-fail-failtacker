@@ -80,6 +80,22 @@
             };
         }]);
 
+    common.directive('hideOnScroll', [
+        '$window', '$parse', '$timeout', function ($window, $parse, $timeout) {
+            return {
+                restrict: 'A',
+                link: function (scope, elm, attrs) {
+                    var win = angular.element($window);
+                    var fn = $parse(attrs.hideOnScroll);
+
+                    win.on("scroll", _.debounce(function () {
+                        fn.assign(scope, false);
+                        scope.$apply();
+                    }, 2500));
+                }
+            };
+        }]);
+
     common.directive('checkOffset', [
         '$window', function ($window) {
             return {
