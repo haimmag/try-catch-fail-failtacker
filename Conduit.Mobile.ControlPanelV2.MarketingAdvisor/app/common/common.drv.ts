@@ -25,7 +25,7 @@
             link: function (scope, elm, attrs: any) {
                 elm.on('click', function () {
                     var el = angular.element(attrs.scrollOnClick);                    
-                    $("body").animate({ scrollTop: el.offset().top - 125 }, "slow");
+                    $("body,html").animate({ scrollTop: el.offset().top - 125 }, "slow");
                 });
             }
         };
@@ -37,7 +37,7 @@
             link: function (scope, elm, attrs: any) {
                 elm.on('click', function () {
                     var el = angular.element($rootScope.stickyActiveElementSelector);
-                    $("body").animate({ scrollTop: el.offset().top - 125 }, "slow");
+                    $("body,html").animate({ scrollTop: el.offset().top - 125 }, "slow");
                 });
             }
         };

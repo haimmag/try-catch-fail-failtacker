@@ -3,9 +3,9 @@
 
     angular.module('app').controller('MainCtrl', main);
 
-    main.$inject = ['$scope', '$rootScope', 'Holidays.DataService', '$timeout'];
+    main.$inject = ['$scope', '$rootScope', 'Holidays.DataService', '$timeout', 'ValidationService'];
 
-    function main($scope, $rootScope, HolidaysDataService, $timeout) {
+    function main($scope, $rootScope, HolidaysDataService, $timeout, ValidationService) {
         /* jshint validthis: true */
         var vm = this;
         var cachedData;
@@ -22,33 +22,31 @@
             }
         };
 
-        vm.createCustomEvent = function (ce, ceform, btne) {
-            if (ceform.$invalid) {
-                ceform.ceName.$setViewValue(ceform.ceName.$viewValue);
-                return;
-            }
+        vm.createCustomEvent = function (ce, btne) {
+            var validationResultPromise = ValidationService.validate("customEvents");
 
-            var newEvent = HolidaysDataService.createCustomEvent(ce);
+            validationResultPromise.then(function () {
+                //"validation successs"
+                var newEvent = HolidaysDataService.createCustomEvent(ce);
 
-            //clean form
-            ceform.$setPristine();
-            ce.name = '';
-            btne.customEvents = false;
+                //clean form
+                btne.customEvents = false;
 
-            //search index date and splice it
-            vm.dataRows.splice(2, 0, newEvent);
+                //search index date and splice it
+                vm.dataRows.splice(2, 0, newEvent);
 
-            $timeout(function () {
-                var el = angular.element('.' + newEvent.cssMarker);
-                $("body").animate({ scrollTop: el.offset().top - 125 }, "slow");
+                //position elements in place
+                $timeout(function () {
+                    var el = angular.element('.' + newEvent.cssMarker);
+                    $("body,html").animate({ scrollTop: el.offset().top - 125 }, "slow");
+                });
+            }, function (err) {
+                //"validation fail"
             });
         };
 
-        vm.cancelCustomEvent = function (ce, ceform, btne) {
+        vm.cancelCustomEvent = function (ce, btne) {
             //clean form
-            ceform.$setPristine();
-            if (ce)
-                ce.name = '';
             btne.customEvents = false;
         };
 
@@ -95,7 +93,7 @@
         }, 500);
 
         function loadMoreCalculetedNextSuccess(data) {
-            var cachedData = cachedData.concat(data);
+            cachedData = cachedData.concat(data);
 
             var nextItems = _.chain(cachedData).rest(vm.scrollCount * vm.scrollPageIndex).first(vm.scrollCount).value();
 

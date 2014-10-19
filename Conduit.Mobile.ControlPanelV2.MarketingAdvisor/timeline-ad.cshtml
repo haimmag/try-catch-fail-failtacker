@@ -68,7 +68,7 @@
 
         @*start custom events*@
         <div class="cp-custom-events background-custom-3 show-animation" ng-show="btne.customEvents" ng-cloak>
-            <div class="show-animation">
+            <div class="show-animation" ng-if="btne.customEvents">
                 <div class="row events-warrper">
                     <div class="large-2 columns main-bg z-index-1" equalizer="ce"></div>
                     <div class="large-10 columns data-content-warrper">
@@ -79,40 +79,40 @@
                                 <img src="Content/timeline/holidays/default/custom_event.jpg" " />
                             </div>
                             <div class="small-9 columns no-padding-left center display-table center" equalizer="ce">
-                                <form name="ceform" novalidate class="custom-events-form">
-                                    <div class="row">
-                                        <div class="large-8 large-push-2 columns">
-                                            <div class="row space-top">
-                                                <div class="large-8 columns">
-                                                    <select>
-                                                        <option value="1">Facebook Ad</option>
-                                                        <option value="2">Google Ad</option>
-                                                    </select>
-                                                </div>
-                                                <div class="large-4 columns">
-                                                    <select>
-                                                        <option value="1">28/09/2014</option>
-                                                    </select>
-                                                </div>
+
+                                <div class="row">
+                                    <div class="large-8 large-push-2 columns">
+                                        <div class="row space-top">
+                                            <div class="large-8 columns">
+                                                <select>
+                                                    <option value="1">Facebook Ad</option>
+                                                    <option value="2">Google Ad</option>
+                                                </select>
                                             </div>
-                                            <div class="row space-top-half">
-                                                <div class="large-12 columns field_container" ng-class="{field_error: ceform.ceName.$dirty && ceform.ceName.$invalid, field_success: ceform.ceName.$dirty && ceform.ceName.$valid}">
-                                                    <div class="inputWrapper">
-                                                        <input type="text" placeholder="Event Name" class="" ng-model="ce.name" name="ceName" required />
-                                                    </div>
-                                                </div>
+                                            <div class="large-4 columns">
+                                                <select>
+                                                    <option value="1">28/09/2014</option>
+                                                </select>
                                             </div>
-                                            <div class="row space-top space-bottom-half">
-                                                <div class="large-4 large-push-3 columns">
-                                                    <a href="" class="button expand radius secondary large" ng-click="vm.cancelCustomEvent(ce,ceform,btne)">Cancel</a>
-                                                </div>
-                                                <div class="large-5 columns">
-                                                    <a href="" class="button expand radius success large" ng-click="vm.createCustomEvent(ce,ceform,btne);">Create Event</a>
+                                        </div>
+                                        <div class="row space-top-half">
+                                            <div class="large-12 columns field_container">
+                                                <div class="inputWrapper">
+                                                    <input type="text" placeholder="Event Name" class="" ng-model="ce.name" validate="'empty'" validation-group="'customEvents'" />
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row space-top space-bottom-half">
+                                            <div class="large-4 large-push-3 columns">
+                                                <a href="" class="button expand radius secondary large" ng-click="vm.cancelCustomEvent(ce,btne);">Cancel</a>
+                                            </div>
+                                            <div class="large-5 columns">
+                                                <a href="" class="button expand radius success large" ng-click="vm.createCustomEvent(ce,btne);">Create Event</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                </form>
+                                </div>
+
                             </div>
                         </div>
                     </div>

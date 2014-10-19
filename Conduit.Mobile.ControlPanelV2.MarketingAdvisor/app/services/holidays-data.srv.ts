@@ -17,7 +17,7 @@
         var service = {
             getData: getData,
             getDataByEventType: getDataByEventType,
-            gedDataCalculetedNextYear: gedDataCalculetedNext,
+            gedDataCalculetedNext: gedDataCalculetedNext,
             getItemsThreshold: getItemsThreshold,
             createCustomEvent: createCustomEvent
         };
@@ -33,12 +33,14 @@
                 var eventsGoogle: Timeline.IEvent[] = results[0];
                 var eventsZibaba: Timeline.IEvent[] = results[1];
 
-                var eventsGoogle = prepareDataAddYears(eventsGoogle);
-                cachedData = angular.copy(eventsGoogle);                
+                var eventsGoogle = prepareDataAddYears(eventsGoogle);                
 
                 _.each(eventsZibaba, function (item) {
-                    eventsGoogle.push(item);
+                    eventsGoogle.push(item);                    
                 });
+
+                //cache final data
+                cachedData = angular.copy(eventsGoogle);
 
                 eventsGoogle = prepareData(eventsGoogle);
 
@@ -137,7 +139,7 @@
         }
 
         function getItemsThreshold() {
-            return 100;
+            return 150;
         }
 
         function createCustomEvent(item) {
@@ -158,6 +160,9 @@
                 mainImage: baseUrl + 'custom_event.jpg',
                 subImage: ""
             };
+
+            // add new data to cache
+            cachedData.push(newEvent);
 
             var prepData = prepareData([newEvent]);
 
