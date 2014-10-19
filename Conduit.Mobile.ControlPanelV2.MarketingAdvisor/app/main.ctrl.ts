@@ -9,7 +9,7 @@
 
     function main($scope: ng.IScope, $rootScope, HolidaysDataService, $timeout, ValidationService) {
         /* jshint validthis: true */
-        var vm = this;
+        var vm = this;          
         var cachedData: Timeline.IEvent[];
 
         vm.filterByEventType = function (eventType, searchTitle) {
@@ -36,19 +36,38 @@
                     btne.customEvents = false;
 
                     //search index date and splice it
-
-                    vm.dataRows.splice(2, 0, newEvent);
+                    var spliceIdx = getSpliceIdx();
+                    vm.dataRows.splice(spliceIdx, 0, newEvent);
 
                     //position elements in place
-                    $timeout(function () {
-                        var el = angular.element('.' + newEvent.cssMarker);
-                        $("body,html").animate({ scrollTop: el.offset().top - 125 }, "slow");
-                    });
+                    scroll2event(newEvent);
 
                 },
                 function (err) {
                     //"validation fail"
-                });            
+                });     
+
+            function getSpliceIdx() {
+                var spliceIdx = 0;
+                for (var i = 0; i < vm.dataRows.length; i++) {
+                    if (vm.dataRows[i].date > ce.date) {
+                        break;
+                    }
+                    spliceIdx++;
+                }
+
+                return spliceIdx;
+            }       
+
+            function scroll2event(newEvent) {
+                $timeout(function () {
+                    var el = angular.element('.' + newEvent.cssMarker);
+                    if (el.length > 0)
+                        $("body,html").animate({ scrollTop: el.offset().top - 125 }, "slow");
+                    else
+                        $("body,html").animate({ scrollTop: 0 }, "slow");
+                });
+            }
         };
 
         vm.cancelCustomEvent = function (ce, btne) {
@@ -61,6 +80,14 @@
             // alert('load more');
             loadMoreFn();
 
+        };
+
+        vm.dateOptions = {
+            showOn: "both", buttonImage: "/Images/Wizard/Datepicker.png", onSelect: function () { }
+        };
+
+        vm.customAdOptions = function () {
+            return { date: new Date(), addType:1 };
         };
 
         init();

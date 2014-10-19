@@ -353,6 +353,7 @@ iframe {
     .table-cell-middle {
         display: table-cell;
         vertical-align: middle;
+        width:100%;
     }
 }
 
@@ -579,5 +580,11 @@ iframe {
         position: absolute;
         top: 60%;
         right: 0;
+    }
+}
+
+.clearfix{
+    .ui-datepicker-trigger{
+        width:29%;
     }
 }

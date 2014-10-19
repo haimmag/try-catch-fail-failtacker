@@ -47,7 +47,7 @@
                                 <i class="foundicon-search"></i>
                             </div>
                             <div class="large-6 columns">
-                                <input ng-model="search.text" type="text" placeholder="search for events" class="no-radius-left cp-search-marker" ng-show="search.isVisible">
+                                <input ng-model="search.text" only-alphanumeric="" type="text" placeholder="search for events" class="no-radius-left cp-search-marker" ng-show="search.isVisible">
                             </div>
                             <div class="large-5 columns"></div>
                         </div>
@@ -80,25 +80,27 @@
                             </div>
                             <div class="small-9 columns no-padding-left center display-table center" equalizer="ce">
 
-                                <div class="row">
+                                <div class="row" ng-init="ce=vm.customAdOptions()">
                                     <div class="large-8 large-push-2 columns">
                                         <div class="row space-top">
-                                            <div class="large-8 columns">
-                                                <select>
-                                                    <option value="1">Facebook Ad</option>
-                                                    <option value="2">Google Ad</option>
-                                                </select>
+                                            <div class="large-8 columns field_container">
+                                                <div class="inputWrapper">
+                                                    <select ng-model="ce.addType" validate="'empty'" validation-group="'customEvents'">
+                                                        <option value="1">Facebook Ad</option>
+                                                        <option value="2">Google Ad</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <div class="large-4 columns">
-                                                <select>
-                                                    <option value="1">28/09/2014</option>
-                                                </select>
+                                            <div class="large-4 columns field_container">
+                                                <div class="clearfix inputWrapper">
+                                                    <input type="text" ng-model="ce.date" ui-date="vm.dateOptions" placeholder="mm/dd/yyyy" class="left" validate="'empty'" validation-group="'customEvents'" />
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row space-top-half">
                                             <div class="large-12 columns field_container">
                                                 <div class="inputWrapper">
-                                                    <input type="text" placeholder="Event Name" class="" ng-model="ce.name" validate="'empty'" validation-group="'customEvents'" />
+                                                    <input type="text" placeholder="Event Name" class="" only-alphanumeric="" ng-model="ce.name" validate="'empty'" validation-group="'customEvents'" />
                                                 </div>
                                             </div>
                                         </div>
@@ -122,7 +124,7 @@
         @*end custom event*@
 
         <div class="mid_fixed_pane background-custom-3" infinite-scroll load-more='vm.loadMore()' scroll-threshold="100">
-            <div class="my-repeat-animation" ng-repeat="row in vm.dataRows | filter:search.text" repeat-done="vm.elementsLayoutDone()" ng-cloak>
+            <div class="my-repeat-animation" ng-repeat="row in vm.dataRows | filter:search.text track by row.id" repeat-done="vm.elementsLayoutDone()" ng-cloak>
                 <div class="row">
                     <div class="large-2 columns">
                         <div class="row">
@@ -139,7 +141,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="large-10 columns cp-main-data-content-warrper" id="mainContent{{::$index}}" ng-mouseenter="btn.detailsmore=true" ng-mouseleave="btn.detailsmore=false">
+                    <div class="large-10 columns cp-main-data-content-warrper" id="mainContent{{::row.id}}" ng-mouseenter="btn.detailsmore=true" ng-mouseleave="btn.detailsmore=false">
                         <div class="CP_div_seperator"></div>
                         <span class="CP_mid_left_seperator"></span>
                         <div class="row CP_image_contnet">
@@ -152,7 +154,7 @@
                                     <div class="CP_image_content_main_more_text" ng-hide="!btn.detailsmore || row.detailsVisible">
                                         <b>Check It Out!</b>
                                     </div>
-                                    <div class="CP_image_content_main_more_btn" ng-click="row.detailsVisible = !row.detailsVisible;" ng-hide="row.detailsVisible" data-scroll-on-click="#mainContent{{$index}}">
+                                    <div class="CP_image_content_main_more_btn" ng-click="row.detailsVisible = !row.detailsVisible;" ng-hide="row.detailsVisible" data-scroll-on-click="#mainContent{{::row.id}}">
                                         <a href="" class="button expand radius-half" ng-class="{'radius-half-highlight': btn.detailsmore}"><i class="general foundicon-shevron"></i></a>
                                     </div>
                                     <div class="table-cell-middle space-bottom-half" ng-click="row.detailsVisible = !row.detailsVisible;">
@@ -222,7 +224,7 @@
                         </div>
 
                         <!--start details-->
-                        <div class="row cp-details-marker hide slide-animation" ng-show="row.detailsVisible" id="mainContentDetails{{::$index}}">
+                        <div class="row cp-details-marker hide slide-animation" ng-show="row.detailsVisible" id="mainContentDetails{{::row.id}}">
                             <div class="detials-content-warrper">
                                 <div class="row detials_content" ng-mouseenter="btn.install.startvisible=true" ng-mouseleave="btn.install.startvisible=false">
                                     <div class="small-1 columns">
@@ -234,14 +236,18 @@
                                     </div>
                                     <div class="small-2 columns">
                                         <div class="space-bottom"><div class="space-bottom-quarter"></div></div>
-                                        <a href="" class="button expand radius" ng-show="btn.install.startvisible && !btn.install.funcvisible" ng-click="btn.install.funcvisible=true" data-scroll-on-click="#mainContentDetails{{$index}}">Start</a>
-                                        <a href="" class="button expand radius info" ng-show="btn.install.funcvisible" ng-click="btn.install.funcvisible=false" data-scroll-on-click="#mainContent{{$index}}">Close</a>
+                                        <div ng-show="btn.install.startvisible && !btn.install.funcvisible">
+                                            <a href="" class="button expand radius" ng-click="btn.install.funcvisible=true" data-scroll-on-click="#mainContentDetails{{::row.id}}">Start</a>
+                                        </div>
+                                        <div ng-show="btn.install.funcvisible">
+                                            <a href="" class="button expand radius info" ng-click="btn.install.funcvisible=false" data-scroll-on-click="#mainContent{{::row.id}}">Close</a>
+                                        </div>
                                     </div>
                                 </div>
                                 <!--app install-->
                                 <div class="row detials_func_content show-animation" ng-if="btn.install.funcvisible">
                                     @*<div class="small-12 columns" ng-controller="timelineapps.AppInstallCtrl as installVM" data-timelineapps.appinstall="">
-                                        </div>*@
+                                </div>*@
                                     <div class="small-12 columns onlineAdsWrapper" ng-controller="timelineapps.AppInstallIfrmCtrl as installVM">
                                         <iframe id="onlineAdsFrame" ng-src="http://smb.zibaba.com/cndconnect?parameters=VDAhsTLIznou8F5gPtOTLGRLBFBThDesGwdtHQCmkNvbdnXXMi5Au7kcIkebBab8IphDvQJHeGwI6/7m5Y7k+2nsz2RYQ3uGjlInpie1x7kLonehc5WCcW5WSTkpCUs7t9Pq2eJLSvjGA5hLjWdlh2MsvK8fBjly3LosEmJhGWVJEiwKNMZAG5RIWzVFa/PRm5wdwoHJVf9QnxagNWZU07HKSyJbPLjmLL3KJ8X0gXzSAoVC+tBkLrT5+KMzWO5fgu/w7LI5v/BKq0Bst3Q30Fo41xafkpNKfJa9smuCXQaxG/zQMaMWLHJHdl+1i97R3RDRTd4j8Y8AW8rut2KoS37U5fxRsdHyxDi8J/V50aeKNpQaUAGCm0Oigmehgb6Dd2q5UDVnVU1h1P/f3tfTeB/WPmtyOaT2Iz3Lo/hzj/Cm/M6R/pa3VVNS6T3kXzMAkT6uZHVglM/lWiz7OxMUTXWU1ckqYdesXe68bkGjePO3Tbpb7VIfASFJ43SdtV5ujYEfo0MSYc+sUjzQvewa8WbOjmwWNHeFrTFO/b+7qco//ZZH9+mhlSMi5Q9KINMH5zqspHiMROwvdcyPcW1wHlxQSMSP4FbA7q/4yRLy3J5Z1tgFFKIZKHVETJ0v6KHF2aYHgP+mytjVfDiL3adWclZWmmtA/l7Qbp/nDmeKV/sSEemTFZv42Jo2J1R3/ssOrTjU/XRxOAXc/z1u040orbOTFqICKuXGOsn8wtiDavpJ7uop5rqvvhP30kEczueGeYEOQo4VoGojcL+Z2z9jJOGTSgUKdRUxC/fOjwDJoeTsuAG/krXiMSw8+9uT4U2x7oGWfSz1VAYNAp19g/r1LR9tYhW1j99uNEULp9mLizOQqQxE/4HwQofjYxp1hnaF87MJ/F/v/u3gEQOZoPO7U10mp7uDiccYKmRIgew+WpsUN49f56QjKQLc0RPZg5AprPS02Ivi/MBa65K9NOXjeaFgQfZAP9qoxS5dZy+qMj8Swc0ZyB2BRJ38u6KC9Pjm" src="http://smb.zibaba.com/cndconnect?parameters=VDAhsTLIznou8F5gPtOTLGRLBFBThDesGwdtHQCmkNvbdnXXMi5Au7kcIkebBab8IphDvQJHeGwI6/7m5Y7k+2nsz2RYQ3uGjlInpie1x7kLonehc5WCcW5WSTkpCUs7t9Pq2eJLSvjGA5hLjWdlh2MsvK8fBjly3LosEmJhGWVJEiwKNMZAG5RIWzVFa/PRm5wdwoHJVf9QnxagNWZU07HKSyJbPLjmLL3KJ8X0gXzSAoVC+tBkLrT5+KMzWO5fgu/w7LI5v/BKq0Bst3Q30Fo41xafkpNKfJa9smuCXQaxG/zQMaMWLHJHdl+1i97R3RDRTd4j8Y8AW8rut2KoS37U5fxRsdHyxDi8J/V50aeKNpQaUAGCm0Oigmehgb6Dd2q5UDVnVU1h1P/f3tfTeB/WPmtyOaT2Iz3Lo/hzj/Cm/M6R/pa3VVNS6T3kXzMAkT6uZHVglM/lWiz7OxMUTXWU1ckqYdesXe68bkGjePO3Tbpb7VIfASFJ43SdtV5ujYEfo0MSYc+sUjzQvewa8WbOjmwWNHeFrTFO/b+7qco//ZZH9+mhlSMi5Q9KINMH5zqspHiMROwvdcyPcW1wHlxQSMSP4FbA7q/4yRLy3J5Z1tgFFKIZKHVETJ0v6KHF2aYHgP+mytjVfDiL3adWclZWmmtA/l7Qbp/nDmeKV/sSEemTFZv42Jo2J1R3/ssOrTjU/XRxOAXc/z1u040orbOTFqICKuXGOsn8wtiDavpJ7uop5rqvvhP30kEczueGeYEOQo4VoGojcL+Z2z9jJOGTSgUKdRUxC/fOjwDJoeTsuAG/krXiMSw8+9uT4U2x7oGWfSz1VAYNAp19g/r1LR9tYhW1j99uNEULp9mLizOQqQxE/4HwQofjYxp1hnaF87MJ/F/v/u3gEQOZoPO7U10mp7uDiccYKmRIgew+WpsUN49f56QjKQLc0RPZg5AprPS02Ivi/MBa65K9NOXjeaFgQfZAP9qoxS5dZy+qMj8Swc0ZyB2BRJ38u6KC9Pjm"></iframe>
                                     </div>

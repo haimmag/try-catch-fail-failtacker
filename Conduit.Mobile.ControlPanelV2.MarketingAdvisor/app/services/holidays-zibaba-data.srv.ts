@@ -33,7 +33,7 @@
 
         var dateEvent = new Date(now.getFullYear(), 11, 23);
         data.push({
-            id: 1,
+            id: 1001,
             monthOccurrence: 1,
             monthText: moment(dateEvent).format('MMMM'),
             date: dateEvent,
@@ -56,7 +56,7 @@
 
         dateEvent = new Date(now.getFullYear(), 11, 14);
         data.push({
-            id: 2,
+            id: 1002,
             monthOccurrence: 1,
             monthText: moment(dateEvent).format('MMMM'),
             date: dateEvent,

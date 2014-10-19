@@ -19,7 +19,7 @@
             var deferred = $q.defer();
             
             $http.get(Config.virtualDir + '/api/feeds/')
-            .success(function (data) {
+                .success(function (data: Server.IFeed[]) {
                 deferred.resolve(data);
             })
             .error(function (msg, code) {

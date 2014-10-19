@@ -250,6 +250,7 @@
     <Compile Include="Infrastructure\ModelMetadata\ModelMetadataRegistry.cs" />
     <Compile Include="Infrastructure\ModelMetadata\RenderAttribute.cs" />
     <Compile Include="Infrastructure\MvcRegistry.cs" />
+    <Compile Include="Infrastructure\NonOrderingBundleOrderer.cs" />
     <Compile Include="Infrastructure\ServiceActivator.cs" />
     <Compile Include="Infrastructure\StandardRegistry.cs" />
     <Compile Include="Infrastructure\StructureMapDependencyResolver.cs" />
@@ -260,6 +261,7 @@
     <Compile Include="Infrastructure\Tasks\IRunOnEachRequest.cs" />
     <Compile Include="Infrastructure\Tasks\IRunOnError.cs" />
     <Compile Include="Infrastructure\Tasks\TaskRegistry.cs" />
+    <Content Include="Content\jquery-ui-1.10.1.custom.css" />
     <Content Include="Content\timeline\site-core-animation.css">
       <DependentUpon>site-core-animation.scss</DependentUpon>
     </Content>
@@ -429,6 +431,8 @@
     <Content Include="Images\arrow.png" />
     <Content Include="Images\banners\banner1.jpg" />
     <Content Include="Images\certificate.png" />
+    <Content Include="Images\common\loader_114.png" />
+    <Content Include="Images\common\loader_23.png" />
     <Content Include="Images\como_banner.png" />
     <Content Include="Images\demo_certificate.png" />
     <Content Include="Images\download.png" />
@@ -439,6 +443,10 @@
     <Content Include="Images\generic_certificate.jpg" />
     <Content Include="Images\generic_sticker.png" />
     <Content Include="Images\hint_tip.png" />
+    <Content Include="Images\jqueryui\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Images\jqueryui\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Images\jqueryui\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Images\jqueryui\ui-icons_222222_256x240.png" />
     <Content Include="Images\mail.png" />
     <Content Include="Images\overlay.png" />
     <Content Include="Images\preview.png" />
@@ -447,7 +455,12 @@
     <Content Include="Images\ribbon.png" />
     <Content Include="Images\sticker_base.png" />
     <Content Include="Images\stores.png" />
+    <Content Include="Images\wizard\Datepicker.png" />
+    <Content Include="Images\wizard\field_error.png" />
+    <Content Include="Images\wizard\field_success.png" />
     <Content Include="index.html" />
+    <Content Include="Scripts\libs\angular-once.js" />
+    <Content Include="Scripts\libs\angular-ui-date-picker.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -469,6 +482,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\libs\jquery-ui-1.10.1.custom.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />

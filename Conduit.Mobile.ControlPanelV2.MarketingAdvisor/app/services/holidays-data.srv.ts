@@ -76,6 +76,7 @@
             yearsCounter++;
 
             for (var i = 0; i < data.length; i++) {
+                data[i].id = getGuid();
                 var currItemDate = data[i].date;
                 currItemDate.setFullYear(currItemDate.getFullYear() + yearsCounter);
             }
@@ -127,6 +128,7 @@
 
                     //loop new events and add them to main events
                     for (var j = 0; j < newEvents.length; j++) {
+                        newEvents[j].id = getGuid();
                         var currItemDate = newEvents[j].date;
                         currItemDate.setFullYear(currItemDate.getFullYear() + yearsCounter);
 
@@ -144,10 +146,10 @@
 
         function createCustomEvent(item) {
             var baseUrl = Config.virtualDir + "/Content/timeline/holidays/default/";  
-            var date = new Date();
+            var date = item.date;
 
             var newEvent: Timeline.IEvent = {
-                id: 1,
+                id: getGuid(),
                 monthOccurrence: 1,
                 monthText: moment(date).format('MMMM'),
                 date: date,
@@ -182,7 +184,7 @@
                     var date = new Date(item.eventDate);
 
                     eventsData.push({
-                        id: 1,
+                        id: getGuid(),
                         monthOccurrence: 1,
                         monthText: moment(date).format('MMMM'),
                         date: date,
@@ -207,6 +209,10 @@
                 eventsData = DefaultDataService.getData();
                 return eventsData;
             }            
+        }
+
+        function getGuid() {
+            return Math.floor(Math.random() * 10000000);
         }
 
     }

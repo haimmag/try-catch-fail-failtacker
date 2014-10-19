@@ -3,6 +3,28 @@
 
     var common = angular.module('common');
 
+    common.directive('onlyAlphanumeric', function () {
+        return {
+            require: 'ngModel',
+            restrict: 'A',
+            link: function (scope, element, attr, ctrl) {
+                function inputValue(val) {
+                    if (val) {
+                        var alphanumeric = val.replace(/[^a-zA-Z0-9א-ת\.]/g, '');
+
+                        if (alphanumeric !== val) {
+                            ctrl.$setViewValue(alphanumeric);
+                            ctrl.$render();
+                        }
+                        return alphanumeric;
+                    }
+                    return undefined;
+                }
+                ctrl.$parsers.push(inputValue);
+            }
+        };
+    });
+
     common.directive('repeatDone', function () {
         return function (scope, element, attrs) {
             if (scope.$last) {

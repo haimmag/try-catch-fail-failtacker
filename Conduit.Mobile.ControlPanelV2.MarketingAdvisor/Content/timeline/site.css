@@ -267,7 +267,8 @@ iframe {
   display: table; }
   .display-table .table-cell-middle {
     display: table-cell;
-    vertical-align: middle; }
+    vertical-align: middle;
+    width: 100%; }
 
 /*.CP_image_content_main_more_btn:hover {
         width: 150px;
@@ -439,6 +440,9 @@ iframe {
   position: absolute;
   top: 60%;
   right: 0; }
+
+.clearfix .ui-datepicker-trigger {
+  width: 29%; }
 
 .base-repeat-amimation, .my-repeat-animation.ng-enter, .my-repeat-animation.ng-leave, .my-repeat-animation.ng-move {
   -webkit-transition: 0.5s linear all;
