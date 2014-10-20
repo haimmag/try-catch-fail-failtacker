@@ -18,10 +18,12 @@
         };
 
         vm.elementsLayoutDone = function () {
-            // $scope.$broadcast("app.main.ctrl.holidays.dataservice.repeat.done", []);
+            $scope.$broadcast("app.main.ctrl.holidays.dataservice.repeat.done", []);            
+
             if (vm.pageLoaded == false) {
                 vm.pageLoaded = true;
             }
+            
         };
 
         vm.createCustomEvent = function (ce, btne) {

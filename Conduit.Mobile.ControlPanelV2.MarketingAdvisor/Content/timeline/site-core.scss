@@ -271,6 +271,19 @@ iframe {
     }
 }
 
+.zoom-tranzition {
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+
+    &:hover {
+        -webkit-transform: scale(1.01);
+        -moz-transform: scale(1.01);
+        -o-transform: scale(1.01);
+        transform: scale(1.01);
+    }
+}
+
 .CP-image-contnet {
     img {
         height: 100% !important;
@@ -353,7 +366,7 @@ iframe {
     .table-cell-middle {
         display: table-cell;
         vertical-align: middle;
-        width:100%;
+        width: 100%;
     }
 }
 
@@ -562,9 +575,9 @@ iframe {
     z-index: 1 !important;
 }
 
-.input-text {    
+.input-text {
     &.has-dropdown {
-        position: relative;        
+        position: relative;
     }
 
     &.has-dropdown::after {
@@ -583,8 +596,8 @@ iframe {
     }
 }
 
-.clearfix{
-    .ui-datepicker-trigger{
-        width:29%;
+.clearfix {
+    .ui-datepicker-trigger {
+        width: 29%;
     }
 }

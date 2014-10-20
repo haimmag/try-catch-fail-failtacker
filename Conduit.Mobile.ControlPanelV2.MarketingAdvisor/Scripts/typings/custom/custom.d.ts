@@ -9,4 +9,8 @@ interface JQuery {
     do(callback: () => void): JQuery;
     waypoint(callback: (direction?) => void, opt: { offset: any }): JQuery;
     waypoint(name, opt: { offset: any }): JQuery;
+
+    toggle(effect: string, options: any, duration?: number, complete?: Function): JQuery;
+    niceScroll(options: any);
+    getNiceScroll();
 }

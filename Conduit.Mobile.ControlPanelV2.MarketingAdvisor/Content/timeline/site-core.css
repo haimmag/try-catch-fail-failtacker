@@ -209,6 +209,16 @@ iframe {
     -moz-box-shadow: 0px 0px 10px 0px rgba(0, 173, 213, 0.2);
     box-shadow: 0px 0px 10px 0px rgba(0, 173, 213, 0.2); }
 
+.zoom-tranzition {
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out; }
+  .zoom-tranzition:hover {
+    -webkit-transform: scale(1.01);
+    -moz-transform: scale(1.01);
+    -o-transform: scale(1.01);
+    transform: scale(1.01); }
+
 .CP-image-contnet img {
   height: 100% !important; }
 

@@ -12,7 +12,7 @@
     @System.Web.Optimization.Scripts.Render("~/bundles/angularjstimeline.js")
 
 </head>
-<body ng-controller="MainCtrl as vm" class="cp-advisor-body">
+<body ng-controller="MainCtrl as vm" class="cp-advisor-body" nice-scroll="">
     <div class="panel main-bg">
         <div class="fixed">
             <div class="top_pane_bg">
@@ -46,10 +46,9 @@
                             <div class="large-1 columns cp-div-pointer" ng-click="search.isVisible=!search.isVisible">
                                 <i class="foundicon-search"></i>
                             </div>
-                            <div class="large-6 columns">
+                            <div class="large-6 columns end">
                                 <input ng-model="search.text" only-alphanumeric="" type="text" placeholder="search for events" class="no-radius-left cp-search-marker" ng-show="search.isVisible">
                             </div>
-                            <div class="large-5 columns"></div>
                         </div>
                     </div>
                     <div class="large-3 columns hand-cursor" ng-click="btne.customEvents=!btne.customEvents;" sticky-click-scroll-element="">
@@ -144,9 +143,9 @@
                     <div class="large-10 columns cp-main-data-content-warrper" id="mainContent{{::row.id}}" ng-mouseenter="btn.detailsmore=true" ng-mouseleave="btn.detailsmore=false">
                         <div class="CP_div_seperator"></div>
                         <span class="CP_mid_left_seperator"></span>
-                        <div class="row CP_image_contnet">
+                        <div class="row CP_image_contnet zoom-tranzition">
                             <div class="small-3 columns no-padding-left image-left-border {{::row.cssMarker}}" ng-class="{active: $index==0}" equalizer="group">
-                                <img ng-src="{{::row.mainImage}}" src="Content/timeline/holidays/default/no_image.jpg" " />
+                                <img ng-src="{{::row.mainImage}}" src="Content/timeline/holidays/default/no_image.jpg"  />
                             </div>
                             <div class="small-9 columns" equalizer="group" ng-switch on="::row.actionType">
                                 @*show default*@
@@ -236,10 +235,10 @@
                                     </div>
                                     <div class="small-2 columns">
                                         <div class="space-bottom"><div class="space-bottom-quarter"></div></div>
-                                        <div ng-show="btn.install.startvisible && !btn.install.funcvisible">
+                                        <div ng-show="btn.install.startvisible && !btn.install.funcvisible" class="space-right-double">
                                             <a href="" class="button expand radius" ng-click="btn.install.funcvisible=true" data-scroll-on-click="#mainContentDetails{{::row.id}}">Start</a>
                                         </div>
-                                        <div ng-show="btn.install.funcvisible">
+                                        <div ng-show="btn.install.funcvisible" class="space-right-double">
                                             <a href="" class="button expand radius info" ng-click="btn.install.funcvisible=false" data-scroll-on-click="#mainContent{{::row.id}}">Close</a>
                                         </div>
                                     </div>
@@ -247,7 +246,7 @@
                                 <!--app install-->
                                 <div class="row detials_func_content show-animation" ng-if="btn.install.funcvisible">
                                     @*<div class="small-12 columns" ng-controller="timelineapps.AppInstallCtrl as installVM" data-timelineapps.appinstall="">
-                                </div>*@
+                                        </div>*@
                                     <div class="small-12 columns onlineAdsWrapper" ng-controller="timelineapps.AppInstallIfrmCtrl as installVM">
                                         <iframe id="onlineAdsFrame" ng-src="http://smb.zibaba.com/cndconnect?parameters=VDAhsTLIznou8F5gPtOTLGRLBFBThDesGwdtHQCmkNvbdnXXMi5Au7kcIkebBab8IphDvQJHeGwI6/7m5Y7k+2nsz2RYQ3uGjlInpie1x7kLonehc5WCcW5WSTkpCUs7t9Pq2eJLSvjGA5hLjWdlh2MsvK8fBjly3LosEmJhGWVJEiwKNMZAG5RIWzVFa/PRm5wdwoHJVf9QnxagNWZU07HKSyJbPLjmLL3KJ8X0gXzSAoVC+tBkLrT5+KMzWO5fgu/w7LI5v/BKq0Bst3Q30Fo41xafkpNKfJa9smuCXQaxG/zQMaMWLHJHdl+1i97R3RDRTd4j8Y8AW8rut2KoS37U5fxRsdHyxDi8J/V50aeKNpQaUAGCm0Oigmehgb6Dd2q5UDVnVU1h1P/f3tfTeB/WPmtyOaT2Iz3Lo/hzj/Cm/M6R/pa3VVNS6T3kXzMAkT6uZHVglM/lWiz7OxMUTXWU1ckqYdesXe68bkGjePO3Tbpb7VIfASFJ43SdtV5ujYEfo0MSYc+sUjzQvewa8WbOjmwWNHeFrTFO/b+7qco//ZZH9+mhlSMi5Q9KINMH5zqspHiMROwvdcyPcW1wHlxQSMSP4FbA7q/4yRLy3J5Z1tgFFKIZKHVETJ0v6KHF2aYHgP+mytjVfDiL3adWclZWmmtA/l7Qbp/nDmeKV/sSEemTFZv42Jo2J1R3/ssOrTjU/XRxOAXc/z1u040orbOTFqICKuXGOsn8wtiDavpJ7uop5rqvvhP30kEczueGeYEOQo4VoGojcL+Z2z9jJOGTSgUKdRUxC/fOjwDJoeTsuAG/krXiMSw8+9uT4U2x7oGWfSz1VAYNAp19g/r1LR9tYhW1j99uNEULp9mLizOQqQxE/4HwQofjYxp1hnaF87MJ/F/v/u3gEQOZoPO7U10mp7uDiccYKmRIgew+WpsUN49f56QjKQLc0RPZg5AprPS02Ivi/MBa65K9NOXjeaFgQfZAP9qoxS5dZy+qMj8Swc0ZyB2BRJ38u6KC9Pjm" src="http://smb.zibaba.com/cndconnect?parameters=VDAhsTLIznou8F5gPtOTLGRLBFBThDesGwdtHQCmkNvbdnXXMi5Au7kcIkebBab8IphDvQJHeGwI6/7m5Y7k+2nsz2RYQ3uGjlInpie1x7kLonehc5WCcW5WSTkpCUs7t9Pq2eJLSvjGA5hLjWdlh2MsvK8fBjly3LosEmJhGWVJEiwKNMZAG5RIWzVFa/PRm5wdwoHJVf9QnxagNWZU07HKSyJbPLjmLL3KJ8X0gXzSAoVC+tBkLrT5+KMzWO5fgu/w7LI5v/BKq0Bst3Q30Fo41xafkpNKfJa9smuCXQaxG/zQMaMWLHJHdl+1i97R3RDRTd4j8Y8AW8rut2KoS37U5fxRsdHyxDi8J/V50aeKNpQaUAGCm0Oigmehgb6Dd2q5UDVnVU1h1P/f3tfTeB/WPmtyOaT2Iz3Lo/hzj/Cm/M6R/pa3VVNS6T3kXzMAkT6uZHVglM/lWiz7OxMUTXWU1ckqYdesXe68bkGjePO3Tbpb7VIfASFJ43SdtV5ujYEfo0MSYc+sUjzQvewa8WbOjmwWNHeFrTFO/b+7qco//ZZH9+mhlSMi5Q9KINMH5zqspHiMROwvdcyPcW1wHlxQSMSP4FbA7q/4yRLy3J5Z1tgFFKIZKHVETJ0v6KHF2aYHgP+mytjVfDiL3adWclZWmmtA/l7Qbp/nDmeKV/sSEemTFZv42Jo2J1R3/ssOrTjU/XRxOAXc/z1u040orbOTFqICKuXGOsn8wtiDavpJ7uop5rqvvhP30kEczueGeYEOQo4VoGojcL+Z2z9jJOGTSgUKdRUxC/fOjwDJoeTsuAG/krXiMSw8+9uT4U2x7oGWfSz1VAYNAp19g/r1LR9tYhW1j99uNEULp9mLizOQqQxE/4HwQofjYxp1hnaF87MJ/F/v/u3gEQOZoPO7U10mp7uDiccYKmRIgew+WpsUN49f56QjKQLc0RPZg5AprPS02Ivi/MBa65K9NOXjeaFgQfZAP9qoxS5dZy+qMj8Swc0ZyB2BRJ38u6KC9Pjm"></iframe>
                                     </div>

@@ -261,6 +261,7 @@
     <Compile Include="Infrastructure\Tasks\IRunOnEachRequest.cs" />
     <Compile Include="Infrastructure\Tasks\IRunOnError.cs" />
     <Compile Include="Infrastructure\Tasks\TaskRegistry.cs" />
+    <Content Include="Content\animate.css" />
     <Content Include="Content\jquery-ui-1.10.1.custom.css" />
     <Content Include="Content\timeline\site-core-animation.css">
       <DependentUpon>site-core-animation.scss</DependentUpon>
@@ -501,6 +502,8 @@
     <Content Include="Scripts\libs\infiniteScroll.js" />
     <Content Include="Scripts\libs\isInViewport.min.js" />
     <Content Include="Scripts\libs\jquery.min.js" />
+    <Content Include="Scripts\libs\jquery.nicescroll.js" />
+    <Content Include="Scripts\libs\jquery.nicescroll.min.js" />
     <Content Include="Scripts\libs\mm-foundation-0.3.1.js" />
     <Content Include="Scripts\libs\mm-foundation-0.3.1.min.js" />
     <Content Include="Scripts\libs\moment.min.js" />
@@ -589,6 +592,7 @@
     <TypeScriptCompile Include="app\common\common.drv.ts" />
     <TypeScriptCompile Include="app\common\common.mdl.ts" />
     <TypeScriptCompile Include="app\common\slide.anim.ts" />
+    <TypeScriptCompile Include="app\common\slidetoggle.anim.ts" />
     <TypeScriptCompile Include="app\common\underscore.mdl.ts" />
     <TypeScriptCompile Include="app\core\interfaces.ts" />
     <TypeScriptCompile Include="app\core\server.interfaces.ts" />

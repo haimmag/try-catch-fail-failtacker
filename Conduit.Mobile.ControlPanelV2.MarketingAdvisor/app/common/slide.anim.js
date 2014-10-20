@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('app').animation('.slide-animation', slide);
+    angular.module('app').animation('.slide-left-animation', slide);
 
     function slide() {
         return {
@@ -10,7 +10,7 @@
                     //jQuery(element).animate({
                     //    opacity: 0, height: 0
                     //}, done);
-                    jQuery(element).slideToggle("fast", done);
+                    jQuery(element).toggle("slide", {}, 500);
                 } else {
                     done();
                 }
@@ -21,7 +21,7 @@
                     //jQuery(element).animate({
                     //    opacity: 1, height: 130
                     //}, done);
-                    jQuery(element).slideToggle("fast", done);
+                    jQuery(element).toggle("slide", {}, 500);
                 } else {
                     done();
                 }

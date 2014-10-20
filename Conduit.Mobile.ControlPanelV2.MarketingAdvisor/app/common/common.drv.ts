@@ -3,6 +3,60 @@
 
     var common = angular.module('common');
 
+    common.directive('niceScroll', ['$timeout' ,function ($timeout) {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attribute) {
+
+                var nicescrolConf = {
+                    cursorborder: "0",
+                    cursorcolor: "#888",
+                    cursorwidth: "10px",
+                    autohidemode: 'leave',
+                    zindex: 9999,
+                    cursoropacitymin: 0.3,
+                    cursorminheight: 30
+                };
+
+                element.niceScroll(nicescrolConf);
+
+                //$scope.$broadcast("app.main.ctrl.holidays.dataservice.repeat.done", []); 
+                scope.$on("app.main.ctrl.holidays.dataservice.repeat.done", function (event, args) {
+                    $timeout(function () {
+                        console.log("repeate done");                        
+                        $("body").getNiceScroll().resize();
+                        var scrollTop = $("html").scrollTop() + 1;
+                        var scrollTop1 = $("body").scrollTop() + 1;
+                        scrollTop = Math.max(scrollTop, scrollTop1);
+                        $("body,html").animate({ scrollTop: scrollTop }, "slow");
+                    }, 500);                    
+                });
+
+            }
+        };
+    }]);
+
+    common.directive(
+        "cnLogDomCreation",
+        function () {
+
+            // I bind the UI to the $scope.
+            function link($scope, element, attributes) {
+
+                console.log(
+                    attributes.cnLogDomCreation,
+                    $scope.$index
+                    );
+
+            }
+
+            // Return the directive configuration.
+            return ({
+                link: link
+            });
+
+        });
+
     common.directive('onlyAlphanumeric', function () {
         return {
             require: 'ngModel',
