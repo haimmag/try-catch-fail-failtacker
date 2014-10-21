@@ -9,13 +9,17 @@
             link: function (scope, element, attribute) {
 
                 var nicescrolConf = {
-                    cursorborder: "0",
-                    cursorcolor: "#888",
-                    cursorwidth: "10px",
-                    autohidemode: 'leave',
+                    styler: "fb",
+                    //cursorborder: "0",
+                    //cursorcolor: "#888",
+                    //cursorwidth: "8px",
+                    autohidemode: false,
                     zindex: 9999,
                     cursoropacitymin: 0.3,
-                    cursorminheight: 30
+                    cursorminheight: 30,
+                    //mousescrollstep: 10,                    
+                    scrollspeed:300,
+                    horizrailenabled: false
                 };
 
                 element.niceScroll(nicescrolConf);
@@ -24,11 +28,13 @@
                 scope.$on("app.main.ctrl.holidays.dataservice.repeat.done", function (event, args) {
                     $timeout(function () {
                         console.log("repeate done");                        
-                        $("body").getNiceScroll().resize();
-                        var scrollTop = $("html").scrollTop() + 1;
-                        var scrollTop1 = $("body").scrollTop() + 1;
-                        scrollTop = Math.max(scrollTop, scrollTop1);
-                        $("body,html").animate({ scrollTop: scrollTop }, "slow");
+                        //$("body").getNiceScroll().resize();                        
+                        $("body").getNiceScroll().remove();
+                        $("body").niceScroll(nicescrolConf);
+                        //var scrollTop = $("html").scrollTop() + 1;
+                        //var scrollTop1 = $("body").scrollTop() + 1;
+                        //scrollTop = Math.max(scrollTop, scrollTop1);
+                        //$("body,html").animate({ scrollTop: scrollTop }, "slow");
                     }, 500);                    
                 });
 
@@ -113,7 +119,9 @@
             link: function (scope, elm, attrs: any) {
                 elm.on('click', function () {
                     var el = angular.element($rootScope.stickyActiveElementSelector);
-                    $("body,html").animate({ scrollTop: el.offset().top - 125 }, "slow");
+                    if (el.length > 0) {
+                        $("body,html").animate({ scrollTop: el.offset().top - 125 }, "slow");
+                    }
                 });
             }
         };

@@ -460,6 +460,8 @@
     <Content Include="Images\wizard\field_error.png" />
     <Content Include="Images\wizard\field_success.png" />
     <Content Include="index.html" />
+    <Content Include="Scripts\libs\angular-filter.js" />
+    <Content Include="Scripts\libs\angular-filter.min.js" />
     <Content Include="Scripts\libs\angular-once.js" />
     <Content Include="Scripts\libs\angular-ui-date-picker.js" />
     <Content Include="Scripts\app.js" />
@@ -504,6 +506,7 @@
     <Content Include="Scripts\libs\jquery.min.js" />
     <Content Include="Scripts\libs\jquery.nicescroll.js" />
     <Content Include="Scripts\libs\jquery.nicescroll.min.js" />
+    <Content Include="Scripts\libs\jquery.nicescroll.plus.js" />
     <Content Include="Scripts\libs\mm-foundation-0.3.1.js" />
     <Content Include="Scripts\libs\mm-foundation-0.3.1.min.js" />
     <Content Include="Scripts\libs\moment.min.js" />

@@ -37,6 +37,8 @@
                 var spliceIdx = getSpliceIdx();
                 vm.dataRows.splice(spliceIdx, 0, newEvent);
 
+                $scope.$broadcast("app.main.ctrl.holidays.spliceidx", [spliceIdx]);
+
                 //position elements in place
                 scroll2event(newEvent);
             }, function (err) {

@@ -35,18 +35,7 @@
     });  
     
     $(function () {
-        $(document).foundation();
-               
-        //$("html").niceScroll({
-        //    cursorborder: "0",
-        //    cursorcolor: "#888",
-        //    cursorwidth: "10px",
-        //    autohidemode: 'leave',
-        //    zindex: 9999,
-        //    cursoropacitymin: 0.3,
-        //    cursorminheight: 30
-        //});
-               
+        $(document).foundation();                                      
     });  
     
 })();

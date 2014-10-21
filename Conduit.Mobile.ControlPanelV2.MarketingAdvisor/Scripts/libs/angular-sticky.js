@@ -1,5 +1,8 @@
 (function (namespace) {
     // set sticky module and directive
+    var all = [];
+    var spliceidx = 0;
+    var hasSpliceData = false;
 
     function stickyFn ($rootScope) {
         return {
@@ -27,7 +30,21 @@
                 // initialize states
                 activeBottom = false,
                 activeTop = false,
-                offset = {};
+                offset = {};                
+
+                if (!hasSpliceData) {
+                    all.push(element);
+                }
+                else {
+                    all.splice(spliceidx, 0, element);
+                    hasSpliceData = false;
+                }
+                
+
+                $scope.$on("app.main.ctrl.holidays.spliceidx", function (event, args) {                    
+                    spliceidx = args[0];
+                    hasSpliceData = true;
+                });
 
                 // activate sticky
                 function activate() {
@@ -84,10 +101,33 @@
                     wrapper.replaceWith(element);
 
                     activeTop = activeBottom = false;
-                }
+                }                
 
-                // window scroll listener
-                function onscroll() {
+                var colideEffectFn = function () {
+                    // find in stack top and colide element
+                    var currIdx = all.indexOf(element);
+                    var topElm = all[currIdx];
+                    var bottomElm = all[currIdx + 1];
+
+                    if (collision(topElm, bottomElm, 15)) {
+                        //console.log("colition")
+                        foundColide = true;
+
+                        var tOffset = topElm.offset();
+                        //var bOffset = bottomElm.offset();
+
+                        topElm.offset({ 'top': tOffset.top - 10, 'left': tOffset.left });
+                        //bottomElm.offset({ 'top': bOffset.top - 1, 'left': bOffset.left });
+                    }                    
+                };                
+
+                var windowYpos = -1;
+
+                // window scroll listener                
+                function onscroll() {                    
+                    if (windowYpos == window.pageYOffset) return false;
+                    windowYpos = window.pageYOffset;                    
+
                     // if activated
                     if (activeTop || activeBottom) {
                         // get wrapper offset
@@ -100,6 +140,9 @@
                         if (!activeTop && !activeBottom) {
                             deactivate();
                         }
+
+                        // make effect like FB colide element                    
+                        colideEffectFn();
                     }
                         // if not activated
                     else {
@@ -114,6 +157,24 @@
                             activate();
                         }
                     }
+                }
+
+                function collision($div1, $div2, offsetTop) {
+                    var x1 = $div1.offset().left;
+                    var y1 = $div1.offset().top;
+                    var h1 = $div1.outerHeight(true);
+                    var w1 = $div1.outerWidth(true);
+                    var b1 = y1 + h1;
+                    var r1 = x1 + w1;
+                    var x2 = $div2.offset().left;
+                    var y2 = $div2.offset().top - offsetTop;
+                    var h2 = $div2.outerHeight(true);
+                    var w2 = $div2.outerWidth(true);
+                    var b2 = y2 + h2;
+                    var r2 = x2 + w2;
+
+                    if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
+                    return true;
                 }
 
                 // window resize listener

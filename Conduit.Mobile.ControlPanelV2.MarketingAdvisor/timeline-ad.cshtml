@@ -14,7 +14,7 @@
 </head>
 <body ng-controller="MainCtrl as vm" class="cp-advisor-body" nice-scroll="">
     <div class="panel main-bg">
-        <div class="fixed">
+        <div class="fixed shadow">
             <div class="top_pane_bg">
                 <div class="space-bottom"></div>
                 <div class="row">
@@ -74,7 +74,7 @@
                         <div class="CP_div_seperator z-index-1"></div>
                         <span class="CP_mid_left_seperator"></span>
                         <div class="row content-bg CP-image-contnet">
-                            <div class="small-3 columns no-padding-left image-left-border" equalizer="ce">
+                            <div class="small-3 columns no-padding-left" equalizer="ce">
                                 <img src="Content/timeline/holidays/default/custom_event.jpg" " />
                             </div>
                             <div class="small-9 columns no-padding-left center display-table center" equalizer="ce">
@@ -125,15 +125,14 @@
         <div class="mid_fixed_pane background-custom-3" infinite-scroll load-more='vm.loadMore()' scroll-threshold="100">
             <div class="my-repeat-animation" ng-repeat="row in vm.dataRows | filter:search.text track by row.id" repeat-done="vm.elementsLayoutDone()" ng-cloak>
                 <div class="row">
-                    <div class="large-2 columns">
+                    <div class="large-2 columns {{::row.cssMarker}}">
                         <div class="row">
                             <div class="large-10 columns">
                                 <div class="CP_month_marker box">
-                                    <a href="#" class="button expand radius secondary medium-font"
-                                       sticky sticky-top="170" sticky-remove-css="info" sticky-media="(min-width:640px)"
-                                       sticky-selector=".{{::row.cssMarker}}" sticky-selector-css="active" sticky-active-element="true"
-                                       ng-class="{info: $index>0}" ng-if="::row.monthOccurrence">{{::row.monthText}}</a>
-                                    <input type="hidden" value="{{::row.cssMarker}}" />
+                                    <a href="#" class="button expand radius medium-font"
+                                       sticky sticky-top="120" sticky-media="(min-width:640px)"
+                                       sticky-selector=".{{::row.cssMarker}}" sticky-active-element="true"
+                                       ng-if="::row.monthOccurrence">{{::row.monthText}}</a>
                                 </div>
                             </div>
                             <div class="large-2 columns">
@@ -143,78 +142,80 @@
                     <div class="large-10 columns cp-main-data-content-warrper" id="mainContent{{::row.id}}" ng-mouseenter="btn.detailsmore=true" ng-mouseleave="btn.detailsmore=false">
                         <div class="CP_div_seperator"></div>
                         <span class="CP_mid_left_seperator"></span>
-                        <div class="row CP_image_contnet zoom-tranzition">
-                            <div class="small-3 columns no-padding-left image-left-border {{::row.cssMarker}}" ng-class="{active: $index==0}" equalizer="group">
-                                <img ng-src="{{::row.mainImage}}" src="Content/timeline/holidays/default/no_image.jpg"  />
-                            </div>
-                            <div class="small-9 columns" equalizer="group" ng-switch on="::row.actionType">
-                                @*show default*@
-                                <div class="no-padding-left center display-table" equalizer="group" ng-switch-default>
-                                    <div class="CP_image_content_main_more_text" ng-hide="!btn.detailsmore || row.detailsVisible">
-                                        <b>Check It Out!</b>
-                                    </div>
-                                    <div class="CP_image_content_main_more_btn" ng-click="row.detailsVisible = !row.detailsVisible;" ng-hide="row.detailsVisible" data-scroll-on-click="#mainContent{{::row.id}}">
-                                        <a href="" class="button expand radius-half" ng-class="{'radius-half-highlight': btn.detailsmore}"><i class="general foundicon-shevron"></i></a>
-                                    </div>
-                                    <div class="table-cell-middle space-bottom-half" ng-click="row.detailsVisible = !row.detailsVisible;">
-                                        <h5 class="subheader anchor-font-color">{{::row.contentInfoMainText}}</h5>
-                                        <h3 class="body-font-color">{{::row.contentInfoSubText}}</h3>
-                                    </div>
+                        <div class="row CP_image_contnet" style="overflow:hidden">
+                            <div class="zoom-tranzition">
+                                <div class="small-3 columns no-padding-left" equalizer="group">
+                                    <img ng-src="{{::row.mainImage}}" src="Content/timeline/holidays/default/no_image.jpg" />
                                 </div>
-                                @*show stats*@
-                                <div class="no-padding-left center" equalizer="group" ng-switch-when="2">
-                                    <div class="space-bottom-quarter space-top-quarter">
-                                        <h5 class="subheader anchor-font-color">{{::row.contentInfoMainText}}</h5>
-                                        <h4 class="body-font-color margin-top-minus">{{::row.contentInfoSubText}}</h4>
-                                        <div class="row">
-                                            <div class="large-push-2 large-8 columns end">
-                                                <div class="text-left bold medium-font"><b>Active Ads: {{::row.eventTypeData.activeAds}}</b></div>
-                                            </div>
+                                <div class="small-9 columns" equalizer="group" ng-switch on="::row.actionType">
+                                    @*show default*@
+                                    <div class="no-padding-left center display-table" equalizer="group" ng-switch-default>
+                                        <div class="CP_image_content_main_more_text" ng-hide="!btn.detailsmore || row.detailsVisible">
+                                            <b>Check It Out!</b>
                                         </div>
-                                        <div class="row">
-                                            <div class="large-push-2 large-8 columns end">
-                                                <div class="row">
-                                                    <div class="large-4 columns">
-                                                        <div class="row content-bg">
-                                                            <div class="large-6 columns">
-                                                                <img src="Content/images/genie_ic_active_clicks.png" />
-                                                                <p class="medium-normal-font anchor-font-color margin-botton-smaller">Clicks</p>
-                                                            </div>
-                                                            <div class="large-6 columns stats-border space-top-half ">
-                                                                <h4>{{::row.eventTypeData.clicks}}</h4>
+                                        <div class="CP_image_content_main_more_btn" ng-click="row.detailsVisible = !row.detailsVisible;" ng-hide="row.detailsVisible" data-scroll-on-click="#mainContent{{::row.id}}">
+                                            <a href="" class="button expand radius-half" ng-class="{'radius-half-highlight': btn.detailsmore}"><i class="general foundicon-shevron"></i></a>
+                                        </div>
+                                        <div class="table-cell-middle space-bottom-half" ng-click="row.detailsVisible = !row.detailsVisible;">
+                                            <h5 class="subheader anchor-font-color">{{::row.contentInfoMainText}}</h5>
+                                            <h3 class="body-font-color">{{::row.contentInfoSubText}}</h3>
+                                        </div>
+                                    </div>
+                                    @*show stats*@
+                                    <div class="no-padding-left center" equalizer="group" ng-switch-when="2">
+                                        <div class="space-bottom-quarter space-top-quarter">
+                                            <h5 class="subheader anchor-font-color">{{::row.contentInfoMainText}}</h5>
+                                            <h4 class="body-font-color margin-top-minus">{{::row.contentInfoSubText}}</h4>
+                                            <div class="row">
+                                                <div class="large-push-2 large-8 columns end">
+                                                    <div class="text-left bold medium-font"><b>Active Ads: {{::row.eventTypeData.activeAds}}</b></div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="large-push-2 large-8 columns end">
+                                                    <div class="row">
+                                                        <div class="large-4 columns">
+                                                            <div class="row content-bg">
+                                                                <div class="large-6 columns">
+                                                                    <img src="Content/images/genie_ic_active_clicks.png" />
+                                                                    <p class="medium-normal-font anchor-font-color margin-botton-smaller">Clicks</p>
+                                                                </div>
+                                                                <div class="large-6 columns stats-border space-top-half ">
+                                                                    <h4>{{::row.eventTypeData.clicks}}</h4>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="large-4 columns space-right space-left">
-                                                        <div class="row content-bg">
-                                                            <div class="large-6 columns">
-                                                                <img src="Content/images/genie_ic_active_views.png" />
-                                                                <p class="medium-normal-font anchor-font-color margin-botton-smaller">Views</p>
-                                                            </div>
-                                                            <div class="large-6 columns stats-border space-top-half">
-                                                                <h4>{{::row.eventTypeData.views}}</h4>
+                                                        <div class="large-4 columns space-right space-left">
+                                                            <div class="row content-bg">
+                                                                <div class="large-6 columns">
+                                                                    <img src="Content/images/genie_ic_active_views.png" />
+                                                                    <p class="medium-normal-font anchor-font-color margin-botton-smaller">Views</p>
+                                                                </div>
+                                                                <div class="large-6 columns stats-border space-top-half">
+                                                                    <h4>{{::row.eventTypeData.views}}</h4>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="large-4 columns">
-                                                        <div class="row content-bg">
-                                                            <div class="large-6 columns">
-                                                                <img src="Content/images/genie_ic_active_installs.png" />
-                                                                <p class="medium-normal-font anchor-font-color margin-botton-smaller">Installs</p>
-                                                            </div>
-                                                            <div class="large-6 columns stats-border space-top-half">
-                                                                <h4>{{::row.eventTypeData.installs}}</h4>
+                                                        <div class="large-4 columns">
+                                                            <div class="row content-bg">
+                                                                <div class="large-6 columns">
+                                                                    <img src="Content/images/genie_ic_active_installs.png" />
+                                                                    <p class="medium-normal-font anchor-font-color margin-botton-smaller">Installs</p>
+                                                                </div>
+                                                                <div class="large-6 columns stats-border space-top-half">
+                                                                    <h4>{{::row.eventTypeData.installs}}</h4>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="large-1 large-centered columns end space-top-quarter">
-                                                <a href="" class="button expand radius-full" ng-class="{'radius-full-highlight': btn.detailsmore}">
-                                                    <i class="general foundicon-icon-plus"></i>
-                                                </a>
+                                            <div class="row">
+                                                <div class="large-1 large-centered columns end space-top-quarter">
+                                                    <a href="" class="button expand radius-full" ng-class="{'radius-full-highlight': btn.detailsmore}">
+                                                        <i class="general foundicon-icon-plus"></i>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -339,6 +340,9 @@
             </div>
         </div>
     </div>
+
+    <div id="footer"></div>
+
     <br />
     <br />
 </body>

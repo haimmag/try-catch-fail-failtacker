@@ -51,6 +51,12 @@ iframe {
     padding-left: 0;
 }
 
+.fixed{
+    &.shadow{
+        box-shadow: 0px 4px 10px 4px rgba(0,0,0,0.10);
+    }
+}
+
 .transparent-button {
     background-color: #f7f7f7;
     color: #000;
@@ -272,15 +278,15 @@ iframe {
 }
 
 .zoom-tranzition {
-    -webkit-transition: all .4s ease-in-out;
-    -moz-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
+    -webkit-transition: all .9s ease-in-out;
+    -moz-transition: all .9s ease-in-out;
+    transition: all .9s ease-in-out;
 
     &:hover {
-        -webkit-transform: scale(1.01);
-        -moz-transform: scale(1.01);
-        -o-transform: scale(1.01);
-        transform: scale(1.01);
+        -webkit-transform: scale(1.02);
+        -moz-transform: scale(1.02);
+        -o-transform: scale(1.02);
+        transform: scale(1.02);
     }
 }
 
@@ -600,4 +606,13 @@ iframe {
     .ui-datepicker-trigger {
         width: 29%;
     }
+}
+
+#footer {
+   position:fixed;
+   left:0;
+   bottom:0;
+   height:100px;
+   width:100%;
+   background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));   
 }

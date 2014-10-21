@@ -15,7 +15,8 @@ namespace Conduit.Mobile.ControlPanelV2.External
             var libsBundle = new ScriptBundle("~/bundles/libs.js").Include(
                                     "~/Scripts/libs/jquery.min.js",
                                     "~/Scripts/libs/jquery-ui-1.10.1.custom.js",
-                                    "~/Scripts/libs/jquery.nicescroll.js",                                    
+                                    "~/Scripts/libs/jquery.nicescroll.js",
+                                    "~/Scripts/libs/jquery.nicescroll.plus.js",                                               
                                     "~/Scripts/libs/foundation.min.js",
                                     "~/Scripts/libs/moment.min.js",
                                     "~/Scripts/libs/angularjs_1_3/angular.min.js",
