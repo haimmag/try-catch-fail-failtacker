@@ -1,0 +1,39 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>switchClass demo</title>
+
+    <link href="../Content/jquery-ui-1.10.1.custom.css" rel="stylesheet" />
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+        }
+
+        .big {
+            width: 200px;
+            height: 200px;
+        }
+
+        .blue {
+            background-color: #00f;
+        }
+    </style>
+
+    <script src="../Scripts/libs/jquery.min.js"></script>
+    <script src="../Scripts/libs/jquery-ui-1.10.1.custom.js"></script>
+</head>
+<body>
+
+    <div class="big"></div>
+
+    <script>
+$( "div" ).click(function() {
+  $( this ).switchClass( "big", "blue", 1000, "easeInOutQuad" );
+});
+    </script>
+
+</body>
+</html>

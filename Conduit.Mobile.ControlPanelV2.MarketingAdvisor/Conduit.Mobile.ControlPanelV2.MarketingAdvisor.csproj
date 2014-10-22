@@ -262,6 +262,7 @@
     <Compile Include="Infrastructure\Tasks\IRunOnError.cs" />
     <Compile Include="Infrastructure\Tasks\TaskRegistry.cs" />
     <Content Include="Content\animate.css" />
+    <Content Include="Content\icomoon\arrow-up.png" />
     <Content Include="Content\jquery-ui-1.10.1.custom.css" />
     <Content Include="Content\timeline\site-core-animation.css">
       <DependentUpon>site-core-animation.scss</DependentUpon>
@@ -463,6 +464,7 @@
     <Content Include="Scripts\libs\angular-filter.js" />
     <Content Include="Scripts\libs\angular-filter.min.js" />
     <Content Include="Scripts\libs\angular-once.js" />
+    <Content Include="Scripts\libs\angular-sticky-custom.js" />
     <Content Include="Scripts\libs\angular-ui-date-picker.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -507,6 +509,7 @@
     <Content Include="Scripts\libs\jquery.nicescroll.js" />
     <Content Include="Scripts\libs\jquery.nicescroll.min.js" />
     <Content Include="Scripts\libs\jquery.nicescroll.plus.js" />
+    <Content Include="Scripts\libs\jquery.sticky.js" />
     <Content Include="Scripts\libs\mm-foundation-0.3.1.js" />
     <Content Include="Scripts\libs\mm-foundation-0.3.1.min.js" />
     <Content Include="Scripts\libs\moment.min.js" />
@@ -538,6 +541,7 @@
     <Content Include="Templates\popups\send_mail.html" />
     <Content Include="Templates\popups\sticker.html" />
     <Content Include="Templates\popups\thank_you.html" />
+    <Content Include="Tests\TestJQUI.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

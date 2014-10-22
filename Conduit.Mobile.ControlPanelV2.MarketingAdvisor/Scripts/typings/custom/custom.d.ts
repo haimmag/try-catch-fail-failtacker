@@ -13,4 +13,5 @@ interface JQuery {
     toggle(effect: string, options: any, duration?: number, complete?: Function): JQuery;
     niceScroll(options: any);
     getNiceScroll();
+    sticky(opt:any);
 }

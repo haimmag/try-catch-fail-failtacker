@@ -171,6 +171,27 @@
             };
         }]);
 
+    common.directive('sticker', [
+        '$window', '$parse', '$timeout', function ($window, $parse, $timeout) {
+            return {
+                restrict: 'A',
+                link: function (scope, elm, attrs) {
+                    var win = angular.element($window);
+
+                    var action = function () {
+                        if (win.scrollTop() > 50) {
+                            if (!elm.data('faded'))
+                                elm.data('faded', 1).stop(true).fadeIn();
+                        } else if (elm.data('faded')) {
+                            elm.data('faded', 0).stop(true).fadeOut();
+                        }
+                    };
+
+                    win.on("scroll", _.throttle(action, 500));
+                }
+            };
+        }]);
+
     common.directive('checkOffset', [
         '$window', function ($window) {
             return {

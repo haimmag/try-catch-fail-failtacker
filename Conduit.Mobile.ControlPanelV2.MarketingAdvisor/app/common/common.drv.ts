@@ -3,7 +3,7 @@
 
     var common = angular.module('common');
 
-    common.directive('niceScroll', ['$timeout' ,function ($timeout) {
+    common.directive('niceScroll', ['$timeout', function ($timeout) {
         return {
             restrict: 'A',
             link: function (scope, element, attribute) {
@@ -18,7 +18,7 @@
                     cursoropacitymin: 0.3,
                     cursorminheight: 30,
                     //mousescrollstep: 10,                    
-                    scrollspeed:300,
+                    scrollspeed: 300,
                     horizrailenabled: false
                 };
 
@@ -27,7 +27,7 @@
                 //$scope.$broadcast("app.main.ctrl.holidays.dataservice.repeat.done", []); 
                 scope.$on("app.main.ctrl.holidays.dataservice.repeat.done", function (event, args) {
                     $timeout(function () {
-                        console.log("repeate done");                        
+                        console.log("repeate done");
                         //$("body").getNiceScroll().resize();                        
                         $("body").getNiceScroll().remove();
                         $("body").niceScroll(nicescrolConf);
@@ -35,7 +35,7 @@
                         //var scrollTop1 = $("body").scrollTop() + 1;
                         //scrollTop = Math.max(scrollTop, scrollTop1);
                         //$("body,html").animate({ scrollTop: scrollTop }, "slow");
-                    }, 500);                    
+                    }, 500);
                 });
 
             }
@@ -70,7 +70,7 @@
             link: function (scope, element, attr, ctrl) {
                 function inputValue(val) {
                     if (val) {
-                        var alphanumeric = val.replace(/[^a-zA-Z0-9א-ת\.]/g, '');                        
+                        var alphanumeric = val.replace(/[^a-zA-Z0-9א-ת\.]/g, '');
 
                         if (alphanumeric !== val) {
                             ctrl.$setViewValue(alphanumeric);
@@ -106,7 +106,7 @@
             restrict: 'A',
             link: function (scope, elm, attrs: any) {
                 elm.on('click', function () {
-                    var el = angular.element(attrs.scrollOnClick);                    
+                    var el = angular.element(attrs.scrollOnClick);
                     $("body,html").animate({ scrollTop: el.offset().top - 125 }, "slow");
                 });
             }
@@ -127,12 +127,12 @@
         };
     }]);
 
-    common.directive('elSize', ['$window', '$parse', '$timeout', function ($window, $parse,$timeout) {
+    common.directive('elSize', ['$window', '$parse', '$timeout', function ($window, $parse, $timeout) {
         return {
             restrict: 'A',
             link: function (scope: ng.IScope, elm, attrs) {
                 var fn = $parse(attrs.elSize);
-                var win = angular.element($window);                
+                var win = angular.element($window);
 
                 win.on("resize", function (e) {
                     var size = { height: elm.height() };
@@ -170,15 +170,34 @@
     common.directive('hideOnScroll', ['$window', '$parse', '$timeout', function ($window, $parse, $timeout) {
         return {
             restrict: 'A',
-            link: function (scope: ng.IScope, elm, attrs) {                
+            link: function (scope: ng.IScope, elm, attrs) {
                 var win = angular.element($window);
-                var fn = $parse(attrs.hideOnScroll);                                                                   
+                var fn = $parse(attrs.hideOnScroll);
 
                 win.on("scroll", _.debounce(function () {
-                        fn.assign(scope, false);
-                        scope.$apply();
-                    }, 2500)
-                );
+                    fn.assign(scope, false);
+                    scope.$apply();
+                }, 2500)
+                    );
+            }
+        };
+    }]);
+
+    common.directive('sticker', ['$window', '$parse', '$timeout', function ($window, $parse, $timeout) {
+        return {
+            restrict: 'A',
+            link: function (scope: ng.IScope, elm, attrs) {
+                var win = angular.element($window);
+
+                var action = function () {
+                    if (win.scrollTop() > 50) {
+                        if (!elm.data('faded')) elm.data('faded', 1).stop(true).fadeIn();
+                    } else if (elm.data('faded')) {
+                        elm.data('faded', 0).stop(true).fadeOut();
+                    }
+                };
+                
+                win.on("scroll", _.throttle(action, 500));
             }
         };
     }]);
@@ -188,7 +207,7 @@
             restrict: 'A',
             link: function (scope, elm: JQuery, attrs) {
                 angular.element($window).on("scroll", function () {
-                    console.log(attrs.checkOffset + " - " + elm.offset().top);                    
+                    console.log(attrs.checkOffset + " - " + elm.offset().top);
                 });
             }
         };

@@ -12,7 +12,14 @@
     @System.Web.Optimization.Scripts.Render("~/bundles/angularjstimeline.js")
 
 </head>
-<body ng-controller="MainCtrl as vm" class="cp-advisor-body" nice-scroll="">
+<body ng-controller="MainCtrl as vm" class="cp-advisor-body" nice-scroll="" id="body">
+    
+    <div id="scroll2top" sticker="" class="z-index-1">
+        <a class="button expand radius custom1" data-scroll-on-click="#body">
+            <i class="foundicon-arrow-up i-pos"></i>
+        </a>
+    </div>    
+
     <div class="panel main-bg">
         <div class="fixed shadow">
             <div class="top_pane_bg">
@@ -41,9 +48,9 @@
                         </ul>
                     </div>
                     <div class="large-7 columns">
-                        <div class="CP_div_seperator"></div>
+                        <div class="CP_div_seperator1"></div>
                         <div class="row">
-                            <div class="large-1 columns cp-div-pointer" ng-click="search.isVisible=!search.isVisible">
+                            <div class="large-1 columns cp-div-pointer zoom-tranzition-1-2x" ng-click="search.isVisible=!search.isVisible">
                                 <i class="foundicon-search"></i>
                             </div>
                             <div class="large-6 columns end">
@@ -51,7 +58,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="large-3 columns hand-cursor" ng-click="btne.customEvents=!btne.customEvents;" sticky-click-scroll-element="">
+                    <div class="large-3 columns hand-cursor zoom-tranzition-1-2x" ng-click="btne.customEvents=!btne.customEvents;" sticky-click-scroll-element="">
                         <div class="row">
                             <div class="large-2 columns">
                                 <img src="Content/timeline/images/calendar.png">
@@ -128,10 +135,11 @@
                     <div class="large-2 columns {{::row.cssMarker}}">
                         <div class="row">
                             <div class="large-10 columns">
-                                <div class="CP_month_marker box">
+                                <div class="CP_month_marker box element-margin-top" id="cp_month{{::row.id}}">
                                     <a href="#" class="button expand radius medium-font"
-                                       sticky sticky-top="120" sticky-media="(min-width:640px)"
-                                       sticky-selector=".{{::row.cssMarker}}" sticky-active-element="true"
+                                       stickyc stickyc-top="120" stickyc-media="(min-width:640px)"
+                                       stickyc-selector=".{{::row.cssMarker}}" stickyc-active-element="true"
+                                       stickyc-css-parent="first-element-margin-top" stickyc-parent-element="#cp_month{{::row.id}}"
                                        ng-if="::row.monthOccurrence">{{::row.monthText}}</a>
                                 </div>
                             </div>
