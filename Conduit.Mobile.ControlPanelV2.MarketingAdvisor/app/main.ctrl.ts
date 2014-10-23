@@ -9,7 +9,7 @@
 
     function main($scope: ng.IScope, $rootScope, HolidaysDataService, $timeout, ValidationService) {
         /* jshint validthis: true */
-        var vm = this;          
+        var vm = this;
         var cachedData: Timeline.IEvent[];
 
         vm.filterByEventType = function (eventType, searchTitle) {
@@ -18,12 +18,14 @@
         };
 
         vm.elementsLayoutDone = function () {
-            $scope.$broadcast("app.main.ctrl.holidays.dataservice.repeat.done", []);            
+            console.log("broadcast new event");
+            $scope.$broadcast("app.main.ctrl.holidays.dataservice.repeat.done", []);
+            $scope.$broadcast("app.main.ctrl.update", []);
 
             if (vm.pageLoaded == false) {
                 vm.pageLoaded = true;
             }
-            
+
         };
 
         vm.createCustomEvent = function (ce, btne) {
@@ -41,7 +43,7 @@
                     var spliceIdx = getSpliceIdx();
                     vm.dataRows.splice(spliceIdx, 0, newEvent);
 
-                    $scope.$broadcast("app.main.ctrl.holidays.spliceidx", [spliceIdx]);            
+                    $scope.$broadcast("app.main.ctrl.update", []);
 
                     //position elements in place
                     scroll2event(newEvent);
@@ -49,7 +51,7 @@
                 },
                 function (err) {
                     //"validation fail"
-                });     
+                });
 
             function getSpliceIdx() {
                 var spliceIdx = 0;
@@ -61,7 +63,7 @@
                 }
 
                 return spliceIdx;
-            }       
+            }
 
             function scroll2event(newEvent) {
                 $timeout(function () {
@@ -76,7 +78,7 @@
 
         vm.cancelCustomEvent = function (ce, btne) {
             //clean form                        
-            btne.customEvents = false;            
+            btne.customEvents = false;
         };
 
         vm.loadMore = function () {
@@ -91,7 +93,13 @@
         };
 
         vm.customAdOptions = function () {
-            return { date: new Date(), addType:1 };
+            return { date: new Date(), addType: 1 };
+        };
+
+        vm.refresh = function () {
+            $timeout(function () {
+                $.waypoints('refresh');
+            }, 2000);
         };
 
         init();

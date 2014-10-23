@@ -698,7 +698,7 @@ interface JQueryAnimationOptions {
  * Static members of jQuery (those on $ and jQuery themselves)
  */
 interface JQueryStatic {
-
+    waypoints(opt: any): any;
     /**
      * Perform an asynchronous HTTP (Ajax) request.
      *
@@ -1392,7 +1392,7 @@ interface JQuery {
      * @param attributes An object of attribute-value pairs to set.
      */
     attr(attributes: Object): JQuery;
-    
+
     /**
      * Determine whether any of the matched elements are assigned the given class.
      *
@@ -1678,7 +1678,7 @@ interface JQuery {
      * @param value An integer representing the number of pixels, or an integer along with an optional unit of measure appended (as a string).
      */
     innerHeight(height: string): JQuery;
-    
+
     /**
      * Get the current computed width for the first element in the set of matched elements, including padding but not border.
      */
@@ -1697,7 +1697,7 @@ interface JQuery {
      * @param value An integer representing the number of pixels, or an integer along with an optional unit of measure appended (as a string).
      */
     innerWidth(width: string): JQuery;
-    
+
     /**
      * Get the current coordinates of the first element in the set of matched elements, relative to the document.
      */
@@ -1722,12 +1722,12 @@ interface JQuery {
      */
     outerHeight(includeMargin?: boolean): number;
 
-   /**
-    * Sets the outer height on elements in the set of matched elements, including padding and border.
-    *
-    * @param value An integer representing the number of pixels, or an integer along with an optional unit of measure appended (as a string).
-    */
-   outerHeight(height: number): JQuery;
+    /**
+     * Sets the outer height on elements in the set of matched elements, including padding and border.
+     *
+     * @param value An integer representing the number of pixels, or an integer along with an optional unit of measure appended (as a string).
+     */
+    outerHeight(height: number): JQuery;
 
     /**
      * Sets the outer height on elements in the set of matched elements, including padding and border.
@@ -1735,7 +1735,7 @@ interface JQuery {
      * @param value An integer representing the number of pixels, or an integer along with an optional unit of measure appended (as a string).
      */
     outerHeight(height: string): JQuery;
-    
+
     /**
      * Get the current computed width for the first element in the set of matched elements, including padding and border.
      *
@@ -2738,7 +2738,7 @@ interface JQuery {
      * @param data Data to be passed to the handler in event.data when an event is triggered.
      * @param handler A function to execute when the event is triggered. The value false is also allowed as a shorthand for a function that simply does return false.
     */
-    on(events: string, data : any, handler: (eventObject: JQueryEventObject, ...args: any[]) => any): JQuery;
+    on(events: string, data: any, handler: (eventObject: JQueryEventObject, ...args: any[]) => any): JQuery;
     /**
      * Attach an event handler function for one or more events to the selected elements.
      *
@@ -3935,7 +3935,7 @@ interface JQuery {
      * @param queueName A string containing the name of the queue. Defaults to fx, the standard effects queue.
      * @param callback The new function to add to the queue, with a function to call that will dequeue the next item.
      */
-    queue(queueName: string, callback: Function): JQuery;
+    queue(queueName: string, callback: Function): JQuery;    
 }
 declare module "jquery" {
     export = $;

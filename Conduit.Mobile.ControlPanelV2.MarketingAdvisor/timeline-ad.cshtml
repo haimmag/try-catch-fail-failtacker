@@ -15,7 +15,7 @@
 <body ng-controller="MainCtrl as vm" class="cp-advisor-body" nice-scroll="" id="body">
     
     <div id="scroll2top" sticker="" class="z-index-1">
-        <a class="button expand radius custom1" data-scroll-on-click="#body">
+        <a class="button expand radius custom1" data-scroll-on-click="#body" ng-click="vm.refresh()">
             <i class="foundicon-arrow-up i-pos"></i>
         </a>
     </div>    
@@ -133,13 +133,12 @@
             <div class="my-repeat-animation" ng-repeat="row in vm.dataRows | filter:search.text track by row.id" repeat-done="vm.elementsLayoutDone()" ng-cloak>
                 <div class="row">
                     <div class="large-2 columns {{::row.cssMarker}}">
-                        <div class="row">
-                            <div class="large-10 columns">
-                                <div class="CP_month_marker box element-margin-top" id="cp_month{{::row.id}}">
-                                    <a href="#" class="button expand radius medium-font"
+                        <div class="row" ng-if="::row.monthOccurrence">
+                            <div class="large-10 columns waypoint" zum-waypoint="wp" down="flags.on" up="flags.off" offset="150" ng-class="{ sticky : wp.flags.on, notSticky : wp.flags.off}">
+                                <div class="CP_month_marker box" id="cp_month{{::row.id}}">
+                                    <a href="#" class="button expand radius medium-font btn-month-marker" id="h_month{{::row.id}}"
                                        stickyc stickyc-top="120" stickyc-media="(min-width:640px)"
-                                       stickyc-selector=".{{::row.cssMarker}}" stickyc-active-element="true"
-                                       stickyc-css-parent="first-element-margin-top" stickyc-parent-element="#cp_month{{::row.id}}"
+                                       stickyc-selector=".{{::row.cssMarker}}" stickyc-active-element="true" stickyc-css="stickyc-css"
                                        ng-if="::row.monthOccurrence">{{::row.monthText}}</a>
                                 </div>
                             </div>

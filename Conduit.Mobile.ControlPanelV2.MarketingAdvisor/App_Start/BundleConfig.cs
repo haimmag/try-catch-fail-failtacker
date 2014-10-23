@@ -16,7 +16,8 @@ namespace Conduit.Mobile.ControlPanelV2.External
                                     "~/Scripts/libs/jquery.min.js",
                                     "~/Scripts/libs/jquery-ui-1.10.1.custom.js",
                                     "~/Scripts/libs/jquery.nicescroll.js",
-                                    "~/Scripts/libs/jquery.nicescroll.plus.js",                                    
+                                    "~/Scripts/libs/jquery.nicescroll.plus.js",
+                                    "~/Scripts/libs/waypoints.js",                                    
                                     "~/Scripts/libs/foundation.min.js",
                                     "~/Scripts/libs/moment.min.js",
                                     "~/Scripts/libs/angularjs_1_3/angular.min.js",
@@ -32,7 +33,8 @@ namespace Conduit.Mobile.ControlPanelV2.External
                                     "~/Scripts/libs/angular-ui-date-picker.js",
                                     "~/Scripts/libs/angularjs_1_3/angular-animate.min.js",
                                     "~/Scripts/libs/infiniteScroll.js",
-                                    "~/Scripts/libs/angular-sticky.js",                                    
+                                    "~/Scripts/libs/angular-sticky.js",
+                                    "~/Scripts/libs/angular-waypoints.js",                                    
                                     "~/Scripts/libs/angular-sticky-custom.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angularjstimeline.js")                

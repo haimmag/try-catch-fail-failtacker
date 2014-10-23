@@ -487,6 +487,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\libs\angular-waypoints.js" />
     <Content Include="Scripts\libs\jquery-ui-1.10.1.custom.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -518,6 +519,8 @@
     <Content Include="Scripts\libs\ng-infinite-scroll.min.js" />
     <Content Include="Scripts\libs\string.js" />
     <Content Include="Scripts\libs\underscore-min.js" />
+    <Content Include="Scripts\libs\waypoints.js" />
+    <Content Include="Scripts\libs\waypoints.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -541,6 +544,7 @@
     <Content Include="Templates\popups\send_mail.html" />
     <Content Include="Templates\popups\sticker.html" />
     <Content Include="Templates\popups\thank_you.html" />
+    <Content Include="Tests\PushScroll.html" />
     <Content Include="Tests\TestJQUI.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

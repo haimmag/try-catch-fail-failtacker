@@ -115,19 +115,24 @@ iframe {
 /*.CP_warrper_btn.pos_fixed {
         position: fixed;
     }*/
-.CP_month_marker.box1 {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-  background-color: transparent;
-  height: 80px;
-  margin-bottom: 2px; }
-.CP_month_marker.stuck {
-  position: fixed;
-  top: 130px; }
-.CP_month_marker.element-margin-top {
-  margin-top: 3.3rem !important; }
+.CP_month_marker {
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out; }
+  .CP_month_marker.box1 {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: transparent;
+    height: 80px;
+    margin-bottom: 2px; }
+  .CP_month_marker.stuck {
+    position: fixed;
+    top: 130px; }
+  .CP_month_marker.element-margin-top {
+    margin-top: 3.3rem !important; }
 
 .CP_div_seperator1 {
   border-right: 1px solid #a7a7a7;
@@ -519,3 +524,32 @@ iframe {
       width: 32px;
       height: 32px;
       margin: auto; }
+
+.disable-hover {
+  pointer-events: none !important; }
+
+.waypoint {
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  margin-top: 0 !important; }
+  .waypoint.sticky {
+    margin-top: 3.3rem !important;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out; }
+  .waypoint.notSticky {
+    margin-top: 0 !important;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out; }
+
+.btn-month-marker.stickyc-css {
+  margin-top: 0 !important;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out; }

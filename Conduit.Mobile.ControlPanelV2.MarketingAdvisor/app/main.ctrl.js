@@ -16,7 +16,9 @@
         };
 
         vm.elementsLayoutDone = function () {
+            console.log("broadcast new event");
             $scope.$broadcast("app.main.ctrl.holidays.dataservice.repeat.done", []);
+            $scope.$broadcast("app.main.ctrl.update", []);
 
             if (vm.pageLoaded == false) {
                 vm.pageLoaded = true;
@@ -37,7 +39,7 @@
                 var spliceIdx = getSpliceIdx();
                 vm.dataRows.splice(spliceIdx, 0, newEvent);
 
-                $scope.$broadcast("app.main.ctrl.holidays.spliceidx", [spliceIdx]);
+                $scope.$broadcast("app.main.ctrl.update", []);
 
                 //position elements in place
                 scroll2event(newEvent);
@@ -87,6 +89,12 @@
 
         vm.customAdOptions = function () {
             return { date: new Date(), addType: 1 };
+        };
+
+        vm.refresh = function () {
+            $timeout(function () {
+                $.waypoints('refresh');
+            }, 2000);
         };
 
         init();

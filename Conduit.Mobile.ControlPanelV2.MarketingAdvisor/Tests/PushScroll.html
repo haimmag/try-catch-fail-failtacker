@@ -1,0 +1,483 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        body {
+            margin: 0;
+            background: #333;
+            color: #fff;
+        }
+
+        .followMeBar {
+            background: #222;
+            border-bottom: solid 1px #111;
+            border-top: solid 1px #444;
+            padding: 1%;
+            position: relative;
+            z-index: 1;
+        }
+
+            .followMeBar.fixed {
+                position: fixed;
+                top: 0;
+                width: 98%;
+                z-index: 0;
+            }
+
+                .followMeBar.fixed.absolute {
+                    position: absolute;
+                }
+
+
+        #addTitles {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2;
+        }
+    </style>
+    <script src="../Scripts/jquery-1.10.2.js"></script>
+    <script src="../Scripts/libs/jquery.nicescroll.js"></script>
+    <script>
+
+
+
+        function stickyTitles(stickies) {
+
+            var titles = {};
+
+            titles.init = function () {
+
+                stickies.each(function () {
+
+                    var thisSticky = $(this);
+
+                    thisSticky
+                        .parent()
+                        .height(thisSticky.outerHeight());
+
+                    $.data(thisSticky[0], 'pos', thisSticky.offset().top);
+                });
+
+                $(window).off("scroll.stickies").on("scroll.stickies", function () {
+
+                    titles.scroll();
+
+                });
+            }
+
+            titles.scroll = function () {
+
+                stickies.each(function (i) {
+
+                    var thisSticky = $(this),
+                        nextSticky = stickies.eq(i + 1),
+                        prevSticky = stickies.eq(i - 1),
+                        pos = $.data(thisSticky[0], 'pos');
+
+                    if (pos <= $(window).scrollTop()) {
+
+                        thisSticky.addClass("fixed");
+
+                        if (nextSticky.length > 0 && thisSticky.offset().top >= $.data(nextSticky[0], 'pos') - thisSticky.outerHeight()) {
+
+                            thisSticky.addClass("absolute").css("top", $.data(nextSticky[0], 'pos') - thisSticky.outerHeight());
+
+                        }
+
+                    } else {
+
+                        thisSticky.removeClass("fixed");
+
+                        if (prevSticky.length > 0 && $(window).scrollTop() <= $.data(thisSticky[0], 'pos') - prevSticky.outerHeight()) {
+
+                            prevSticky.removeClass("absolute").removeAttr("style");
+
+                        }
+                    }
+                });
+            }
+
+            titles.init();
+        }
+
+        $(document).ready(function () {
+
+            var nicescrolConf = {
+                styler: "fb",
+                //cursorborder: "0",
+                //cursorcolor: "#888",
+                //cursorwidth: "8px",
+                autohidemode: false,
+                zindex: 9999,
+                cursoropacitymin: 0.3,
+                cursorminheight: 30,
+                //mousescrollstep: 10,                    
+                scrollspeed: 300,
+                horizrailenabled: false
+            };
+
+            $("body").niceScroll(nicescrolConf);
+
+
+            stickyTitles(jQuery(".followMeBar"));
+
+            $("#addTitles").on("click", function () {
+
+                $("body").append('<div class="followWrap"><div class="followMeBar">New Bar</div></div><br><br><br><br><br><br><br><br><br><br>');
+
+                stickyTitles(jQuery(".followMeBar"));
+
+                return false;
+
+            });
+        });
+    </script>
+</head>
+<body>
+
+
+    <button id="addTitles"> Add Titles</button>
+
+    <div class="followWrap">
+        <div class="followMeBar">A	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">B	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">C	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">D	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">e	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">f	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">g	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">h	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">i	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">j	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">k	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">l	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">m	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">n	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">O	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">P	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">Q	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">R	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">S	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">T</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">U</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">V	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">W</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">X	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">Y	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="followWrap">
+        <div class="followMeBar">Z	</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+</body>
+</html>

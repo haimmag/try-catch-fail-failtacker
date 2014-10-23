@@ -30,12 +30,13 @@
                         console.log("repeate done");
                         //$("body").getNiceScroll().resize();                        
                         $("body").getNiceScroll().remove();
-                        $("body").niceScroll(nicescrolConf);
+                        $("body").niceScroll(nicescrolConf);                        
                         //var scrollTop = $("html").scrollTop() + 1;
                         //var scrollTop1 = $("body").scrollTop() + 1;
                         //scrollTop = Math.max(scrollTop, scrollTop1);
                         //$("body,html").animate({ scrollTop: scrollTop }, "slow");
                     }, 500);
+
                 });
 
             }
