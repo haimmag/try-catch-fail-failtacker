@@ -5,12 +5,18 @@
         .module('app')
         .controller('MainCtrl', main);
 
-    main.$inject = ['$scope', '$rootScope', 'Holidays.DataService', '$timeout', 'ValidationService'];
+    main.$inject = ['$scope', '$rootScope', 'Holidays.DataService', '$timeout', 'ValidationService', 'CommonService','AmsService'];
 
-    function main($scope: ng.IScope, $rootScope, HolidaysDataService, $timeout, ValidationService) {
+    function main($scope, $rootScope, HolidaysDataService, $timeout, ValidationService, CommonService, AmsService) {
         /* jshint validthis: true */
         var vm = this;
         var cachedData: Timeline.IEvent[];
+
+        // get config data
+        var config = CommonService.config;
+
+        // Get AppId from url
+        vm.appId = config.productionAppId;
 
         vm.filterByEventType = function (eventType, searchTitle) {
             vm.search.event = searchTitle;
@@ -19,7 +25,7 @@
 
         vm.elementsLayoutDone = function () {
             console.log("broadcast new event");
-            $scope.$broadcast("app.main.ctrl.holidays.dataservice.repeat.done", []);
+            $scope.$broadcast("app.main.ctrl.dataservice.repeat.done", []);
             $scope.$broadcast("app.main.ctrl.update", []);
 
             if (vm.pageLoaded == false) {
@@ -96,10 +102,8 @@
             return { date: new Date(), addType: 1 };
         };
 
-        vm.refresh = function () {
-            $timeout(function () {
-                $.waypoints('refresh');
-            }, 2000);
+        vm.refresh = function () {            
+            $scope.$broadcast("app.main.ctrl.update", []);
         };
 
         init();
@@ -108,9 +112,10 @@
             vm.pageLoaded = false;
             vm.search = { event: 'All Events' };
             HolidaysDataService.getData().then(getDataSuccess);
+            AmsService.getAppData(vm.appId).then(getAppDataSuccess);
 
             vm.scrollCount = 20;
-            vm.scrollPageIndex = 1;
+            vm.scrollPageIndex = 1;            
         }
 
         function getDataSuccess(data) {
@@ -123,6 +128,9 @@
 
         var loadMoreFn = _.debounce(function () {
             console.log("load more");
+
+            //do not load more when in search
+            if ($scope.search && $scope.search.text != '') return;
 
             var count2take = vm.scrollCount * (vm.scrollPageIndex + 1)
 
@@ -164,5 +172,10 @@
                 $scope.$apply();
             }
         }
+
+        function getAppDataSuccess(appData) {
+            vm.appData = appData;
+        }
+
     }
 })();

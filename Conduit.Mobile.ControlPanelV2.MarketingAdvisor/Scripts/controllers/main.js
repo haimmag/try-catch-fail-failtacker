@@ -1,4 +1,4 @@
-app.controller('MainCtrl', function ($scope, $rootScope, $http, AmsService, LocalStorageService, CommonService) {
+app.controller('MainCtrl', function ($scope, $rootScope, $http, AmsService, LocalStorageService, CommonService, AppMobileLinksService) {
     'use strict';
 
     var config = CommonService.config;
@@ -138,6 +138,11 @@ app.controller('MainCtrl', function ($scope, $rootScope, $http, AmsService, Loca
 
             $scope.qrCodeUrl = 'https://chart.googleapis.com/chart?chs=500x500&cht=qr&chl=http://www.dmob.me/' + $scope.appData.productionAppId;
         });
+    });
+
+    // test only
+    AppMobileLinksService.getCustomLinks().then(function (data) {
+        
     });
 
     function setMarketingConfigurationData(storedInfo, bannerImages) {

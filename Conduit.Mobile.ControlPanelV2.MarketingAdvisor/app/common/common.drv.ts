@@ -24,8 +24,8 @@
 
                 element.niceScroll(nicescrolConf);
 
-                //$scope.$broadcast("app.main.ctrl.holidays.dataservice.repeat.done", []); 
-                scope.$on("app.main.ctrl.holidays.dataservice.repeat.done", function (event, args) {
+                //$scope.$broadcast("app.main.ctrl.dataservice.repeat.done", []); 
+                scope.$on("app.main.ctrl.dataservice.repeat.done", function (event, args) {
                     $timeout(function () {
                         console.log("repeate done");
                         //$("body").getNiceScroll().resize();                        
@@ -147,7 +147,7 @@
                     scope.$apply();
                 });
 
-                //scope.$on("app.main.ctrl.holidays.dataservice.repeat.done", function (event, args) {
+                //scope.$on("app.main.ctrl.dataservice.repeat.done", function (event, args) {
                 //    var size = { height: elm.height() };
                 //    fn.assign(scope, size);                    
                 //});
@@ -210,6 +210,97 @@
                 angular.element($window).on("scroll", function () {
                     console.log(attrs.checkOffset + " - " + elm.offset().top);
                 });
+            }
+        };
+    }]);
+
+    common.directive('scroll2fixed', ['$window', '$timeout', '$rootScope', function ($window, $timeout, $rootScope) {
+        return {
+            restrict: 'A',
+            link: function (scope, elm: JQuery, attrs) {
+                
+                var lastDate = new Date().getTime();
+                var _top = $(window).scrollTop();
+                var _direction;
+
+                var lastPos = null
+                var timer = 0;
+                var delta = 0;
+
+                //scroll direction
+                $(window).scroll(function () {
+                    var _cur_top = $(window).scrollTop();
+                    if (_top < _cur_top) {
+                        _direction = 'down';
+                    }
+                    else {
+                        _direction = 'up';
+                    }
+                    _top = _cur_top;                    
+
+                    if (_direction == 'down') {
+                        var newPos = _cur_top;
+                        if (lastPos != null) {
+                            delta = newPos - lastPos;
+                        }
+                        lastPos = newPos;
+                        timer && clearTimeout(timer);
+                        timer = setTimeout(function () { lastPos = null; }, 40);
+                    }
+                });              
+
+                scope.$on("app.main.ctrl.update", function (event, args) {
+                    $timeout(function () {
+                        console.log("repeate done sticky scroll");
+
+                        $('.btn-month-marker').trigger('detach.ScrollToFixed');                        
+
+                        var summaries = $('.btn-month-marker');
+                        summaries.each(function (i) {
+                            var summary = $(summaries[i]);
+                            var next = summaries[i + 1];
+
+                            summary.scrollToFixed({
+                                marginTop: $('.fixed.shadow').outerHeight(true) + 10 ,
+                                limit: function () {
+                                    var limit = 0;
+                                    if (next) {
+                                        limit = $(next).parents(".row").first().offset().top - $(this).outerHeight(true) - 16;
+                                    } else {
+                                        limit = $('#footer').offset().top - $(this).outerHeight(true) - 10;
+                                    }
+                                    return limit;
+                                },
+                                removeOffsets: true,                                
+                                preAbsolute: function () { 
+                                    if(delta < 8)                                                                                                            
+                                        $(next).prev().animate({ 'margin-top': "50px" }, 200);
+                                    
+                                    //custom popup marker
+                                    setStickyActiveElementSelector(this);
+                                },
+                                fixed: function () {
+                                    if (_direction == 'up') {
+                                        var elmTop = $(next).prev().css("margin-top");
+                                        
+                                        if (elmTop == "50px")
+                                            $(next).prev().animate({ 'margin-top': "0px" }, 100);
+
+                                        //custom popup marker
+                                        setStickyActiveElementSelector(this);
+                                    }
+                                }
+                            });
+                        });
+
+                        function setStickyActiveElementSelector(elm) {
+                            $rootScope.stickyActiveElementSelector = '#' + $(elm).parent().attr('id');
+                        }
+
+                    }, 500);
+
+                });
+
             }
         };
     }]);

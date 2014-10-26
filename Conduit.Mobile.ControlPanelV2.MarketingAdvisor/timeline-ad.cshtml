@@ -58,7 +58,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="large-3 columns hand-cursor zoom-tranzition-1-2x" ng-click="btne.customEvents=!btne.customEvents;" sticky-click-scroll-element="">
+                    <div class="large-3 columns hand-cursor" ng-click="btne.customEvents=!btne.customEvents;" sticky-click-scroll-element="">
                         <div class="row">
                             <div class="large-2 columns">
                                 <img src="Content/timeline/images/calendar.png">
@@ -129,17 +129,16 @@
         </div>
         @*end custom event*@
 
-        <div class="mid_fixed_pane background-custom-3" infinite-scroll load-more='vm.loadMore()' scroll-threshold="100">
+        <div class="mid_fixed_pane background-custom-3" infinite-scroll load-more='vm.loadMore()' scroll-threshold="100" scroll2fixed="">
             <div class="my-repeat-animation" ng-repeat="row in vm.dataRows | filter:search.text track by row.id" repeat-done="vm.elementsLayoutDone()" ng-cloak>
                 <div class="row">
                     <div class="large-2 columns {{::row.cssMarker}}">
                         <div class="row" ng-if="::row.monthOccurrence">
-                            <div class="large-10 columns waypoint" zum-waypoint="wp" down="flags.on" up="flags.off" offset="150" ng-class="{ sticky : wp.flags.on, notSticky : wp.flags.off}">
+                            <div class="large-10 columns">
                                 <div class="CP_month_marker box" id="cp_month{{::row.id}}">
+                                    <div class="month-spacer"></div>
                                     <a href="#" class="button expand radius medium-font btn-month-marker" id="h_month{{::row.id}}"
-                                       stickyc stickyc-top="120" stickyc-media="(min-width:640px)"
-                                       stickyc-selector=".{{::row.cssMarker}}" stickyc-active-element="true" stickyc-css="stickyc-css"
-                                       ng-if="::row.monthOccurrence">{{::row.monthText}}</a>
+                                       ng-if="::row.monthOccurrence">{{::row.monthText}}</a>                                    
                                 </div>
                             </div>
                             <div class="large-2 columns">
@@ -156,14 +155,14 @@
                                 </div>
                                 <div class="small-9 columns" equalizer="group" ng-switch on="::row.actionType">
                                     @*show default*@
-                                    <div class="no-padding-left center display-table" equalizer="group" ng-switch-default>
+                                    <div class="no-padding-left center display-table" ng-switch-default>
                                         <div class="CP_image_content_main_more_text" ng-hide="!btn.detailsmore || row.detailsVisible">
                                             <b>Check It Out!</b>
                                         </div>
                                         <div class="CP_image_content_main_more_btn" ng-click="row.detailsVisible = !row.detailsVisible;" ng-hide="row.detailsVisible" data-scroll-on-click="#mainContent{{::row.id}}">
                                             <a href="" class="button expand radius-half" ng-class="{'radius-half-highlight': btn.detailsmore}"><i class="general foundicon-shevron"></i></a>
                                         </div>
-                                        <div class="table-cell-middle space-bottom-half" ng-click="row.detailsVisible = !row.detailsVisible;">
+                                        <div class="space-bottom-half space-top-double" ng-click="row.detailsVisible = !row.detailsVisible;">
                                             <h5 class="subheader anchor-font-color">{{::row.contentInfoMainText}}</h5>
                                             <h3 class="body-font-color">{{::row.contentInfoSubText}}</h3>
                                         </div>
@@ -254,7 +253,7 @@
                                 <!--app install-->
                                 <div class="row detials_func_content show-animation" ng-if="btn.install.funcvisible">
                                     @*<div class="small-12 columns" ng-controller="timelineapps.AppInstallCtrl as installVM" data-timelineapps.appinstall="">
-                                        </div>*@
+                                    </div>*@
                                     <div class="small-12 columns onlineAdsWrapper" ng-controller="timelineapps.AppInstallIfrmCtrl as installVM">
                                         <iframe id="onlineAdsFrame" ng-src="http://smb.zibaba.com/cndconnect?parameters=VDAhsTLIznou8F5gPtOTLGRLBFBThDesGwdtHQCmkNvbdnXXMi5Au7kcIkebBab8IphDvQJHeGwI6/7m5Y7k+2nsz2RYQ3uGjlInpie1x7kLonehc5WCcW5WSTkpCUs7t9Pq2eJLSvjGA5hLjWdlh2MsvK8fBjly3LosEmJhGWVJEiwKNMZAG5RIWzVFa/PRm5wdwoHJVf9QnxagNWZU07HKSyJbPLjmLL3KJ8X0gXzSAoVC+tBkLrT5+KMzWO5fgu/w7LI5v/BKq0Bst3Q30Fo41xafkpNKfJa9smuCXQaxG/zQMaMWLHJHdl+1i97R3RDRTd4j8Y8AW8rut2KoS37U5fxRsdHyxDi8J/V50aeKNpQaUAGCm0Oigmehgb6Dd2q5UDVnVU1h1P/f3tfTeB/WPmtyOaT2Iz3Lo/hzj/Cm/M6R/pa3VVNS6T3kXzMAkT6uZHVglM/lWiz7OxMUTXWU1ckqYdesXe68bkGjePO3Tbpb7VIfASFJ43SdtV5ujYEfo0MSYc+sUjzQvewa8WbOjmwWNHeFrTFO/b+7qco//ZZH9+mhlSMi5Q9KINMH5zqspHiMROwvdcyPcW1wHlxQSMSP4FbA7q/4yRLy3J5Z1tgFFKIZKHVETJ0v6KHF2aYHgP+mytjVfDiL3adWclZWmmtA/l7Qbp/nDmeKV/sSEemTFZv42Jo2J1R3/ssOrTjU/XRxOAXc/z1u040orbOTFqICKuXGOsn8wtiDavpJ7uop5rqvvhP30kEczueGeYEOQo4VoGojcL+Z2z9jJOGTSgUKdRUxC/fOjwDJoeTsuAG/krXiMSw8+9uT4U2x7oGWfSz1VAYNAp19g/r1LR9tYhW1j99uNEULp9mLizOQqQxE/4HwQofjYxp1hnaF87MJ/F/v/u3gEQOZoPO7U10mp7uDiccYKmRIgew+WpsUN49f56QjKQLc0RPZg5AprPS02Ivi/MBa65K9NOXjeaFgQfZAP9qoxS5dZy+qMj8Swc0ZyB2BRJ38u6KC9Pjm" src="http://smb.zibaba.com/cndconnect?parameters=VDAhsTLIznou8F5gPtOTLGRLBFBThDesGwdtHQCmkNvbdnXXMi5Au7kcIkebBab8IphDvQJHeGwI6/7m5Y7k+2nsz2RYQ3uGjlInpie1x7kLonehc5WCcW5WSTkpCUs7t9Pq2eJLSvjGA5hLjWdlh2MsvK8fBjly3LosEmJhGWVJEiwKNMZAG5RIWzVFa/PRm5wdwoHJVf9QnxagNWZU07HKSyJbPLjmLL3KJ8X0gXzSAoVC+tBkLrT5+KMzWO5fgu/w7LI5v/BKq0Bst3Q30Fo41xafkpNKfJa9smuCXQaxG/zQMaMWLHJHdl+1i97R3RDRTd4j8Y8AW8rut2KoS37U5fxRsdHyxDi8J/V50aeKNpQaUAGCm0Oigmehgb6Dd2q5UDVnVU1h1P/f3tfTeB/WPmtyOaT2Iz3Lo/hzj/Cm/M6R/pa3VVNS6T3kXzMAkT6uZHVglM/lWiz7OxMUTXWU1ckqYdesXe68bkGjePO3Tbpb7VIfASFJ43SdtV5ujYEfo0MSYc+sUjzQvewa8WbOjmwWNHeFrTFO/b+7qco//ZZH9+mhlSMi5Q9KINMH5zqspHiMROwvdcyPcW1wHlxQSMSP4FbA7q/4yRLy3J5Z1tgFFKIZKHVETJ0v6KHF2aYHgP+mytjVfDiL3adWclZWmmtA/l7Qbp/nDmeKV/sSEemTFZv42Jo2J1R3/ssOrTjU/XRxOAXc/z1u040orbOTFqICKuXGOsn8wtiDavpJ7uop5rqvvhP30kEczueGeYEOQo4VoGojcL+Z2z9jJOGTSgUKdRUxC/fOjwDJoeTsuAG/krXiMSw8+9uT4U2x7oGWfSz1VAYNAp19g/r1LR9tYhW1j99uNEULp9mLizOQqQxE/4HwQofjYxp1hnaF87MJ/F/v/u3gEQOZoPO7U10mp7uDiccYKmRIgew+WpsUN49f56QjKQLc0RPZg5AprPS02Ivi/MBa65K9NOXjeaFgQfZAP9qoxS5dZy+qMj8Swc0ZyB2BRJ38u6KC9Pjm"></iframe>
                                     </div>

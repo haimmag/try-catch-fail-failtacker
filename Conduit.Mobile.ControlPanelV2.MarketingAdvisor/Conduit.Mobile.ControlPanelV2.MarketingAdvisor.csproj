@@ -261,6 +261,8 @@
     <Compile Include="Infrastructure\Tasks\IRunOnEachRequest.cs" />
     <Compile Include="Infrastructure\Tasks\IRunOnError.cs" />
     <Compile Include="Infrastructure\Tasks\TaskRegistry.cs" />
+    <Content Include="app\shared\services\ams.srv.js" />
+    <Content Include="app\shared\services\common.srv.js" />
     <Content Include="Content\animate.css" />
     <Content Include="Content\icomoon\arrow-up.png" />
     <Content Include="Content\jquery-ui-1.10.1.custom.css" />
@@ -488,6 +490,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\libs\angular-waypoints.js" />
+    <Content Include="Scripts\libs\jquery-scrolltofixed.js" />
+    <Content Include="Scripts\libs\jquery-scrolltofixed.min.js" />
     <Content Include="Scripts\libs\jquery-ui-1.10.1.custom.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -524,6 +528,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\services\app-mobile-links.srv.js" />
     <Content Include="Scripts\services\common.js" />
     <Content Include="Scripts\services\ams.js" />
     <Content Include="Scripts\services\localstorage.js" />

@@ -1,6 +1,6 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('common', ['stickyc', 'ngEqualizer', 'infinite-scroll', 'validation.engine', 'ui.date','zumba.angular-waypoints']);        
+    angular.module('common', ['ngEqualizer', 'infinite-scroll', 'validation.engine', 'ui.date']);        
 
 })();

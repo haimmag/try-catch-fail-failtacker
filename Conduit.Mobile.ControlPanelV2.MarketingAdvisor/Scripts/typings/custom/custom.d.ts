@@ -15,4 +15,5 @@ interface JQuery {
     getNiceScroll();
     sticky(opt: any);
     waypoints(opt: any);
+    scrollToFixed(opt: any);
 }
