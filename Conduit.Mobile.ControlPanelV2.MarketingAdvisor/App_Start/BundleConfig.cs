@@ -46,7 +46,7 @@ namespace Conduit.Mobile.ControlPanelV2.External
                       "~/Content/fonts.css",
                       "~/Content/foundation.css",
                       "~/Content/jquery-ui-1.10.1.custom.css",
-                      //"~/Content/animate.css",                      
+                      "~/Content/animate.css",                      
                       "~/Content/timeline/site.css");
             cssBundle.Orderer = new NonOrderingBundleOrderer();
             bundles.Add(cssBundle);
