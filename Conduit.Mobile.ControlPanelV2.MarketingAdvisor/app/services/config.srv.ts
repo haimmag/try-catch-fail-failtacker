@@ -3,12 +3,18 @@
 
     angular
         .module('app')
-        .service('Config', config);
+        .service('Config', configFn);
 
-    config.$inject = [];
+    configFn.$inject = ['CommonService'];
 
-    function config() {
-        this.virtualDir = "";
+    function configFn(CommonService) {
+        var config = CommonService.config;
+
+        var config = CommonService.config;
+        var baseUrl = config.absUrl.substring(0, config.absUrl.lastIndexOf("/")); 
+
+        this.imagesVirtualDir = baseUrl;
+        this.virtualDir = baseUrl;
     }
 
 })();

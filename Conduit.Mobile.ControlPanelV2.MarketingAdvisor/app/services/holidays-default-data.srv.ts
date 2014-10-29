@@ -22,7 +22,7 @@
             var data: Timeline.IEvent[] = [];
             var now = new Date();
 
-            var baseUrl = Config.virtualDir + "/Content/timeline/holidays/default/";   
+            var baseUrl = Config.imagesVirtualDir + "/Content/timeline/holidays/default/";   
 
             var dateEvent = new Date(now.getFullYear(), 0, 17);
             var eventTitle = "martin luther king jr.";

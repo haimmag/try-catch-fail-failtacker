@@ -145,7 +145,7 @@
         }
 
         function createCustomEvent(item) {
-            var baseUrl = Config.virtualDir + "/Content/timeline/holidays/default/";  
+            var baseUrl = Config.imagesVirtualDir + "/Content/timeline/holidays/default/";  
             var date = item.date;
 
             var newEvent: Timeline.IEvent = {
@@ -178,7 +178,7 @@
 
             function getDataSuccess(data: Server.IFeed[]) {
                 
-                var baseUrl = Config.virtualDir + "/Content/timeline/holidays/default/";   
+                var baseUrl = Config.imagesVirtualDir + "/Content/timeline/holidays/default/";   
 
                 _.each(data, function (item) {
                     var date = new Date(item.eventDate);

@@ -23,6 +23,7 @@
         config.appId = urlParams.appId;
         config.cpUserSettingsUrl = "http://mobilev2.site-services.com";
         config.cpBaseUrl = $location.protocol() + "://" + $location.host();
+        config.absUrl = $location.absUrl();
 
 
         return {
