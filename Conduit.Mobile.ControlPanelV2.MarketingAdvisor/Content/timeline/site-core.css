@@ -229,8 +229,6 @@ iframe {
   border: 1px solid #a7a7a7;
   background-color: #fff;
   /*opacity:0;*/ }
-  .CP_image_contnet img {
-    height: 100% !important; }
   .CP_image_contnet:hover {
     border: 1px solid #00add5;
     -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 173, 213, 0.2);
@@ -257,8 +255,18 @@ iframe {
     -o-transform: scale(1.1);
     transform: scale(1.1); }
 
-.CP-image-contnet img {
-  height: 100% !important; }
+.display-flex {
+  display: flex; }
+  .display-flex .display-flex1 {
+    display: flex;
+    flex: 1; }
+  .display-flex .display-flex1-center {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    flex-direction: column; }
+  .display-flex .flex1 {
+    flex: 1; }
 
 .CP_image_contnet_main {
   position: absolute; }
@@ -555,3 +563,19 @@ iframe {
 
 .revealOnScroll {
   opacity: 0; }
+
+.left-image-marker {
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out; }
+  .left-image-marker.scale {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1); }
+  .left-image-marker.regular {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1); }

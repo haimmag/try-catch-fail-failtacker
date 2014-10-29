@@ -11,7 +11,8 @@
         var config = CommonService.config;
 
         var config = CommonService.config;
-        var baseUrl = config.absUrl.substring(0, config.absUrl.lastIndexOf("/")); 
+        var url = config.absUrl.substring(0, config.absUrl.indexOf("?")); 
+        var baseUrl = url.substring(0, url.lastIndexOf("/")); 
 
         this.imagesVirtualDir = baseUrl;
         this.virtualDir = baseUrl;

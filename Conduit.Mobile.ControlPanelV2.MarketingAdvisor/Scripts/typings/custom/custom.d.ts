@@ -16,4 +16,5 @@ interface JQuery {
     sticky(opt: any);
     waypoints(opt: any);
     scrollToFixed(opt: any);
+    switchClass(cssFrom:string, cssTo:string,duration:number,ease:string);
 }

@@ -5,21 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title></title>
-
     @System.Web.Optimization.Styles.Render("~/Content/css.css")
     @*@System.Web.Optimization.Scripts.Render("~/bundles/modernizr")*@
     @System.Web.Optimization.Scripts.Render("~/bundles/libs.js")
     @System.Web.Optimization.Scripts.Render("~/bundles/angularjslibs.js")
-    @System.Web.Optimization.Scripts.Render("~/bundles/angularjstimeline.js")
+    @System.Web.Optimization.Scripts.Render("~/bundles/angularjstimeline.js")    
 
 </head>
 <body ng-controller="MainCtrl as vm" class="cp-advisor-body" nice-scroll="" id="body">
-
+    
     <div id="scroll2top" sticker="" class="z-index-1">
         <a class="button expand radius custom1" data-scroll-on-click="#body" ng-click="vm.refresh()">
             <i class="foundicon-arrow-up i-pos"></i>
         </a>
-    </div>
+    </div>    
 
     <div class="panel main-bg">
         <div class="fixed shadow">
@@ -77,7 +76,7 @@
         <div class="cp-custom-events background-custom-3 show-animation" ng-show="btne.customEvents" ng-cloak>
             <div class="show-animation" ng-if="btne.customEvents">
                 <div class="row events-warrper">
-                    <div class="small-2 columns main-bg z-index-1"></div>
+                    <div class="small-2 columns main-bg z-index-1" equalizer="ce"></div>
                     <div class="small-10 columns data-content-warrper">
                         <div class="CP_div_seperator z-index-1"></div>
                         <span class="CP_mid_left_seperator"></span>
@@ -150,10 +149,10 @@
                         <div class="CP_div_seperator revealOnScroll" data-animation="fadeIn" data-timeout="800"></div>
                         @*<span class="CP_mid_left_seperator"></span>*@
                         <div class="month-spacer"></div>
-                        <div class="row CP_image_contnet revealOnScroll" data-animation="fadeInUp" data-hover-image-marker=".left-image-marker">
-                            <div class="display-flex">
-                                <div class="small-3 columns no-padding-left" style="overflow:hidden">
-                                    <img class="left-image-marker regular" ng-src="{{::row.mainImage}}" src="Content/timeline/holidays/default/no_image.jpg" />
+                        <div class="row CP_image_contnet revealOnScroll" data-animation="fadeInUp" style="overflow:hidden">
+                            <div class="zoom-tranzition display-flex">
+                                <div class="small-3 columns no-padding-left" >
+                                    <img ng-src="{{::row.mainImage}}" src="Content/timeline/holidays/default/no_image.jpg" />
                                 </div>
                                 <div class="small-9 columns display-flex1" ng-switch on="::row.actionType">
                                     @*show default*@
@@ -170,7 +169,11 @@
                                         </div>
                                     </div>
                                     @*show stats*@
+<<<<<<< HEAD
+                                    <div class="no-padding-left center" ng-switch-when="2">
+=======
                                     <div class="no-padding-left center flex1" ng-switch-when="2">
+>>>>>>> display data as flex instead equlizer
                                         <div class="space-bottom-quarter space-top-quarter">
                                             <h5 class="subheader anchor-font-color">{{::row.contentInfoMainText}}</h5>
                                             <h4 class="body-font-color margin-top-minus">{{::row.contentInfoSubText}}</h4>
@@ -255,7 +258,7 @@
                                 <!--app install-->
                                 <div class="row detials_func_content show-animation" ng-if="btn.install.funcvisible">
                                     @*<div class="small-12 columns" ng-controller="timelineapps.AppInstallCtrl as installVM" data-timelineapps.appinstall="">
-                                        </div>*@
+                                </div>*@
                                     <div class="small-12 columns onlineAdsWrapper" ng-controller="timelineapps.AppInstallIfrmCtrl as installVM">
                                         <iframe id="onlineAdsFrame" ng-src="http://smb.zibaba.com/cndconnect?parameters=VDAhsTLIznou8F5gPtOTLGRLBFBThDesGwdtHQCmkNvbdnXXMi5Au7kcIkebBab8IphDvQJHeGwI6/7m5Y7k+2nsz2RYQ3uGjlInpie1x7kLonehc5WCcW5WSTkpCUs7t9Pq2eJLSvjGA5hLjWdlh2MsvK8fBjly3LosEmJhGWVJEiwKNMZAG5RIWzVFa/PRm5wdwoHJVf9QnxagNWZU07HKSyJbPLjmLL3KJ8X0gXzSAoVC+tBkLrT5+KMzWO5fgu/w7LI5v/BKq0Bst3Q30Fo41xafkpNKfJa9smuCXQaxG/zQMaMWLHJHdl+1i97R3RDRTd4j8Y8AW8rut2KoS37U5fxRsdHyxDi8J/V50aeKNpQaUAGCm0Oigmehgb6Dd2q5UDVnVU1h1P/f3tfTeB/WPmtyOaT2Iz3Lo/hzj/Cm/M6R/pa3VVNS6T3kXzMAkT6uZHVglM/lWiz7OxMUTXWU1ckqYdesXe68bkGjePO3Tbpb7VIfASFJ43SdtV5ujYEfo0MSYc+sUjzQvewa8WbOjmwWNHeFrTFO/b+7qco//ZZH9+mhlSMi5Q9KINMH5zqspHiMROwvdcyPcW1wHlxQSMSP4FbA7q/4yRLy3J5Z1tgFFKIZKHVETJ0v6KHF2aYHgP+mytjVfDiL3adWclZWmmtA/l7Qbp/nDmeKV/sSEemTFZv42Jo2J1R3/ssOrTjU/XRxOAXc/z1u040orbOTFqICKuXGOsn8wtiDavpJ7uop5rqvvhP30kEczueGeYEOQo4VoGojcL+Z2z9jJOGTSgUKdRUxC/fOjwDJoeTsuAG/krXiMSw8+9uT4U2x7oGWfSz1VAYNAp19g/r1LR9tYhW1j99uNEULp9mLizOQqQxE/4HwQofjYxp1hnaF87MJ/F/v/u3gEQOZoPO7U10mp7uDiccYKmRIgew+WpsUN49f56QjKQLc0RPZg5AprPS02Ivi/MBa65K9NOXjeaFgQfZAP9qoxS5dZy+qMj8Swc0ZyB2BRJ38u6KC9Pjm" src="http://smb.zibaba.com/cndconnect?parameters=VDAhsTLIznou8F5gPtOTLGRLBFBThDesGwdtHQCmkNvbdnXXMi5Au7kcIkebBab8IphDvQJHeGwI6/7m5Y7k+2nsz2RYQ3uGjlInpie1x7kLonehc5WCcW5WSTkpCUs7t9Pq2eJLSvjGA5hLjWdlh2MsvK8fBjly3LosEmJhGWVJEiwKNMZAG5RIWzVFa/PRm5wdwoHJVf9QnxagNWZU07HKSyJbPLjmLL3KJ8X0gXzSAoVC+tBkLrT5+KMzWO5fgu/w7LI5v/BKq0Bst3Q30Fo41xafkpNKfJa9smuCXQaxG/zQMaMWLHJHdl+1i97R3RDRTd4j8Y8AW8rut2KoS37U5fxRsdHyxDi8J/V50aeKNpQaUAGCm0Oigmehgb6Dd2q5UDVnVU1h1P/f3tfTeB/WPmtyOaT2Iz3Lo/hzj/Cm/M6R/pa3VVNS6T3kXzMAkT6uZHVglM/lWiz7OxMUTXWU1ckqYdesXe68bkGjePO3Tbpb7VIfASFJ43SdtV5ujYEfo0MSYc+sUjzQvewa8WbOjmwWNHeFrTFO/b+7qco//ZZH9+mhlSMi5Q9KINMH5zqspHiMROwvdcyPcW1wHlxQSMSP4FbA7q/4yRLy3J5Z1tgFFKIZKHVETJ0v6KHF2aYHgP+mytjVfDiL3adWclZWmmtA/l7Qbp/nDmeKV/sSEemTFZv42Jo2J1R3/ssOrTjU/XRxOAXc/z1u040orbOTFqICKuXGOsn8wtiDavpJ7uop5rqvvhP30kEczueGeYEOQo4VoGojcL+Z2z9jJOGTSgUKdRUxC/fOjwDJoeTsuAG/krXiMSw8+9uT4U2x7oGWfSz1VAYNAp19g/r1LR9tYhW1j99uNEULp9mLizOQqQxE/4HwQofjYxp1hnaF87MJ/F/v/u3gEQOZoPO7U10mp7uDiccYKmRIgew+WpsUN49f56QjKQLc0RPZg5AprPS02Ivi/MBa65K9NOXjeaFgQfZAP9qoxS5dZy+qMj8Swc0ZyB2BRJ38u6KC9Pjm"></iframe>
                                     </div>

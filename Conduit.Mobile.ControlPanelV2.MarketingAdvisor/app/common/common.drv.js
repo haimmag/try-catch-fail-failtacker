@@ -61,7 +61,7 @@
             link: function (scope, element, attr, ctrl) {
                 function inputValue(val) {
                     if (val) {
-                        var alphanumeric = val.replace(/[^a-zA-Z0-9א-ת\.]/g, '');
+                        var alphanumeric = val.replace(/[^a-zA-Z0-9א-ת\.\-\_\s\(\)]/g, '');
 
                         if (alphanumeric !== val) {
                             ctrl.$setViewValue(alphanumeric);
@@ -199,6 +199,44 @@
                 link: function (scope, elm, attrs) {
                     angular.element($window).on("scroll", function () {
                         console.log(attrs.checkOffset + " - " + elm.offset().top);
+                    });
+                }
+            };
+        }]);
+
+    common.directive('hoverImageMarker', [
+        '$window', function ($window) {
+            return {
+                restrict: 'A',
+                link: function (scope, elm, attrs) {
+                    var $img = elm.find(attrs.hoverImageMarker).first();
+
+                    //var width = $img.width();
+                    //var height = $img.height();
+                    //var zoom = 1.1;
+                    //var move = -15;
+                    elm.hover(function (e) {
+                        $img.switchClass("regular", "scale", 1000, "easeInOutQuad");
+                    }, function (e) {
+                        $img.switchClass("scale", "regular", 1000, "easeInOutQuad");
+                    });
+                }
+            };
+        }]);
+
+    common.directive('hoverChangeState', [
+        '$window', '$parse', function ($window, $parse) {
+            return {
+                restrict: 'A',
+                link: function (scope, elm, attrs) {
+                    var fn = $parse(attrs.hoverChangeState);
+
+                    elm.hover(function (e) {
+                        fn.assign(scope, true);
+                        scope.$digest();
+                    }, function (e) {
+                        fn.assign(scope, false);
+                        scope.$digest();
                     });
                 }
             };
@@ -342,7 +380,11 @@
                         var scrolled = $win.scrollTop(), win_height_padded = $win.height() * 0.9;
 
                         // Showed...
-                        $(".revealOnScroll:not(.animated)").each(function () {
+                        $(".revealOnScroll:not(.animated)").each(function (i) {
+                            // performance - no need to loop all element to bottom
+                            if (delta < 6 && i > 2)
+                                return;
+
                             var $this = $(this), offsetTop = $this.offset().top;
 
                             if (scrolled + win_height_padded > offsetTop) {
