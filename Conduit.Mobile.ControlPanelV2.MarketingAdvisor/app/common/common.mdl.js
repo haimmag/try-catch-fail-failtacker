@@ -1,6 +1,6 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('common', ['ngEqualizer', 'infinite-scroll', 'validation.engine', 'ui.date']);
+    angular.module('common', ['ngEqualizer', 'infinite-scroll', 'validation.engine', 'ui.date', 'once']);
 })();
 //# sourceMappingURL=common.mdl.js.map

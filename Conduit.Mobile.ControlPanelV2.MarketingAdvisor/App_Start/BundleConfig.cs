@@ -20,7 +20,7 @@ namespace Conduit.Mobile.ControlPanelV2.External
                                     "~/Scripts/libs/jquery-scrolltofixed.js",                                    
                                     "~/Scripts/libs/foundation.min.js",
                                     "~/Scripts/libs/moment.min.js",
-                                    "~/Scripts/libs/angularjs_1_3/angular.min.js",
+                                    "~/Scripts/libs/angular.min.js",
                                     "~/Scripts/libs/angular-get-watchers.js",
                                     "~/Scripts/libs/underscore-min.js",
                                     "~/Scripts/libs/string.js");
@@ -31,7 +31,8 @@ namespace Conduit.Mobile.ControlPanelV2.External
                                     "~/Scripts/libs/angular-equalizer.js",
                                     "~/Scripts/libs/angular-validation.js",
                                     "~/Scripts/libs/angular-ui-date-picker.js",
-                                    "~/Scripts/libs/angularjs_1_3/angular-animate.min.js",
+                                    "~/Scripts/libs/angular-once.js",
+                                    "~/Scripts/libs/angular-animate.min.js",
                                     "~/Scripts/libs/infiniteScroll.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angularjstimeline.js")                
