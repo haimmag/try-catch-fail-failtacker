@@ -32,7 +32,7 @@ app.directive('sendEmail', function (PopupService) {
     };
 });
 
-app.directive('sendMail', function (PopupService) {
+app.directive('sendMail', function (PopupService,$timeout) {
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {
@@ -57,6 +57,16 @@ app.directive('sendMail', function (PopupService) {
                     closeButton: false
                 });
             });
+            
+            var objURL = URI(document.referrer);
+            var objQueryString = objURL.search(true);
+
+            if (objQueryString["showMarketingOrder"] && objQueryString["showMarketingOrder"].toLowerCase() == "true") {
+                $timeout(function () {
+                    element.trigger('click');
+                }, 3000);
+            }
+
         },
         controller: function ($scope) {
             $scope.onUpgradeClicked = function () {

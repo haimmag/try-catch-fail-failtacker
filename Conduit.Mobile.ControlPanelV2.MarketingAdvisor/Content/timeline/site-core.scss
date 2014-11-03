@@ -403,8 +403,14 @@ iframe {
     }
 
     &.radius-full {
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+
         border-radius: 25px;
         background-color: #ccc;
+        right:0;
 
         &:hover {
             background-color: #00add5;
@@ -413,6 +419,8 @@ iframe {
 
     &.radius-full-highlight {
         background-color: #00add5;
+        width: 180px !important;        
+        right:63px;        
     }
 
     &.custom1 {
@@ -499,7 +507,7 @@ iframe {
         background-color: #f7f7f7;
     }
 
-    img {
+    .img {
         width: 100%;
     }
 

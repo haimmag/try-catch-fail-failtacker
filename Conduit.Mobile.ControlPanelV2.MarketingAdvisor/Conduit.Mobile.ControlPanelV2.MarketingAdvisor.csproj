@@ -200,6 +200,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Code\CultureHelper.cs" />
     <Compile Include="Code\GlobalizationHelper.cs" />
+    <Compile Include="Code\GoogleApi\HolidaysCalendars\CalendarCultureMaper.cs" />
     <Compile Include="Code\MessageBus\LogoutHandler.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FeedsController.cs" />
@@ -279,6 +280,10 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Content Include="Scripts\libs\bindonce.js" />
+    <Content Include="Scripts\libs\bindonce.min.js" />
+    <Content Include="Scripts\libs\URI.min.js" />
+    <Content Include="Templates\timeline\detailsShowStats.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\timeline-apps\appinstall.tpl.html" />
@@ -528,7 +533,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <TypeScriptCompile Include="Scripts\services\app-mobile-links.srv.ts" />
+    <Content Include="Scripts\services\app-mobile-links.srv.js" />
     <Content Include="Scripts\services\common.js" />
     <Content Include="Scripts\services\ams.js" />
     <Content Include="Scripts\services\localstorage.js" />
@@ -604,27 +609,27 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="app\app.mdl.ts" />
-    <TypeScriptCompile Include="app\common\common.drv.ts" />
-    <TypeScriptCompile Include="app\common\common.mdl.ts" />
-    <TypeScriptCompile Include="app\common\slide.anim.ts" />
-    <TypeScriptCompile Include="app\common\slidetoggle.anim.ts" />
-    <TypeScriptCompile Include="app\common\underscore.mdl.ts" />
+    <Content Include="app\app.mdl.js" />
+    <Content Include="app\common\common.drv.js" />
+    <Content Include="app\common\common.mdl.js" />
+    <Content Include="app\common\slide.anim.js" />
+    <Content Include="app\common\slidetoggle.anim.js" />
+    <Content Include="app\common\underscore.mdl.js" />
     <TypeScriptCompile Include="app\core\interfaces.ts" />
     <TypeScriptCompile Include="app\core\server.interfaces.ts" />
     <TypeScriptCompile Include="app\core\services.interfaces.ts" />
-    <TypeScriptCompile Include="app\main.ctrl.ts" />
-    <TypeScriptCompile Include="app\scroll.drv.ts" />
-    <TypeScriptCompile Include="app\services\config.srv.ts" />
-    <TypeScriptCompile Include="app\services\holidays-data.srv.ts" />
-    <TypeScriptCompile Include="app\services\holidays-default-data.srv.ts" />
-    <TypeScriptCompile Include="app\services\holidays-zibaba-data.srv.ts" />
+    <Content Include="app\main.ctrl.js" />
+    <Content Include="app\scroll.drv.js" />
+    <Content Include="app\services\config.srv.js" />
+    <Content Include="app\services\holidays-data.srv.js" />
+    <Content Include="app\services\holidays-default-data.srv.js" />
+    <Content Include="app\services\holidays-zibaba-data.srv.js" />
     <TypeScriptCompile Include="app\services\holidays-zibaba-data.ts" />
-    <TypeScriptCompile Include="app\services\holidays-google-calendar-data.srv.ts" />
-    <TypeScriptCompile Include="app\services\holidays-image-taxnomy.srv.ts" />
-    <TypeScriptCompile Include="app\timeline-apps\appinstall-ifrm.ctrl.ts" />
-    <TypeScriptCompile Include="app\timeline-apps\appinstall.ctrl.ts" />
-    <TypeScriptCompile Include="app\timeline-apps\appinstall.drv.ts" />
+    <Content Include="app\services\holidays-google-calendar-data.srv.js" />
+    <Content Include="app\services\holidays-image-taxnomy.srv.js" />
+    <Content Include="app\timeline-apps\appinstall-ifrm.ctrl.js" />
+    <Content Include="app\timeline-apps\appinstall.ctrl.js" />
+    <Content Include="app\timeline-apps\appinstall.drv.js" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />

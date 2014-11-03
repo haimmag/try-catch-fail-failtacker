@@ -18,8 +18,8 @@ app.factory('CommonService', ['$rootScope', '$http', '$q','$location', function 
     config.isAppFreePlan = urlParams.isAppFreePlan;
     config.appId = urlParams.appId;
     config.cpUserSettingsUrl = "http://mobilev2.site-services.com";
-    config.cpBaseUrl = $location.protocol() + "://" + $location.host();
-
+    var posUrl = document.referrer.indexOf(".com/")
+    config.cpBaseUrl = document.referrer.substr(0, posUrl + 4);
 
     return {
         config: config

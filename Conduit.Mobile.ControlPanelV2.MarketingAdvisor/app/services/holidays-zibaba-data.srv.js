@@ -1,16 +1,19 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('app').factory('Holidays.ZibabaDataService', zibabaDataService);
+    angular
+        .module('app')
+        .factory('Holidays.ZibabaDataService', zibabaDataService);
 
-    zibabaDataService.$inject = ['$http', '$q', '$timeout', '$log', 'Config'];
-
+    zibabaDataService.$inject = ['$http', '$q','$timeout','$log','Config'];
+    
     function zibabaDataService($http, $q, $timeout, $log, Config) {
+
         var service = {
             getData: getData
         };
-
-        return service;
+        
+        return service;               
 
         function getData() {
             var deferred = $q.defer();
@@ -20,7 +23,8 @@
             }, 100);
 
             return deferred.promise;
-        }
+        }        
+        
     }
 
     function getStubData() {
@@ -38,8 +42,8 @@
             mainImage: "Content/timeline/images/image_content1.png",
             subImage: "Content/timeline/images/image_round_content1.png",
             eventTypeText: 'running',
-            eventType: 2 /* suggested */,
-            actionType: 2 /* shop */,
+            eventType: 2,
+            actionType: 2,
             actionTypeText: 'shop',
             eventTypeData: {
                 eventId: 1,
@@ -47,7 +51,7 @@
                 views: 20,
                 installs: 10,
                 activeAds: 5
-            }
+            }            
         });
 
         dateEvent = new Date(now.getFullYear(), 11, 14);
@@ -61,8 +65,8 @@
             mainImage: "Content/timeline/images/image_content2.png",
             subImage: "Content/timeline/images/image_round_content2.png",
             eventTypeText: 'suggested',
-            eventType: 2 /* suggested */,
-            actionType: 2 /* shop */,
+            eventType: 2,
+            actionType: 2,
             actionTypeText: 'shop',
             eventTypeData: {
                 eventId: 1,
@@ -70,10 +74,11 @@
                 views: 21,
                 installs: 1,
                 activeAds: 15
-            }
+            }            
         });
 
         return data;
     }
+
 })();
-//# sourceMappingURL=holidays-zibaba-data.srv.js.map
+

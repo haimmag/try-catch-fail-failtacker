@@ -1,20 +1,23 @@
-﻿(function () {
+﻿(function() {
     'use strict';
 
-    angular.module('app').directive('timelineapps.appinstall', appinstall);
+    angular
+        .module('app')
+        .directive('timelineapps.appinstall', appinstall);
 
     appinstall.$inject = [];
-
-    function appinstall() {
+    
+    function appinstall () {
         // Usage:
         //     <appinstall></appinstall>
         // Creates:
-        //
-        var directive = {
+        // 
+        var directive = {            
             restrict: 'EA',
-            templateUrl: '/app/timeline-apps/appinstall.tpl.html'
+            templateUrl: '/app/timeline-apps/appinstall.tpl.html'            
         };
         return directive;
+
     }
+
 })();
-//# sourceMappingURL=appinstall.drv.js.map

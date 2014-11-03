@@ -300,12 +300,19 @@ iframe {
 .button.radius-half-highlight {
   background-color: #00add5; }
 .button.radius-full {
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   border-radius: 25px;
-  background-color: #ccc; }
+  background-color: #ccc;
+  right: 0; }
   .button.radius-full:hover {
     background-color: #00add5; }
 .button.radius-full-highlight {
-  background-color: #00add5; }
+  background-color: #00add5;
+  width: 180px !important;
+  right: 63px; }
 .button.custom1 {
   background-color: #ccc;
   -webkit-transition: all 0.3s ease-in-out;
@@ -367,7 +374,7 @@ iframe {
   margin: 0 !important; }
   .detials_content:hover {
     background-color: #f7f7f7; }
-  .detials_content img {
+  .detials_content .img {
     width: 100%; }
   .detials_content .btn_pos {
     position: absolute;

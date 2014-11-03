@@ -1,7 +1,9 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('app').animation('.slide-animation', slide);
+    angular
+        .module('app')
+        .animation('.slide-animation', slide);
 
     function slide() {
         return {
@@ -11,7 +13,8 @@
                     //    opacity: 0, height: 0
                     //}, done);
                     jQuery(element).slideToggle("fast", done);
-                } else {
+                }
+                else {
                     done();
                 }
             },
@@ -22,11 +25,12 @@
                     //    opacity: 1, height: 130
                     //}, done);
                     jQuery(element).slideToggle("fast", done);
-                } else {
+                }
+                else {
                     done();
                 }
             }
         };
     }
+
 })();
-//# sourceMappingURL=slidetoggle.anim.js.map

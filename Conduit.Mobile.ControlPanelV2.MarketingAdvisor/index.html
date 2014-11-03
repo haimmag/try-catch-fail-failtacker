@@ -98,15 +98,18 @@
                     <!-- <div class="como_banner"></div> -->
                     <div class="preview_ribbon"></div>
                 </div>
-                <!--
-                <div class="change_image" ng-if="isEditMode && preDefinedImages[segmentId].length > 1">
+                
+                <!--<div class="change_image" ng-if="isEditMode && preDefinedImages[segmentId].length > 1">
                     <p>
                         <span class="prev" ng-click="changeImage('prev')">&lt;</span>
                         Select banner style
                         <span class="next" ng-click="changeImage('next')">&gt;</span>
                     </p>
-                </div>
-                -->
+                    <div>
+                        <iframe class="avcde" ng-src="{{mobileCurrentLink}}" frameborder="1" height="500px"></iframe>
+                    </div>
+                </div>-->                
+                
             </div>
         </div>
         <div class="app_details_editor" ng-if="isEditMode">
@@ -178,6 +181,7 @@
 
     <script src="scripts/libs/jquery.min.js"></script>
     <script src="scripts/libs/angular.min.js"></script>
+    <script src="Scripts/libs/URI.min.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/services/popup.js"></script>
     <script src="scripts/services/common.js"></script>

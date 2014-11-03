@@ -7,10 +7,19 @@ using System.Xml;
 using Conduit.Mobile.ControlPanelV2.External.Domain;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
+using Conduit.Mobile.ControlPanelV2.External.Code;
+using Conduit.Mobile.ControlPanelV2.External.Code.GoogleApi.HolidaysCalendars;
 
 namespace Conduit.Mobile.ControlPanelV2.External.Data
 {
   public class FeedRepository : IFeedRepository {
+
+      private HttpContextBase httpContext;      
+
+      public FeedRepository(HttpContextBase httpContext)
+      {
+          this.httpContext = httpContext;          
+      }
 
     public List<Feed> GetAll() {        
         return GetFeedsV1();
@@ -18,15 +27,16 @@ namespace Conduit.Mobile.ControlPanelV2.External.Data
 
     public List<Feed> GetAllByCulture(string culture)
     {
-        return GetFeedsV1(culture);
+        string cal = CalendarCultureMaper.GetCalendarByCulture(culture);        
+        return GetFeedsV1(cal);
     }
 
-    private List<Feed> GetFeedsV1(string culture = "en.usa")
+    private List<Feed> GetFeedsV1(string cal = "en.usa%23holiday%40group.v.calendar.google.com")
     {
-        // sample feed https://www.google.com/calendar/feeds/en.australian%23holiday%40group.v.calendar.google.com/public/full
+        // sample feed https://www.google.com/calendar/feeds/en.australian%23holiday%40group.v.calendar.google.com/public/basic
 
         XmlTextReader reader = new XmlTextReader(
-           string.Format("https://www.google.com/calendar/feeds/{0}%23holiday%40group.v.calendar.google.com/public/full", culture));
+           string.Format("https://www.google.com/calendar/feeds/{0}%23holiday%40group.v.calendar.google.com/public/basic", cal));
         SyndicationFeed feed = SyndicationFeed.Load(reader);
 
         var feeds = new List<Feed>();
@@ -36,8 +46,8 @@ namespace Conduit.Mobile.ControlPanelV2.External.Data
             feeds.Add(new Feed()
             {
                 Id = item.Id,
-                EventDate = ExtractEventDateV2(item),
-                Title = item.Title.Text,
+                EventDate = ExtractEventDate(item.Id),
+                Title = httpContext.Server.HtmlDecode(item.Title.Text),
                 //Summery = item.Summary.Text,
                 PublishDate = item.PublishDate
             });

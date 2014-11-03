@@ -2,15 +2,18 @@
     'use strict';
 
     var app = angular.module('app', ['ngAnimate', 'common']);
+    
+    app.config(['$sceDelegateProvider', '$httpProvider', function ($sceDelegateProvider) {
 
-    app.config([
-        '$sceDelegateProvider', '$httpProvider', function ($sceDelegateProvider) {
-            $sceDelegateProvider.resourceUrlWhitelist([
-                'self',
-                'http://*.site-services.com/**',
-                'http://*.como.com/**'
-            ]);
-        }]);
+        $sceDelegateProvider.resourceUrlWhitelist([
+               // Allow same origin resource loads.
+               'self',
+               // Allow loading from our assets domain.  Notice the difference between * and **.           
+               'http://*.site-services.com/**',
+               'http://*.como.com/**'
+        ]);
+
+    }]);
 
     app.run(function ($rootScope) {
         var getUrlParams = function () {
@@ -27,12 +30,12 @@
         $rootScope.urlParams = getUrlParams();
 
         $rootScope.$on('$viewContentLoaded', function () {
-            console.log('$viewContentLoaded');
+            console.log('$viewContentLoaded');           
         });
-    });
-
+    });  
+    
     $(function () {
-        $(document).foundation();
-    });
+        $(document).foundation();          
+    });  
+
 })();
-//# sourceMappingURL=app.mdl.js.map

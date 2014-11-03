@@ -141,9 +141,9 @@ app.controller('MainCtrl', function ($scope, $rootScope, $http, AmsService, Loca
     });
 
     // test only
-    AppMobileLinksService.getCustomLinks().then(function (data) {
+    //AppMobileLinksService.getCustomLinks().then(function (data) {
         
-    });
+    //});
 
     function setMarketingConfigurationData(storedInfo, bannerImages) {
         $scope.currentActiveImage = storedInfo.currentActiveImage;

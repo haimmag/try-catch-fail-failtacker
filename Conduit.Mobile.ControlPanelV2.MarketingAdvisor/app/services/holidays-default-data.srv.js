@@ -1,26 +1,28 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('app').factory('Holidays.DefaultDataService', stubdata);
+    angular
+        .module('app')
+        .factory('Holidays.DefaultDataService', stubdata);
 
     stubdata.$inject = ['Config', 'Holidays.ImageTaxonomyService'];
-
-    function stubdata(Config, ImageTaxonomyService) {
+    
+    function stubdata(Config, ImageTaxonomyService) {        
         var service = {
-            getData: getData
+            getData: getData      
         };
-
-        return service;
+        
+        return service;               
 
         function getData() {
             return getDefaultEvents();
-        }
+        }         
 
-        function getDefaultEvents() {
+        function getDefaultEvents() {            
             var data = [];
             var now = new Date();
 
-            var baseUrl = Config.imagesVirtualDir + "/Content/timeline/holidays/default/";
+            var baseUrl = Config.imagesVirtualDir + "/Content/timeline/holidays/default/";   
 
             var dateEvent = new Date(now.getFullYear(), 0, 17);
             var eventTitle = "martin luther king jr.";
@@ -531,7 +533,7 @@
                 actionType: 1,
                 actionTypeText: 'Install'
             });
-
+            
             eventTitle = "hanukkah";
             dateEvent = new Date(now.getFullYear(), 11, 21);
             data.push({
@@ -616,7 +618,7 @@
                 actionType: 1,
                 actionTypeText: 'Install'
             });
-
+            
             return data;
         }
 
@@ -635,8 +637,8 @@
                 mainImage: "Content/timeline/images/image_content1.png",
                 subImage: "Content/timeline/images/image_round_content1.png",
                 eventTypeText: 'running',
-                eventType: 2 /* suggested */,
-                actionType: 2 /* shop */,
+                eventType: Timeline.EventType.suggested,
+                actionType: Timeline.ActionType.shop,
                 actionTypeText: 'shop'
             });
 
@@ -651,8 +653,8 @@
                 mainImage: "Content/timeline/images/image_content2.png",
                 subImage: "Content/timeline/images/image_round_content2.png",
                 eventTypeText: 'suggested',
-                eventType: 2 /* suggested */,
-                actionType: 2 /* shop */,
+                eventType: Timeline.EventType.suggested,
+                actionType: Timeline.ActionType.shop,
                 actionTypeText: 'shop'
             });
 
@@ -660,4 +662,4 @@
         }
     }
 })();
-//# sourceMappingURL=holidays-default-data.srv.js.map
+

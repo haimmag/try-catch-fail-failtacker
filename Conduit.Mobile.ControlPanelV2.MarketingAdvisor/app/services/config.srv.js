@@ -1,7 +1,9 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('app').service('Config', configFn);
+    angular
+        .module('app')
+        .service('Config', configFn);
 
     configFn.$inject = ['CommonService'];
 
@@ -9,11 +11,15 @@
         var config = CommonService.config;
 
         var config = CommonService.config;
-        var url = config.absUrl.substring(0, config.absUrl.indexOf("?"));
-        var baseUrl = url.substring(0, url.lastIndexOf("/"));
+        var urlPos = config.absUrl.indexOf("?");
+        var url = config.absUrl;
+        if (urlPos > 0)
+            url = config.absUrl.substring(0, urlPos);
+        var baseUrl = url.substring(0, url.lastIndexOf("/")); 
 
         this.imagesVirtualDir = baseUrl;
         this.virtualDir = baseUrl;
     }
+
 })();
-//# sourceMappingURL=config.srv.js.map
+

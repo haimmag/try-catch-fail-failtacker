@@ -12,6 +12,8 @@ using Conduit.Mobile.ControlPanelV2.External.Domain;
 using Conduit.Mobile.ControlPanelV2.External.Models;
 using Conduit.Mobile.ControlPanelV2.External.Data;
 using Conduit.Mobile.ControlPanelV2.External.Infrastructure.Bus;
+using Conduit.Mobile.ControlPanelV2.External.Code;
+using Conduit.Mobile.ControlPanelV2.External.Code.GoogleApi.HolidaysCalendars;
 
 namespace Conduit.Mobile.ControlPanelV2.External.Controllers
 {
@@ -29,8 +31,9 @@ namespace Conduit.Mobile.ControlPanelV2.External.Controllers
         }
 
         // GET: api/Feeds
-        public IQueryable<Feed> GetFeeds(string culture = "en.usa")
-        {            
+        public IQueryable<Feed> GetFeeds()
+        {
+            string culture = CultureHelper.GetCurrentCulture();            
             return feedRepository.GetAllByCulture(culture).AsQueryable();
         }
 

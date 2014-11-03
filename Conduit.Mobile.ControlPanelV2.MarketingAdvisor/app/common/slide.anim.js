@@ -1,7 +1,9 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('app').animation('.slide-left-animation', slide);
+    angular
+        .module('app')
+        .animation('.slide-left-animation', slide);
 
     function slide() {
         return {
@@ -10,8 +12,9 @@
                     //jQuery(element).animate({
                     //    opacity: 0, height: 0
                     //}, done);
-                    jQuery(element).toggle("slide", {}, 500);
-                } else {
+                    jQuery(element).toggle("slide", {} ,500 );
+                }
+                else {
                     done();
                 }
             },
@@ -22,11 +25,12 @@
                     //    opacity: 1, height: 130
                     //}, done);
                     jQuery(element).toggle("slide", {}, 500);
-                } else {
+                }
+                else {
                     done();
                 }
             }
         };
     }
+
 })();
-//# sourceMappingURL=slide.anim.js.map

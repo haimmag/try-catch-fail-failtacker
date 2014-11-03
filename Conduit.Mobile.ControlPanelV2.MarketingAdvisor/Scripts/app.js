@@ -9,7 +9,8 @@ app.config(['$sceDelegateProvider', '$httpProvider', function ($sceDelegateProvi
            'self',
            // Allow loading from our assets domain.  Notice the difference between * and **.           
            'http://*.site-services.com/**',
-           'http://*.como.com/**'           
+           'http://*.como.com/**',
+           'http://*.appduit.site.com/**'
     ]);
 
 }]);

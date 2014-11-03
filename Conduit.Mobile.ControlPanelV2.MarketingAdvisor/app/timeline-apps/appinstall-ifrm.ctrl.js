@@ -1,21 +1,23 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('app').controller('timelineapps.AppInstallIfrmCtrl', AppInstallCtrl);
+    angular
+        .module('app')
+        .controller('timelineapps.AppInstallIfrmCtrl', AppInstallCtrl);
 
     AppInstallCtrl.$inject = ['$scope', 'Holidays.DataService'];
 
     function AppInstallCtrl($scope, HolidaysDataService) {
         /* jshint validthis: true */
-        var vm = this;
+        var vm = this;        
 
         vm.filterByEventType = function (eventType, searchTitle) {
             vm.search.event = searchTitle;
             vm.dataRows = HolidaysDataService.getDataByEventType(eventType);
         };
 
-        vm.elementsLayoutDone = function () {
-            //alert('load more');
+        vm.elementsLayoutDone = function () {        
+                //alert('load more');
         };
 
         vm.loadMore = function () {
@@ -26,8 +28,7 @@
 
         function init() {
             vm.search = { event: 'All Events' };
-            vm.dataRows = HolidaysDataService.getData();
+            vm.dataRows = HolidaysDataService.getData();            
         }
     }
 })();
-//# sourceMappingURL=appinstall-ifrm.ctrl.js.map

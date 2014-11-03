@@ -31,7 +31,7 @@ namespace Conduit.Mobile.ControlPanelV2.External
                                     "~/Scripts/libs/angular-equalizer.js",
                                     "~/Scripts/libs/angular-validation.js",
                                     "~/Scripts/libs/angular-ui-date-picker.js",
-                                    "~/Scripts/libs/angular-once.js",
+                                    "~/Scripts/libs/bindonce.js",
                                     "~/Scripts/libs/angular-animate.min.js",
                                     "~/Scripts/libs/infiniteScroll.js"));
 
