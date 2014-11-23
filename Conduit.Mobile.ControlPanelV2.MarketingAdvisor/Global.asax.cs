@@ -49,11 +49,12 @@ namespace Conduit.Mobile.ControlPanelV2.External
                 cfg.AddRegistry(new StandardRegistry());
                 cfg.AddRegistry(new ControllerRegistry());
                 cfg.AddRegistry(new ActionFilterRegistry(
-                    () => Container ?? ObjectFactory.Container));
+                    () => Container ?? ObjectFactory.Container));                
                 cfg.AddRegistry(new MvcRegistry());
                 cfg.AddRegistry(new TaskRegistry());
                 cfg.AddRegistry(new MessagingRegistry());                
-                cfg.AddRegistry(new ModelMetadataRegistry());
+                cfg.AddRegistry(new ModelMetadataRegistry());                
+                cfg.AddRegistry(new UnterceptorRegistry());
             });
 
             using (var container = ObjectFactory.Container.GetNestedContainer())

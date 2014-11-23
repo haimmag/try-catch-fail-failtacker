@@ -9,10 +9,12 @@ using System.Xml.Linq;
 using System.Text.RegularExpressions;
 using Conduit.Mobile.ControlPanelV2.External.Code;
 using Conduit.Mobile.ControlPanelV2.External.Code.GoogleApi.HolidaysCalendars;
+using Conduit.Mobile.ControlPanelV2.External.Infrastructure;
 
 namespace Conduit.Mobile.ControlPanelV2.External.Data
 {
-  public class FeedRepository : IFeedRepository {
+    public class FeedRepository : IFeedRepository, ICacheable
+    {
 
       private HttpContextBase httpContext;      
 
@@ -25,6 +27,7 @@ namespace Conduit.Mobile.ControlPanelV2.External.Data
         return GetFeedsV1();
     }
 
+    [CacheResult(CacheType.Persistent, 84000)]
     public List<Feed> GetAllByCulture(string culture)
     {
         string cal = CalendarCultureMaper.GetCalendarByCulture(culture);        
