@@ -117,10 +117,8 @@ C:\Projects\Conduit.Mobile\Conduit.Mobile.ControlPanelV2.MarketingAdvisor\obj\De
 C:\Projects\Conduit.Mobile\Conduit.Mobile.ControlPanelV2.MarketingAdvisor\bin\AutoMapper.Net4.dll
 C:\Projects\Conduit.Mobile\Conduit.Mobile.ControlPanelV2.MarketingAdvisor\bin\AutoMapper.dll
 C:\Projects\Conduit.Mobile\Conduit.Mobile.ControlPanelV2.MarketingAdvisor\bin\Microsoft.Web.Mvc.dll
-C:\Projects\Conduit.Mobile\Conduit.Mobile.ControlPanelV2.MarketingAdvisor\bin\StructureMap.dll
 C:\Projects\Conduit.Mobile\Conduit.Mobile.ControlPanelV2.MarketingAdvisor\bin\AutoMapper.xml
 C:\Projects\Conduit.Mobile\Conduit.Mobile.ControlPanelV2.MarketingAdvisor\bin\StructureMap.pdb
-C:\Projects\Conduit.Mobile\Conduit.Mobile.ControlPanelV2.MarketingAdvisor\bin\StructureMap.xml
 C:\Projects\Conduit.Mobile\Conduit.Mobile.ControlPanelV2.MarketingAdvisor\bin\WebApi.OutputCache.Core.dll
 C:\Projects\Conduit.Mobile\Conduit.Mobile.ControlPanelV2.MarketingAdvisor\bin\WebApi.OutputCache.V2.dll
 C:\Projects\Conduit.Mobile\Conduit.Mobile.ControlPanelV2.MarketingAdvisor\bin\Castle.Core.dll
