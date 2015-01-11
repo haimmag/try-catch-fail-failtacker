@@ -291,7 +291,7 @@
       <DependentUpon>site-core-animation.css</DependentUpon>
     </Content>
     <Content Include="Content\timeline\site-core-animation.scss" />
-    <None Include="Infrastructure\TransactionPerRequest.cs.bk" />
+    <Compile Include="Infrastructure\TransactionPerRequest.cs" />
     <Compile Include="Infrastructure\UnterceptorRegistry.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
